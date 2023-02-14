@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Slogan</th>
+        <th scope="col">url</th>
+        <th scope="col">LinkedIn</th>
+        <th scope="col">Twitter</th>
+        <th scope="col">Cif</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company : ${companies}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.name}"></td>
+        <td th:text="${company.slogan}"></td>
+        <td th:text="${company.url}"></td>
+        <td th:text="${company.linkedIn}"></td>
+        <td th:text="${company.twitter}"></td>
+        <td th:text="${company.cif}"></td>
+        <td>
+            <a class="btn btn-primary" th:href="@{/companies/{id}(id=${company.id})}">Ver</a>
+            <button type="button" class="btn btn-success">Editar</button>
+            <button type="button" class="btn btn-danger">Borrar</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
