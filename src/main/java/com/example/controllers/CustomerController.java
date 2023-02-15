@@ -23,20 +23,13 @@ public class CustomerController {
     public String findAll(Model model) {
         List<Customer> customers = customerService.findAll();
         model.addAttribute("customers", customers);
-        return "food-list";
+        return "customer-list";
     }
 
 
 
 }
 
-
-    /*
-    public String findAll(Model model) {
-        List<Company> companies = companyService.findAll();
-        model.addAttribute("companies", companies);
-        return "company-list";
-    }*/
 
 
 
