@@ -2,9 +2,11 @@ package com.example;
 
 import com.example.entities.Company;
 import com.example.entities.Customer;
+import com.example.entities.Employee;
 import com.example.entities.Project;
 import com.example.repositories.CompanyRepository;
 import com.example.repositories.CustomerRepository;
+import com.example.repositories.EmployeeRepository;
 import com.example.repositories.ProjectRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +24,7 @@ public class App {
 		var companyRepo = context.getBean(CompanyRepository.class);
 		var projectRepo = context.getBean(ProjectRepository.class);
 		var customerRepo = context.getBean(CustomerRepository.class);
+		var employeeRepo = context.getBean(EmployeeRepository.class);
 
 		companyRepo.saveAll(List.of(
 				new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A"),
@@ -44,6 +47,12 @@ public class App {
 		// Check customers were saved correctly:
 		for (Customer customer : customerRepo.findAll())
 			System.out.println(customer);
+
+		employeeRepo.saveAll(List.of(
+				new Employee(null, "Employee1", "1111", "aa@aa.com", "123123123", "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2022, 2, 2)),
+				new Employee(null, "Employee2", "2222", "bb@bb.com", "456456456", "CTO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 9), LocalDate.of(2022, 2, 2)),
+				new Employee(null, "Employee3", "3333", "cc@cc.com", "789789789", "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2))
+		));
 	}
 
 }
