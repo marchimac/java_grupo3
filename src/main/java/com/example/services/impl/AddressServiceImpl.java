@@ -1,7 +1,8 @@
-package com.example.services;
+package com.example.services.impl;
 
 import com.example.entities.Address;
 import com.example.repositories.AddressRepository;
+import com.example.services.AddressService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

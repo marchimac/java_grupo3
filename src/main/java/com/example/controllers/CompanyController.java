@@ -18,6 +18,6 @@ public class CompanyController {
     public String findAll(Model model) {
         List<Company> companies = companyService.findAll();
         model.addAttribute("companies", companies);
-        return "company-list";
+        return "company/company-list";
     }
 }
