@@ -24,4 +24,19 @@ public class CompanyServiceImpl implements CompanyService {
     public Optional<Company> findById(Long id) {
         return companyRepository.findById(id);
     }
+
+    @Override
+    public List<Company> findByName(String name) {
+        return companyRepository.findByName(name);
+    }
+
+    @Override
+    public Company save(Company company) {
+        return companyRepository.save(company);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        companyRepository.deleteById(id);
+    }
 }

@@ -8,4 +8,7 @@ import java.util.Optional;
 public interface CompanyService {
     List<Company> findAll();
     Optional<Company> findById(Long id);
+    List<Company> findByName(String name);
+    Company save(Company company);
+    void deleteById(Long id);
 }
