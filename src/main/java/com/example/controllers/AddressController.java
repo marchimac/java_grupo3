@@ -18,6 +18,6 @@ public class AddressController {
     public String findAll(Model model) {
         List<Address> address = addressService.findAll();
         model.addAttribute("address", address);
-        return "addess-list";
+        return "address-list";
     }
 }
