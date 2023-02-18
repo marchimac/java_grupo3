@@ -14,10 +14,10 @@ import java.util.List;
 public class AddressController {
     private final AddressService addressService;
 
-    @GetMapping("address")
+    @GetMapping("addresses")
     public String findAll(Model model) {
-        List<Address> address = addressService.findAll();
-        model.addAttribute("address", address);
+        List<Address> addresses = addressService.findAll();
+        model.addAttribute("addresses", addresses);
         return "address-list";
     }
 }

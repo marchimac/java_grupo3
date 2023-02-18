@@ -16,15 +16,9 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private Long State;
-    private Long City;
-    private Long PostalCode;
-    private Long Address;
-    private Long Address2;
-    private Long Number;
-    private Long Ladder;
-    private Long Plant;
-    private Long Door;
+    private String direction;
+    private String postalCode;
+    private String city;
+    private String country;
 
 }
