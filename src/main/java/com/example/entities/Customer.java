@@ -13,16 +13,19 @@ import java.util.Objects;
 @Builder
 @Entity
 public class Customer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String name;
+    private Long id;
+    private String name;
     @Column(unique = true)
-    String cif;
-    //Address address;
-    String phone;
-    String email;
+    private String cif;
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Address address;
+    @Column(unique = true)
+    private String phone;
+    @Column(unique = true)
+    private String email;
 
 
     @Override
