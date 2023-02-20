@@ -12,31 +12,31 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class CompanyServiceImpl implements CompanyService {
-    private final CompanyRepository companyRepository;
+    private final CompanyRepository companyRepo;
 
 
     @Override
     public List<Company> findAll() {
-        return companyRepository.findAll();
+        return companyRepo.findAll();
     }
 
     @Override
     public Optional<Company> findById(Long id) {
-        return companyRepository.findById(id);
+        return companyRepo.findById(id);
     }
 
     @Override
     public List<Company> findByName(String name) {
-        return companyRepository.findByName(name);
+        return companyRepo.findByName(name);
     }
 
     @Override
     public Company save(Company company) {
-        return companyRepository.save(company);
+        return companyRepo.save(company);
     }
 
     @Override
     public void deleteById(Long id) {
-        companyRepository.deleteById(id);
+        companyRepo.deleteById(id);
     }
 }

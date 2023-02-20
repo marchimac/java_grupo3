@@ -6,20 +6,16 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
-<div class="container text-left">
+<div class="container text-center">
     <div class="row">
         <h1>Companies</h1>
         <div class="col mt-3">
-            <button type="button" class="btn btn-success">Add a new company</button>
+            <a class="btn btn-info" th:href="@{/companies/create}">Create new company</a>
             <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Slogan</th>
-                    <th scope="col">url</th>
-                    <th scope="col">LinkedIn</th>
-                    <th scope="col">Twitter</th>
                     <th scope="col">Cif</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -28,15 +24,11 @@
                 <tr th:each="company : ${companies}">
                     <td th:text="${company.id}"></td>
                     <td th:text="${company.name}"></td>
-                    <td th:text="${company.slogan}"></td>
-                    <td th:text="${company.url}"></td>
-                    <td th:text="${company.linkedIn}"></td>
-                    <td th:text="${company.twitter}"></td>
                     <td th:text="${company.cif}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{/companies/{id}(id=${company.id})}">Ver</a>
-                        <button type="button" class="btn btn-success">Editar</button>
-                        <button type="button" class="btn btn-danger">Borrar</button>
+                        <a class="btn btn-primary" th:href="@{/companies/{id}(id=${company.id})}">Watch</a>
+                        <a class="btn btn-success" th:href="@{/companies/{id}/edit(id=${company.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/companies/{id}/delete(id=${company.id})}">Delete</a>
                     </td>
                 </tr>
                 </tbody>
