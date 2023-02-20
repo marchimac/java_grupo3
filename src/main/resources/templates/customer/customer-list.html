@@ -25,6 +25,7 @@
                     <th scope="col">Address</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,8 +33,6 @@
                     <td th:text="${customer.id}"></td>
                     <td th:text="${customer.name}"></td>
                     <td th:text="${customer.cif}"></td>
-                    <!--<td th:text="${customer.address}"></td>-->
-                    <!--Crea el código para que en una celda aparezca la dirección bien escrita-->
                     <td th:text="${customer.address.street} + ', ' + ${customer.address.postalCode} + ', ' + ${customer.address.city} + ', ' + ${customer.address.country}"></td>
                     <td th:text="${customer.phone}"></td>
                     <td th:text="${customer.email}"></td>
