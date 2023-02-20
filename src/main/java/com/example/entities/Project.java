@@ -24,4 +24,6 @@ public class Project {
     private LocalDate dateStart;
     private LocalDate dateEnd;
     private Double totalCost;
+    @ManyToOne
+    private Company company;
 }

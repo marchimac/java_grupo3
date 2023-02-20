@@ -31,4 +31,6 @@ public class Employee {
     private LocalDate birth;
     private LocalDate contracting;
     private LocalDate dismissal;
+    @ManyToOne
+    private Company company;
 }

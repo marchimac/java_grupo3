@@ -41,11 +41,11 @@ public class Company {
     @ToString.Exclude
     private Address address;
 
-    @OneToMany //Cuando se cree la asociación en la otra parte, aquí se debe añadir (mappedBy = "company")
+    @OneToMany(mappedBy = "company")
     @ToString.Exclude
     private Set<Employee> employees = new HashSet<>();
 
-    @OneToMany //Cuando se cree la asociación en la otra parte, aquí se debe añadir (mappedBy = "company")
+    @OneToMany(mappedBy = "company") //Cuando se cree la asociación en la otra parte, aquí se debe añadir (mappedBy = "company")
     @ToString.Exclude
     private Set<Project> projects = new HashSet<>();
 }

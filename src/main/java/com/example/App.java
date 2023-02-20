@@ -32,22 +32,23 @@ public class App {
         Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7");
         addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7));
 
-        Employee employee1 = new Employee(null, "Employee1", "65563A", "1111", "aa@aa.com", "123123123", address5, "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2022, 2, 2));
-        Employee employee2 = new Employee(null, "Employee2", "5425A", "2222", "bb@bb.com", "456456456", address6,  "CTO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 9), LocalDate.of(2022, 2, 2));
-        Employee employee3 = new Employee(null, "Employee3", "15245A", "3333", "cc@cc.com", "789789789", address7, "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2));
+        Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);
+        Company company2 = new Company(null, "Company2", "Slogan2", "url2", "linkedIn2", "Twitter2", "22222222B", address2, null, null);
+        Company company3 = new Company(null, "Company3", "Slogan3", "url3", "linkedIn3", "Twitter3", "33333333C", address3, null, null);
+        Company company4 = new Company(null, "Company4", "Slogan4", "url4", "linkedIn4", "Twitter4", "44444444D", address4, null, null);
+        companyRepo.saveAll(List.of(company1, company2, company3, company4));
+
+        Employee employee1 = new Employee(null, "Employee1", "65563A", "1111", "aa@aa.com", "123123123", address5, "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2020, 2, 2), company1);
+        Employee employee2 = new Employee(null, "Employee2", "5425A", "2222", "bb@bb.com", "456456456", address6,  "CTO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 9), LocalDate.of(2021, 2, 2), company2);
+        Employee employee3 = new Employee(null, "Employee3", "15245A", "3333", "cc@cc.com", "789789789", address7, "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), company1);
         employeeRepo.saveAll(List.of(employee1, employee2, employee3));
 
-        Project project1 = new Project(null, "Project1", "webapp1", LocalDate.of(2021, 1, 1), LocalDate.of(2023, 12, 2), 2000.0);
-        Project project2 = new Project(null, "Project2", "webapp2", LocalDate.of(2022, 2, 2), LocalDate.of(2022, 12, 2), 4000.0);
-        Project project3 = new Project(null, "Project3", "webapp3", LocalDate.of(2023, 3, 3), LocalDate.of(2022, 12, 2), 4000.0);
-        Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2022, 12, 2), 4000.0);
+        Project project1 = new Project(null, "Project1", "webapp1", LocalDate.of(2021, 1, 1), LocalDate.of(2023, 12, 2), 2000.0, company1);
+        Project project2 = new Project(null, "Project2", "webapp2", LocalDate.of(2022, 2, 2), LocalDate.of(2022, 12, 2), 4000.0, company3);
+        Project project3 = new Project(null, "Project3", "webapp3", LocalDate.of(2023, 3, 3), LocalDate.of(2021, 12, 2), 4000.0, company2);
+        Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2020, 12, 2), 4000.0, company2);
         projectRepo.saveAll(List.of(project1, project2, project3, project4));
 
-        Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, Set.of(employee1, employee2), Set.of(project1, project4));
-        Company company2 = new Company(null, "Company2", "Slogan2", "url2", "linkedIn2", "Twitter2", "22222222B", address2, Set.of(employee2, employee3), Set.of(project2, project3));
-        Company company3 = new Company(null, "Company3", "Slogan3", "url3", "linkedIn3", "Twitter3", "33333333C", address3, Set.of(employee1, employee2, employee3), Set.of(project1, project3));
-        Company company4 = new Company(null, "Company4", "Slogan4", "url4", "linkedIn4", "Twitter4", "44444444D", address4, Set.of(employee1, employee3), Set.of(project1, project2, project3, project4));
-        companyRepo.saveAll(List.of(company1, company2, company3, company4));
 
         Customer customer1 = new Customer(null, "Customer1", "123A", address1, "123456789", "customer1@email.com");
         Customer customer2 = new Customer(null, "Customer2", "456B", address2, "987654321", "customer2@email.com");
