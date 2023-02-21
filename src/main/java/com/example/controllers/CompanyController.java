@@ -2,7 +2,6 @@ package com.example.controllers;
 
 import com.example.entities.Company;
 import com.example.services.CompanyService;
-import com.example.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

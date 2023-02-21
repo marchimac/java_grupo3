@@ -30,7 +30,11 @@ public class App {
         Address address5 = new Address(null, "Calle 5", "55555", "City 5", "Country 5");
         Address address6 = new Address(null, "Calle 6", "66666", "City 6", "Country 6");
         Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7");
-        addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7));
+        Address address8 = new Address(null, "Calle 8", "77777", "City 7", "Country 7");
+        Address address9 = new Address(null, "Calle 9", "77777", "City 7", "Country 7");
+        Address address10 = new Address(null, "Calle 10", "77777", "City 7", "Country 7");
+        Address address11 = new Address(null, "Calle 11", "77777", "City 7", "Country 7");
+        addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7, address8, address9, address10, address11));
 
         Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);
         Company company2 = new Company(null, "Company2", "Slogan2", "url2", "linkedIn2", "Twitter2", "22222222B", address2, null, null);
@@ -49,11 +53,10 @@ public class App {
         Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2020, 12, 2), 4000.0, company2);
         projectRepo.saveAll(List.of(project1, project2, project3, project4));
 
-
-        Customer customer1 = new Customer(null, "Customer1", "123A", address1, "123456789", "customer1@email.com");
-        Customer customer2 = new Customer(null, "Customer2", "456B", address2, "987654321", "customer2@email.com");
-        Customer customer3 = new Customer(null, "Customer3", "789C", address3, "468526445", "customer3@email.com");
-        Customer customer4 = new Customer(null, "Customer4", "111C", address4, "666666666", "customer4@email.com");
+        Customer customer1 = new Customer(null, "Customer1", "123A", address8, "123456789", "customer1@email.com");
+        Customer customer2 = new Customer(null, "Customer2", "456B", address9, "987654321", "customer2@email.com");
+        Customer customer3 = new Customer(null, "Customer3", "789C", address10, "468526445", "customer3@email.com");
+        Customer customer4 = new Customer(null, "Customer4", "111C", address11, "666666666", "customer4@email.com");
         customerRepo.saveAll(List.of(customer1, customer2, customer3, customer4));
 
     }

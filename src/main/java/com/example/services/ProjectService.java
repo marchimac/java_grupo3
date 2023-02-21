@@ -9,4 +9,8 @@ import java.util.Optional;
 public interface ProjectService {
     List<Project> findAll();
     Optional<Project> findById(Long id);
+
+    void saveAll(List<Project> projects);
+
+    List<Project> findAllByCompanyId(Long id);
 }

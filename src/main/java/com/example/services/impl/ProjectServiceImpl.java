@@ -22,4 +22,14 @@ public class ProjectServiceImpl implements ProjectService {
     public Optional<Project> findById(Long id) {
         return projectRepository.findById(id);
     }
+
+    @Override
+    public void saveAll(List<Project> projects) {
+        projectRepository.saveAll(projects);
+    }
+
+    @Override
+    public List<Project> findAllByCompanyId(Long id) {
+        return projectRepository.findAllByCompanyId(id);
+    }
 }
