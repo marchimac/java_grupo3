@@ -23,13 +23,13 @@ public class App {
         CompanyRepository companyRepo = context.getBean(CompanyRepository.class);
         CustomerRepository customerRepo = context.getBean(CustomerRepository.class);
 
-        Address address1 = new Address(null, "Patricio nº1", "11111", "City 1", "Country 1");
-        Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2");
-        Address address3 = new Address(null, "Calle 3", "33333", "City 3", "Country 3");
-        Address address4 = new Address(null, "Calle 4", "44444", "City 4", "Country 4");
-        Address address5 = new Address(null, "Calle 5", "55555", "City 5", "Country 5");
-        Address address6 = new Address(null, "Calle 6", "66666", "City 6", "Country 6");
-        Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7");
+        Address address1 = new Address(null, "Patricio nº1", "28086", "Madrid", "Spain");
+        Address address2 = new Address(null, "Avna. América 47", "28965", "Madrid", "Spain");
+        Address address3 = new Address(null, "Gran Vía Escultor Francisco Salzillo 45", "30954", "Murcia", "<Spain3");
+        Address address4 = new Address(null, "Castellana 44", "28210", "Madrid", "Spain");
+        Address address5 = new Address(null, "Ramblas 25", "08933", "Barcelona", "Spain");
+        Address address6 = new Address(null, "Paseo el Grande 89", "05987", "Ávila", "Spain");
+        Address address7 = new Address(null, "Calle Mohaja 17", "04212", "Almería", "Spain");
         addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7));
 
         Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);
