@@ -23,7 +23,7 @@ public class App {
         CompanyRepository companyRepo = context.getBean(CompanyRepository.class);
         CustomerRepository customerRepo = context.getBean(CustomerRepository.class);
 
-        Address address1 = new Address(null, "Calle 1", "11111", "City 1", "Country 1");
+        Address address1 = new Address(null, "Patricio nº1", "11111", "City 1", "Country 1");
         Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2");
         Address address3 = new Address(null, "Calle 3", "33333", "City 3", "Country 3");
         Address address4 = new Address(null, "Calle 4", "44444", "City 4", "Country 4");
