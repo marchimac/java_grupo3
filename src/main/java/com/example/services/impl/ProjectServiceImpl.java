@@ -1,5 +1,6 @@
 package com.example.services.impl;
 
+import com.example.entities.Company;
 import com.example.entities.Project;
 import com.example.repositories.ProjectRepository;
 import com.example.services.ProjectService;
@@ -21,5 +22,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Optional<Project> findById(Long id) {
         return projectRepository.findById(id);
+    }
+
+    @Override
+    public List<Project> findByName(String name) {
+        return projectRepository.findByName(name);
     }
 }
