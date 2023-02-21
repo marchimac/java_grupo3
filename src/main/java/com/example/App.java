@@ -1,6 +1,8 @@
 package com.example;
 
 import com.example.entities.*;
+import com.example.entities.enums.Priority;
+import com.example.entities.enums.Status;
 import com.example.repositories.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +24,7 @@ public class App {
         ProjectRepository projectRepo = context.getBean(ProjectRepository.class);
         CompanyRepository companyRepo = context.getBean(CompanyRepository.class);
         CustomerRepository customerRepo = context.getBean(CustomerRepository.class);
+        TaskRepository taskRepo = context.getBean(TaskRepository.class);
 
         Address address1 = new Address(null, "Patricio nº1", "11111", "City 1", "Country 1");
         Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2");
@@ -49,13 +52,17 @@ public class App {
         Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2020, 12, 2), 4000.0, company2);
         projectRepo.saveAll(List.of(project1, project2, project3, project4));
 
-
         Customer customer1 = new Customer(null, "Customer1", "123A", address1, "123456789", "customer1@email.com");
         Customer customer2 = new Customer(null, "Customer2", "456B", address2, "987654321", "customer2@email.com");
         Customer customer3 = new Customer(null, "Customer3", "789C", address3, "468526445", "customer3@email.com");
         Customer customer4 = new Customer(null, "Customer4", "111C", address4, "666666666", "customer4@email.com");
         customerRepo.saveAll(List.of(customer1, customer2, customer3, customer4));
 
+        Task task1 = new Task(null, "Task1", "Description1", LocalDate.of(2019, 01, 01), project1, employee1, Status.WAITING, Priority.MEDIUM);
+        Task task2 = new Task(null, "Task2", "Description2", LocalDate.of(2020, 02, 02), project2, employee2, Status.PENDING, Priority.LOW);
+        Task task3 = new Task(null, "Task3", "Description3", LocalDate.of(2021, 03, 03), project3, employee3, Status.IN_PROGRESS, Priority.HIGH);
+        Task task4 = new Task(null, "Task4", "Description4", LocalDate.of(2022, 04, 04), project4, employee4, Status.COMPLETED, Priority.MEDIUM);
+        taskRepo.saveAll(List.of(task1, task2, task3, task4));
     }
 
 }
