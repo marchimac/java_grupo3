@@ -1,13 +1,9 @@
 package com.example.services.impl;
 
-import com.example.entities.Address;
 import com.example.entities.Company;
 import com.example.entities.Employee;
 import com.example.entities.Project;
-import com.example.repositories.AddressRepository;
 import com.example.repositories.CompanyRepository;
-import com.example.repositories.EmployeeRepository;
-import com.example.repositories.ProjectRepository;
 import com.example.services.AddressService;
 import com.example.services.CompanyService;
 import com.example.services.EmployeeService;
@@ -15,7 +11,6 @@ import com.example.services.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,14 +46,6 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void deleteById(Long id) {
 
-
-        List<Project> projects = projectService.findAllByCompanyId(id);
-        for (Project project : projects) {
-            project.setCompany(null);
-        }
-        projectService.saveAll(projects);
-
-
         List<Employee> employees = employeeService.findAllByCompanyId(id);
         for (Employee employee : employees) {
             employee.setCompany(null);
@@ -72,6 +59,13 @@ public class CompanyServiceImpl implements CompanyService {
             if (company.getAddress() != null)
                 addressService.deleteById(company.getAddress().getId());
         }
+
+
+        List<Project> projects = projectService.findAllByCompanyId(id);
+        for (Project project : projects) {
+            project.setCompany(null);
+        }
+        projectService.saveAll(projects);
 
 
         companyRepo.deleteById(id);
