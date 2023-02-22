@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootApplication
 public class App {
@@ -26,13 +25,13 @@ public class App {
         CustomerRepository customerRepo = context.getBean(CustomerRepository.class);
         TaskRepository taskRepo = context.getBean(TaskRepository.class);
 
-        Address address1 = new Address(null, "Patricio nº1", "11111", "City 1", "Country 1");
-        Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2");
-        Address address3 = new Address(null, "Calle 3", "33333", "City 3", "Country 3");
-        Address address4 = new Address(null, "Calle 4", "44444", "City 4", "Country 4");
-        Address address5 = new Address(null, "Calle 5", "55555", "City 5", "Country 5");
-        Address address6 = new Address(null, "Calle 6", "66666", "City 6", "Country 6");
-        Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7");
+        Address address1 = new Address(null, "Patricio nº1", "11111", "City 1", "Country 1", null);
+        Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2", null);
+        Address address3 = new Address(null, "Calle 3", "33333", "City 3", "Country 3", null);
+        Address address4 = new Address(null, "Calle 4", "44444", "City 4", "Country 4", null);
+        Address address5 = new Address(null, "Calle 5", "55555", "City 5", "Country 5", null);
+        Address address6 = new Address(null, "Calle 6", "66666", "City 6", "Country 6", null);
+        Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7", null);
         addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7));
 
         Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);
@@ -58,11 +57,10 @@ public class App {
         Customer customer4 = new Customer(null, "Customer4", "111C", address4, "666666666", "customer4@email.com");
         customerRepo.saveAll(List.of(customer1, customer2, customer3, customer4));
 
-        Task task1 = new Task(null, "Task1", "Description1", LocalDate.of(2019, 01, 01), project1, employee1, Status.WAITING, Priority.MEDIUM);
-        Task task2 = new Task(null, "Task2", "Description2", LocalDate.of(2020, 02, 02), project2, employee2, Status.PENDING, Priority.LOW);
-        Task task3 = new Task(null, "Task3", "Description3", LocalDate.of(2021, 03, 03), project3, employee3, Status.IN_PROGRESS, Priority.HIGH);
-        Task task4 = new Task(null, "Task4", "Description4", LocalDate.of(2022, 04, 04), project4, employee4, Status.COMPLETED, Priority.MEDIUM);
-        taskRepo.saveAll(List.of(task1, task2, task3, task4));
+        Task task1 = new Task(null, "Task1", "Description1", LocalDate.of(2019, 1, 1), project1, employee1, Status.WAITING, Priority.MEDIUM);
+        Task task2 = new Task(null, "Task2", "Description2", LocalDate.of(2020, 2, 2), project2, employee2, Status.PENDING, Priority.LOW);
+        Task task3 = new Task(null, "Task3", "Description3", LocalDate.of(2021, 3, 3), project3, employee3, Status.IN_PROGRESS, Priority.HIGH);
+        taskRepo.saveAll(List.of(task1, task2, task3));
     }
 
 }
