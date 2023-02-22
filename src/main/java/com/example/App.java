@@ -32,10 +32,10 @@ public class App {
         Address address7 = new Address(null, "Calle Mohaja 17", "04212", "Almería", "Spain");
         addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7));
 
-        Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);
-        Company company2 = new Company(null, "Company2", "Slogan2", "url2", "linkedIn2", "Twitter2", "22222222B", address2, null, null);
-        Company company3 = new Company(null, "Company3", "Slogan3", "url3", "linkedIn3", "Twitter3", "33333333C", address3, null, null);
-        Company company4 = new Company(null, "Company4", "Slogan4", "url4", "linkedIn4", "Twitter4", "44444444D", address4, null, null);
+        Company company1 = new Company(null, "Acentur SL", "El valor se demuestra trabajando", "acentur@acentur.com", "linkedIn1", "Twitter1", "G6974740", address1, null, null);
+        Company company2 = new Company(null, "Marcanast LTD", "Soluciones sin problemas", "marcanast@marcaset.com", "linkedIn2", "Twitter2", "B9487364", address2, null, null);
+        Company company3 = new Company(null, "Biotech plus", "La vida por venir y vivir", "biotech@biostats.com", "linkedIn3", "Twitter3", "A8762078", address3, null, null);
+        Company company4 = new Company(null, "Allion", "Contigo y para ti", "aillon@aillon.es", "linkedIn4", "Twitter4", "P9878786", address4, null, null);
         companyRepo.saveAll(List.of(company1, company2, company3, company4));
 
         Employee employee1 = new Employee(null, "Employee1", "65563A", "1111", "aa@aa.com", "123123123", address5, "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2020, 2, 2), company1);
