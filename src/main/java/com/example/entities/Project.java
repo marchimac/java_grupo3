@@ -26,4 +26,6 @@ public class Project {
     private Double totalCost;
     @ManyToOne
     private Company company;
+    /*@ManyToOne
+    private Customer customer;*/
 }
