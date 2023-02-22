@@ -3,7 +3,9 @@ package com.example.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @ToString
 @Getter
@@ -19,13 +21,19 @@ public class Customer {
     private String name;
     @Column(unique = true)
     private String cif;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private Address address;
     @Column(unique = true)
     private String phone;
     @Column(unique = true)
     private String email;
+
+    /*@OneToMany(mappedBy = "customer")
+    @ToString.Exclude
+    //@JoinTable(name = "customer_projects")
+    private Set<Project> projects = new HashSet<>(); //columna customer_id en project
+*/
 
 
     @Override

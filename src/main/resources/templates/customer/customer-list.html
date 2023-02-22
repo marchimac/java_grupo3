@@ -9,13 +9,25 @@
     <title>Customers</title>
 </head>
 <body>
-
+<!--<div th:replace="~{navbar :: nav1}"></div>-->
 <div class="container text-left">
     <div class="row">
+        <div class="col-2"></div>
+
         <h1>Customers</h1>
 
         <div class="col mt-3">
-            <button type="button" class="btn btn-success">Add a new customer</button>
+            <div>
+                <a class="btn btn-info" th:href="@{/customers/create}">Add a new customer</a>
+            </div>
+            <!--TODO
+            <div class="mt-2">
+                <span>Filter by project: </span>
+                <a class="btn btn-primary" th:href="@{/customers/project/project1}">Project1</a>
+                <a class="btn btn-primary" th:href="@{/customers/project/project2}">Project2</a>
+            </div>-->
+
+
             <table class="table">
                 <thead>
                 <tr>
@@ -38,16 +50,29 @@
                     <td th:text="${customer.email}"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{/customers/{id}(id=${customer.id})}">Watch</a>
-                        <button type="button" class="btn btn-success">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <a class="btn btn-success" th:href="@{/customers/{id}/edit(id=${customer.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/customers/{id}/delete(id=${customer.id})}">Delete</a>
+
                     </td>
                 </tr>
                 </tbody>
             </table>
+
+            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(customers)}">
+                There are not elements to show.
+            </div>
+            <div class="text-center" th:if="${#lists.size(customers) > 0}">
+                There are <span th:text="${#lists.size(customers)}"></span> results.
+            </div>
+
         </div>
+
+        <div class="col-2"></div>
 
     </div>
 </div>
+
+<!--<div th:replace="~{footer :: footer1}"></div>-->
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
