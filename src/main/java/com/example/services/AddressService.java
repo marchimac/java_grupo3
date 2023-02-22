@@ -10,4 +10,8 @@ public interface AddressService {
     Optional<Address> findById(Long id);
 
     void deleteById(Long id);
+
+    List<Address> findAllByCompanyId(Long id);
+
+    void saveAll(List<Address> addresses);
 }

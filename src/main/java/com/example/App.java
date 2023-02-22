@@ -8,7 +8,6 @@ import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootApplication
 public class App {
@@ -23,18 +22,18 @@ public class App {
         CompanyRepository companyRepo = context.getBean(CompanyRepository.class);
         CustomerRepository customerRepo = context.getBean(CustomerRepository.class);
 
-        Address address1 = new Address(null, "Calle 1", "11111", "City 1", "Country 1");
-        Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2");
-        Address address3 = new Address(null, "Calle 3", "33333", "City 3", "Country 3");
-        Address address4 = new Address(null, "Calle 4", "44444", "City 4", "Country 4");
-        Address address5 = new Address(null, "Calle 5", "55555", "City 5", "Country 5");
-        Address address6 = new Address(null, "Calle 6", "66666", "City 6", "Country 6");
-        Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7");
-        Address address8 = new Address(null, "Calle 8", "88888", "City 8", "Country 8");
-        Address address9 = new Address(null, "Calle 9", "99999", "City 9", "Country 9");
-        Address address10 = new Address(null, "Calle 10", "00000", "City 10", "Country 10");
-        Address address11 = new Address(null, "Calle 11", "12345", "City 11", "Country 11");
-        Address address12 = new Address(null, "Calle 12", "67890", "City 12", "Country 12");
+        Address address1 = new Address(null, "Calle 1", "11111", "City 1", "Country 1", null);
+        Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2", null);
+        Address address3 = new Address(null, "Calle 3", "33333", "City 3", "Country 3", null);
+        Address address4 = new Address(null, "Calle 4", "44444", "City 4", "Country 4", null);
+        Address address5 = new Address(null, "Calle 5", "55555", "City 5", "Country 5", null);
+        Address address6 = new Address(null, "Calle 6", "66666", "City 6", "Country 6", null);
+        Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7", null);
+        Address address8 = new Address(null, "Calle 8", "88888", "City 8", "Country 8", null);
+        Address address9 = new Address(null, "Calle 9", "99999", "City 9", "Country 9", null);
+        Address address10 = new Address(null, "Calle 10", "00000", "City 10", "Country 10", null);
+        Address address11 = new Address(null, "Calle 11", "12345", "City 11", "Country 11", null);
+        Address address12 = new Address(null, "Calle 12", "67890", "City 12", "Country 12", null);
         addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7, address8, address9, address10, address11, address12));
 
         Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);

@@ -1,5 +1,6 @@
 package com.example.services.impl;
 
+import com.example.entities.Address;
 import com.example.entities.Company;
 import com.example.entities.Employee;
 import com.example.entities.Project;
@@ -53,12 +54,19 @@ public class CompanyServiceImpl implements CompanyService {
         employeeService.saveAll(employees);
 
 
-        Optional<Company> companyOpt = companyRepo.findById(id);
-        if (companyOpt.isPresent()) {
-            Company company = companyOpt.get();
-            if (company.getAddress() != null)
-                addressService.deleteById(company.getAddress().getId());
+        List<Address> addresses = addressService.findAllByCompanyId(id);
+        for (Address address : addresses) {
+            address.setCompany(null);
         }
+        addressService.saveAll(addresses);
+
+
+//        Optional<Company> companyOpt = companyRepo.findById(id);
+//        if (companyOpt.isPresent()) {
+//            Company company = companyOpt.get();
+//            if (company.getAddress() != null)
+//                addressService.deleteById(company.getAddress().getId());
+//        }
 
 
         List<Project> projects = projectService.findAllByCompanyId(id);
