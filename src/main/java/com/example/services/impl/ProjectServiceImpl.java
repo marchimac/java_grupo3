@@ -1,6 +1,5 @@
 package com.example.services.impl;
 
-import com.example.entities.Company;
 import com.example.entities.Project;
 import com.example.repositories.ProjectRepository;
 import com.example.services.ProjectService;
@@ -25,7 +24,12 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<Project> findByName(String name) {
-        return projectRepository.findByName(name);
+    public void saveAll(List<Project> projects) {
+        projectRepository.saveAll(projects);
+    }
+
+    @Override
+    public List<Project> findAllByCompanyId(Long id) {
+        return projectRepository.findAllByCompanyId(id);
     }
 }
