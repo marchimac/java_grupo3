@@ -50,10 +50,10 @@ public class App {
         projectRepo.saveAll(List.of(project1, project2, project3, project4));
 
 
-        Customer customer1 = new Customer(null, "Customer1", "123A", address1, "123456789", "customer1@email.com");
-        Customer customer2 = new Customer(null, "Customer2", "456B", address2, "987654321", "customer2@email.com");
-        Customer customer3 = new Customer(null, "Customer3", "789C", address3, "468526445", "customer3@email.com");
-        Customer customer4 = new Customer(null, "Customer4", "111C", address4, "666666666", "customer4@email.com");
+        Customer customer1 = new Customer(null, "Embutidos Sanz", "G9832764", address1, "9183643668", "sanzembu@embusanz.com");
+        Customer customer2 = new Customer(null, "Egatex", "A8452097", address2, "987654321", "egatex@egatex.com");
+        Customer customer3 = new Customer(null, "<Puntium>", "P4627446", address3, "668526445", "pluntium@pluntium.com");
+        Customer customer4 = new Customer(null, "Juan Domínguez", "Q9473835", address4, "7565327354", "juan1987@gmail.com");
         customerRepo.saveAll(List.of(customer1, customer2, customer3, customer4));
 
     }
