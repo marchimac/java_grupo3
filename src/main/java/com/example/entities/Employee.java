@@ -24,7 +24,7 @@ public class Employee {
     private String email;
     @Column(unique = true)
     private String phone;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private Address address;
     private String position;

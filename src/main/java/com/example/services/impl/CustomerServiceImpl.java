@@ -33,9 +33,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<Customer> findByName(String name) {
-        log.info("findByName {}", name);
-        return customerRepo.findByName(name);
+    public Optional<Customer> findAllByName(String name) {
+        log.info("findAllByName {}", name);
+        return customerRepo.findAllByName(name);
     }
 
     @Override
@@ -59,7 +59,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer save(Customer customer) {
         log.info("save customer {}", customer);
-
         try {
             this.customerRepo.save(customer);
         } catch (Exception e) {
@@ -70,7 +69,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteById(Long id) {
-
         log.info("deleteById {}", id);
         try {
             this.customerRepo.deleteById(id);
