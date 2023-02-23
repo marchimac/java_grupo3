@@ -8,5 +8,7 @@ import java.util.List;
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findAllByCompanyId(Long id);
 
+    List<Project> findByName(String name);
+
     /*List<Project> findAllByCustomerId(Long id); // Listado de proyectos por cliente. Se puede usar en customer-detail.html llamando a esta consulta*/
 }
