@@ -26,6 +26,7 @@ public class Employee {
     private String phone;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
+    @ToString.Exclude
     private Address address;
     private String position;
     private LocalDate birth;
