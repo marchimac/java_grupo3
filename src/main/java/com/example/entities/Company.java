@@ -36,7 +36,7 @@ public class Company {
     @Column(unique = true)
     private String cif;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     @ToString.Exclude
     private Address address;

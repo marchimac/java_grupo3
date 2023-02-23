@@ -9,7 +9,7 @@ public interface CustomerService {
     // CRUD
     List<Customer> findAll();
     Optional<Customer> findById(Long id);
-    Optional<Customer> findByName(String name);
+    Optional<Customer> findAllByName(String name);
     Optional<Customer> findByCif(String cif);
     Optional<Customer> findByPhone(String phone);
     Optional<Customer> findByEmail(String email);
