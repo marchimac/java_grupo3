@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Company Detail</title>
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 <div class="container text-center">
@@ -36,6 +37,8 @@
           <li class="list-group-item" th:text="|LinkedIn: ${company.linkedIn}|"></li>
           <li class="list-group-item" th:text="|Twitter: ${company.twitter}|"></li>
           <li class="list-group-item" th:text="|CIF: ${company.cif}|"></li>
+          <li class="list-group-item"></li>
+          <li class="list-group-item" th:text="|ADDRESS: ${company.address.street}, ${company.address.postalCode}, ${company.address.city}, ${company.address.country}|"></li>
 
         </ul>
 
@@ -52,5 +55,6 @@
 </div>
 
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>

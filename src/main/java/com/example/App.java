@@ -18,7 +18,6 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(App.class, args);
 
-        //AddressRepository addressRepo = context.getBean(AddressRepository.class);
         EmployeeRepository employeeRepo = context.getBean(EmployeeRepository.class);
         ProjectRepository projectRepo = context.getBean(ProjectRepository.class);
         CompanyRepository companyRepo = context.getBean(CompanyRepository.class);
@@ -36,7 +35,6 @@ public class App {
         Address address9 = new Address(null, "Calle 9", "99999", "City 9", "Country 9", null);
         Address address10 = new Address(null, "Calle 10", "101010", "City 10", "Country 10", null);
         Address address11 = new Address(null, "Calle 11", "111111", "City 11", "Country 11", null);
-        //addressRepo.saveAll(List.of(address1, address2, address3, address4, address5, address6, address7, address8, address9, address10, address11));
 
         Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);
         Company company2 = new Company(null, "Company2", "Slogan2", "url2", "linkedIn2", "Twitter2", "22222222B", address2, null, null);

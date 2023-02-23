@@ -5,6 +5,7 @@
   <title>Company Form</title>
 
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 <!--<div th:replace="~{navbar :: nav1}"></div>-->
@@ -13,7 +14,7 @@
   <div class="row">
 
     <h1 th:if="${company.id}">Modify company <span th:text="${company.id}"></span></h1>
-    <h1 th:if="${company.id} == null">Create new company</h1>
+    <h1 th:if="${company.id} == null">Create a new company</h1>
 
     <div class="col"></div>
 
@@ -60,6 +61,24 @@
           <input type="text" class="form-control" id="cif" th:field="*{cif}">
         </div>
 
+        <p class="mt-5">Address</p>
+        <div class="mb-3">
+          <label for="street" class="form-label">Street</label>
+          <input type="text" class="form-control" id="street" th:field="*{address.street}">
+        </div>
+        <div class="mb-3">
+          <label for="postalCode" class="form-label">Postal Code</label>
+          <input type="text" class="form-control" id="postalCode" th:field="*{address.postalCode}">
+        </div>
+        <div class="mb-3">
+          <label for="city" class="form-label">City</label>
+          <input type="text" class="form-control" id="city" th:field="*{address.city}">
+        </div>
+        <div class="mb-5">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" class="form-control" id="country" th:field="*{address.country}">
+        </div>
+
 <!--        <div class="mb-3">-->
 <!--          <select aria-label="Category" class="form-select" th:field="*{category}">-->
 <!--            <option th:each="category: ${T(com.example.entities.enums.SupermarketCategory).values()}" th:value="${category}" th:text="${category}"></option>-->
@@ -71,9 +90,11 @@
 <!--            <option th:each="address : ${addresses}" th:value="${address.id}" th:text="|${address.street} ${address.city}|"></option>-->
 <!--          </select>-->
 <!--        </div>-->
+        <div class="mt-5">
+          <a class="btn btn-danger" th:href="@{/companies}">Cancel</a>
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
 
-        <a class="btn btn-danger" th:href="@{/companies}">Cancel</a>
-        <button type="submit" class="btn btn-success">Save</button>
 
       </form>
 
