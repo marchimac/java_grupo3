@@ -13,4 +13,5 @@ public interface ProjectService {
     void saveAll(List<Project> projects);
 
     List<Project> findAllByCompanyId(Long id);
+    void deleteById(Long id);
 }

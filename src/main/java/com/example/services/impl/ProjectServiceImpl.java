@@ -32,4 +32,9 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Project> findAllByCompanyId(Long id) {
         return projectRepository.findAllByCompanyId(id);
     }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }
