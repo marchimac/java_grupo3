@@ -39,8 +39,8 @@ public class Employee {
     @ManyToOne
     private Company company;
 
-    /*@ManyToMany
-    private Set<Project> projects = new HashSet<>();*/
+    @ManyToMany // owner
+    private Set<Project> projects = new HashSet<>();
 
     @OneToMany(mappedBy = "employee")
     @ToString.Exclude

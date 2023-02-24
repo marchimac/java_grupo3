@@ -4,6 +4,11 @@ package com.example.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import lombok.*;
 
 @Getter
@@ -25,16 +30,20 @@ public class Project {
     private LocalDate dateStart;
     private LocalDate dateEnd;
     private Double totalCost;
-    @ManyToOne
+
+
+    @ManyToOne // owner
     private Company company;
 
-//    @ManyToOne
-//    private Customer customer;
+    @ManyToOne // owner
+    private Customer customer; // customer_id
+
+    @ManyToMany(mappedBy = "projects") // no owner, se guarda desde el otro lado, formulario de employee
+    private List<Employee> employees = new ArrayList<>();
 //
-//    @OneToMany
-//    private Employee employee;
-//
-//    @OneToMany
-//    private Task task;
+    @OneToMany(mappedBy = "project")
+    private Set<Task> tasks = new HashSet<>();
+
+
 
 }
