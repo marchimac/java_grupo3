@@ -42,9 +42,9 @@ public class App {
         Company company4 = new Company(null, "Allion", "Contigo y para ti", "aillon@aillon.es", "linkedIn4", "Twitter4", "P9878786", address4, null, null);
         companyRepo.saveAll(List.of(company1, company2, company3, company4));
 
-        Employee employee1 = new Employee(null, "Francisco Arribas", "07675437B", "admin", "fran@gmail.com", "678765432", "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2020, 2, 2), address5, company1, null);
-        Employee employee2 = new Employee(null, "Marcos Beltrán", "89123845W", "admin", "beltran454@gmail.com", "656456456", "CTO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 9), LocalDate.of(2021, 2, 2), address6, company2, null);
-        Employee employee3 = new Employee(null, "Sofía Álvarez", "43564321M", "admin", "sofia1978@@gmail.com", "789789789", "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address7, company1, null);
+        Employee employee1 = new Employee(null, "Francisco Arribas", "07675437B", "admin", "fran@gmail.com", "678765432", "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2020, 2, 2), address5, company1, null, null);
+        Employee employee2 = new Employee(null, "Marcos Beltrán", "89123845W", "admin", "beltran454@gmail.com", "656456456", "CTO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 9), LocalDate.of(2021, 2, 2), address6, company2, null, null);
+        Employee employee3 = new Employee(null, "Sofía Álvarez", "43564321M", "admin", "sofia1978@@gmail.com", "789789789", "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address7, company1, null, null);
         employeeRepo.saveAll(List.of(employee1, employee2, employee3));
 
         Project project1 = new Project(null, "Project1", "webapp1", LocalDate.of(2021, 1, 1), LocalDate.of(2023, 12, 2), 2000.0, company1);

@@ -41,8 +41,8 @@ public class Employee {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    /*@ManyToMany
-    private Set<Project> projects = new HashSet<>();*/
+    @ManyToMany
+    private Set<Project> projects = new HashSet<>();
 
     @OneToMany(mappedBy = "employee")
     @ToString.Exclude

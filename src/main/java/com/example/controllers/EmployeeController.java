@@ -4,6 +4,7 @@ import com.example.entities.Address;
 import com.example.entities.Employee;
 import com.example.services.CompanyService;
 import com.example.services.EmployeeService;
+import com.example.services.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
     private final CompanyService companyService;
+    private final ProjectService projectService;
 
     @GetMapping("employees")
     public String findAll(Model model) {
@@ -46,6 +48,7 @@ public class EmployeeController {
         employee.setAddress(new Address());
         model.addAttribute("employee", employee);
         model.addAttribute("companies", companyService.findAll());
+        model.addAttribute("projects", projectService.findAll());
         return "employee/employee-form";
     }
 
@@ -55,6 +58,7 @@ public class EmployeeController {
         if (employeeOpt.isPresent()) {
             model.addAttribute("employee", employeeOpt.get());
             model.addAttribute("companies", companyService.findAll());
+            model.addAttribute("projects", projectService.findAll());
         } else {
             model.addAttribute("error", "Employee not found");
         }

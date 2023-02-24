@@ -80,9 +80,16 @@
 
                 <div class="mb-3">
                     <label for="company" class="form-label">Company</label>
-                    <select id="company" aria-label="Companies" class="form-select" th:field="*{company}">
-                        <option th:if="${employee.id} == null" selected value="0">Select company</option>
+                    <select id="company" aria-label="Companies" class="form-select" th:field="*{company}" required>
+                        <option th:if="${employee.id} == null" selected value=""></option>
                         <option th:each="company : ${companies}" th:value="${company.id}" th:text="${company.name}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="project" class="form-label">Projects</label>
+                    <select id="project" aria-label="Projects" class="form-select" th:field="*{projects}" multiple required>
+                        <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
                     </select>
                 </div>
 
