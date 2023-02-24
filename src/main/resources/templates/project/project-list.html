@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Projects</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
+<div class="container text-center">
+    <div class="row">
+        <h1>Projects</h1>
+        <div class="col mt-3">
+            <a class="btn btn-info" th:href="@{/projects/create}">Create new project</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Total Cost</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="project : ${projects}">
+                    <td th:text="${company.id}"></td>
+                    <td th:text="${company.name}"></td>
+                    <td th:text="${company.dateStart}"></td>
+                    <td th:text="${company.dateEnd}"></td>
+                    <td th:text="${company.totalCost}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/projects/{id}(id=${project.id})}">Watch</a>
+                        <a class="btn btn-success" th:href="@{/projects/{id}/edit(id=${project.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/projects/{id}/delete(id=${project.id})}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>
