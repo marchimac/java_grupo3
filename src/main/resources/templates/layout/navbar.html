@@ -1,12 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
 <body>
 
 
 <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-primary mb-5">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <img class="img-fluid nav-logo" src="/img/grath.png" alt="Logo Grath">
+    <a class="navbar-brand" th:href="@{/}">
+<!--      <img class="img-fluid nav-logo" src="/img/grath.png" width="80px" alt="Logo Grath">-->
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
