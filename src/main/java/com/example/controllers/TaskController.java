@@ -1,6 +1,8 @@
 package com.example.controllers;
 
 import com.example.entities.Task;
+import com.example.services.EmployeeService;
+import com.example.services.ProjectService;
 import com.example.services.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import java.util.Optional;
 @Controller
 public class TaskController {
     private final TaskService taskService;
+    private final ProjectService projectService;
+    private final EmployeeService employeeService;
 
     @GetMapping("tasks")
     public String findAll(Model model) {
@@ -40,7 +44,8 @@ public class TaskController {
     @GetMapping("tasks/create")
     public String createForm(Model model) {
         model.addAttribute("task", new Task());
-        model.addAttribute("tasks", taskService.findAll());
+        model.addAttribute("projects", projectService.findAll());
+        model.addAttribute("employees", employeeService.findAll());
         return "task/task-form";
     }
 
@@ -49,7 +54,8 @@ public class TaskController {
         Optional<Task> taskOpt = taskService.findById(id);
         if (taskOpt.isPresent()) {
             model.addAttribute("task", taskOpt.get());
-            model.addAttribute("tasks", taskService.findAll());
+            model.addAttribute("projects", projectService.findAll());
+            model.addAttribute("employees", employeeService.findAll());
         } else {
             model.addAttribute("error", "Not found");
         }

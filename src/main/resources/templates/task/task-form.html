@@ -45,7 +45,23 @@
           <input type="date" class="form-control" id="dueDate" th:field="*{dueDate}">
         </div>
 
-        <a class="btn btn-danger" th:href="@{/companies}">Cancel</a>
+        <div class="mb-3">
+          <label for="project" class="form-label">Project</label>
+          <select id="project" aria-label="Projects" class="form-select" th:field="*{project}">
+            <option th:if="${task.id} == null" selected value="0">Select project</option>
+            <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="employee" class="form-label">Employee</label>
+          <select id="employee" aria-label="Employees" class="form-select" th:field="*{employee}">
+            <option th:if="${task.id} == null" selected value="0">Select employee</option>
+            <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
+          </select>
+        </div>
+
+        <a class="btn btn-danger" th:href="@{/tasks}">Cancel</a>
         <button type="submit" class="btn btn-success">Save</button>
 
       </form>
