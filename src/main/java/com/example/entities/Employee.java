@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -47,6 +45,9 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     @ToString.Exclude
     private Set<Task> tasks = new HashSet<>();
+
+    public Employee(Object o, String francisco_arribas, String s, String admin, String s1, String s2, String ceo, LocalDate of, LocalDate of1, LocalDate of2, Address address5, Company company1, Object o1) {
+    }
 
 
     @Override

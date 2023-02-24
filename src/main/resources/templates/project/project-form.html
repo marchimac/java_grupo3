@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Form</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+
+<div class="container text-center">
+  <div class="row">
+
+    <h1 th:if="${project.id}">Modify project <span th:text="${project.id}"></span>></h1>
+    <h1 th:if="${project.id} == null">Create new project</h1>
+
+    <div class="col"></div>
+
+    <div class="col">
+
+      <div th:if="${error}">
+        <div class="alert alert-danger" role="alert" >
+          <p th:text="${error}"></p>
+        </div>id
+        <a type="button" class="btn btn-primary" th:href="@{/projects}">Return</a>
+      </div>
+
+      <form th:if="${error} == null" th:action="@{/projects}" method="POST" th:object="${project}">
+
+        <input type="hidden" id="id" name="id" th:field="*{id}" />
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" th:field="*{name}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" id="description" th:field="*{description}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="dateStart" class="form-label">Start Date</label>
+          <input type="text" class="form-control" id="dateStart" th:field="*{dateStart}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="dateEnd" class="form-label">Start End</label>
+          <input type="text" class="form-control" id="dateEnd" th:field="*{dateEnd}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="totalCost" class="form-label">Total Cost</label>
+          <input type="text" class="form-control" id="totalCost" th:field="*{totalCost}" >
+        </div>
+
+        <div class="mt-5">
+          <a class="btn btn-danger" th:href="@{/projects}">Cancel</a>
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+
+    </form>
+
+    </div>
+
+    <div class="col"></div>
+
+  </div>
+
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>
