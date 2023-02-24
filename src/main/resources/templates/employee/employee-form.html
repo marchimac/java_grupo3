@@ -12,7 +12,7 @@
 <div class="container text-center">
     <div class="row">
 
-        <h1 th:if="${employee.id}">Edit employee<span th:text="${employee.id}"></span></h1>
+        <h1 th:if="${employee.id}">Edit employee ID: <span th:text="${employee.id}"></span></h1>
         <h1 th:if="${employee.id} == null">Add new employee</h1>
 
         <div class="col"></div>
@@ -76,6 +76,14 @@
                 <div class="mb-3">
                     <label for="birth" class="form-label">Birthday</label>
                     <input type="date" class="form-control" id="birth" th:field="*{birth}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="company" class="form-label">Company</label>
+                    <select id="company" aria-label="Companies" class="form-select" th:field="*{company}">
+                        <option th:if="${employee.id} == null" selected value="0">Select company</option>
+                        <option th:each="company : ${companies}" th:value="${company.id}" th:text="${company.name}"></option>
+                    </select>
                 </div>
 
                 <div class="mb-3">

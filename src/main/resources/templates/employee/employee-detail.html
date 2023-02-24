@@ -42,14 +42,15 @@
                     <li class="list-group-item" th:text="|Email: ${employee.email}|"></li>
                     <li class="list-group-item" th:text="|Position: ${employee.position}|"></li>
                     <li class="list-group-item" th:text="|Birthday: ${#temporals.format(employee.birth, 'dd/MM/yy')}|"></li>
+                    <li class="list-group-item" th:text="|Company: ${employee.company.name}|"></li>
                     <li class="list-group-item" th:text="|Contracting date: ${#temporals.format(employee.contracting, 'dd/MM/yy')}|"></li>
                     <li class="list-group-item" th:text="|Dismissal date: ${#temporals.format(employee.dismissal, 'dd/MM/yy')}|"></li>
 
                     <!--TODO: Ver proyectos del cliente
                         <li class="list-group-item">
                               <a class="btn btn-link btn-sm"
-                                 th:text="${employee.supermarket.name}"
-                                 th:href="@{/supermarkets/{id}(id=${employee.supermarket.id})}"></a>
+                                 th:text="${employee.project.name}"
+                                 th:href="@{/supermarkets/{id}(id=${employee.project.id})}"></a>
                           </li>-->
 
                 </ul>

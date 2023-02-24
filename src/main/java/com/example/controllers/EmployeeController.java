@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import com.example.entities.Address;
 import com.example.entities.Employee;
+import com.example.services.CompanyService;
 import com.example.services.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.util.Optional;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+    private final CompanyService companyService;
 
     @GetMapping("employees")
     public String findAll(Model model) {
@@ -41,18 +43,21 @@ public class EmployeeController {
     @GetMapping("employees/create")
     public String createForm(Model model) {
         Employee employee = new Employee();
-        employee.setAddress(new Address()); // Objeto Address dentro de objeto Employee para que se guarde también en BD
+        employee.setAddress(new Address());
         model.addAttribute("employee", employee);
+        model.addAttribute("companies", companyService.findAll());
         return "employee/employee-form";
     }
 
     @GetMapping("employees/{id}/edit")
     public String editForm(Model model, @PathVariable Long id) {
         Optional<Employee> employeeOpt = employeeService.findById(id);
-        if (employeeOpt.isPresent())
+        if (employeeOpt.isPresent()) {
             model.addAttribute("employee", employeeOpt.get());
-        else
+            model.addAttribute("companies", companyService.findAll());
+        } else {
             model.addAttribute("error", "Employee not found");
+        }
 
         return "employee/employee-form";
     }

@@ -27,16 +27,18 @@ public class Employee {
     private String email;
     @Column(unique = true)
     private String phone;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
-    @ToString.Exclude
-    private Address address;
     private String position;
     private LocalDate birth;
     private LocalDate contracting;
     private LocalDate dismissal;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(unique = true)
+    @ToString.Exclude
+    private Address address;
+
     @ManyToOne
+    @JoinColumn(name = "company_id")
     private Company company;
 
     /*@ManyToMany
