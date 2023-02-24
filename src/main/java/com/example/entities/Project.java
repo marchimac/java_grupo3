@@ -32,10 +32,10 @@ public class Project {
     private Double totalCost;
 
 
-    @ManyToOne // owner
+    @ManyToOne // owner // selector3 simple
     private Company company;
 
-    @ManyToOne // owner
+    @ManyToOne // owner // selector4 simple
     private Customer customer; // customer_id
 
     @ManyToMany(mappedBy = "projects") // no owner, se guarda desde el otro lado, formulario de employee

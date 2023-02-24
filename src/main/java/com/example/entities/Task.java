@@ -21,12 +21,16 @@ public class Task {
     private String name;
     private String description;
     private LocalDate dueDate;
-    @ManyToOne // owner project_id
+
+    @ManyToOne // owner project_id // selector5 simple
     private Project project;
-    @ManyToOne
+
+    @ManyToOne // owner employee_id // selector6 simple
     private Employee employee;
+
     @Enumerated(EnumType.STRING)
     private Status status;
+
     @Enumerated(EnumType.STRING)
     private Priority priority;
 }

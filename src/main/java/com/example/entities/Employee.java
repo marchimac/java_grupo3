@@ -36,10 +36,10 @@ public class Employee {
     private LocalDate contracting;
     private LocalDate dismissal;
 
-    @ManyToOne
+    @ManyToOne // selector1 simple
     private Company company;
 
-    @ManyToMany // owner
+    @ManyToMany // owner // selector2 multiple
     private Set<Project> projects = new HashSet<>();
 
     @OneToMany(mappedBy = "employee")
