@@ -9,13 +9,23 @@
     <title>Employees</title>
 </head>
 <body>
-
+<!--<div th:replace="~{navbar :: nav1}"></div>-->
 <div class="container text-left">
     <div class="row">
+
         <h1>Employees</h1>
 
         <div class="col mt-3">
-            <button type="button" class="btn btn-success">Add a new employee</button>
+            <div>
+                <a class="btn btn-info" th:href="@{/employees/create}">Add a new employee</a>
+            </div>
+            <!--TODO
+            <div class="mt-2">
+                <span>Filter by task: </span>
+                <a class="btn btn-primary" th:href="@{/employees/task/task1}">Task1</a>
+                <a class="btn btn-primary" th:href="@{/employees/task/task2}">Task22</a>
+            </div>-->
+
             <table class="table">
                 <thead>
                 <tr>
@@ -46,17 +56,22 @@
                     <td th:text="${employee.dismissal}"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{/employees/{id}(id=${employee.id})}">Watch</a>
-                        <button type="button" class="btn btn-success">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <a class="btn btn-success" th:href="@{/employees/{id}/edit(id=${employee.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/employees/{id}/delete(id=${employee.id})}">Delete</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
+            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(employees)}">
+                There are not elements to show.
+            </div>
+            <div class="text-center" th:if="${#lists.size(employees) > 0}">
+                There are <span th:text="${#lists.size(employees)}"></span> results.
+            </div>
         </div>
-
     </div>
 </div>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
+<!--<div th:replace="~{footer :: footer1}"></div>-->
 </body>
 </html>

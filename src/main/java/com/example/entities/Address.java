@@ -22,4 +22,6 @@ public class Address {
     private String country;
     @OneToOne
     private Company company;
+    @OneToOne
+    private Employee employee;
 }
