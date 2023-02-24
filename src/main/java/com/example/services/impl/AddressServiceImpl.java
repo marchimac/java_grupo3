@@ -45,4 +45,9 @@ public class AddressServiceImpl implements AddressService {
         addressRepository.deleteById(id);
     }
 
+    @Override
+    public List<Address> findAllByEmployeeId(Long id) {
+        return addressRepository.findAllByEmployeeId(id);
+    }
+
 }
