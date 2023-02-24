@@ -24,27 +24,27 @@ public class App {
         CustomerRepository customerRepo = context.getBean(CustomerRepository.class);
         TaskRepository taskRepo = context.getBean(TaskRepository.class);
 
-        Address address1 = new Address(null, "Patricio nº1", "11111", "City 1", "Country 1", null, null);
-        Address address2 = new Address(null, "Calle 2", "22222", "City 2", "Country 2", null, null);
-        Address address3 = new Address(null, "Calle 3", "33333", "City 3", "Country 3", null, null);
-        Address address4 = new Address(null, "Calle 4", "44444", "City 4", "Country 4", null, null);
-        Address address5 = new Address(null, "Calle 5", "55555", "City 5", "Country 5", null, null);
-        Address address6 = new Address(null, "Calle 6", "66666", "City 6", "Country 6", null, null);
-        Address address7 = new Address(null, "Calle 7", "77777", "City 7", "Country 7", null, null);
+        Address address1 = new Address(null, "Patricio nº1", "28086", "Madrid", "Spain", null, null);
+        Address address2 = new Address(null, "Avenida América 47", "28965", "Madrid", "Spain", null, null);
+        Address address3 = new Address(null, "Gran Vía Escultor Francisco Salzillo 45", "30954", "Murcia", "Spain", null, null);
+        Address address4 = new Address(null, "Castellana 44", "28210", "Madrid", "Spain", null, null);
+        Address address5 = new Address(null, "Ramblas 25", "08933", "Barcelona", "Spain", null, null);
+        Address address6 = new Address(null, "Paseo el Grande 89", "05987", "Ávila", "Spain", null, null);
+        Address address7 = new Address(null, "Calle Mohaja 17", "04212", "Almería", "Spain", null, null);
         Address address8 = new Address(null, "Calle 8", "88888", "City 8", "Country 8", null, null);
         Address address9 = new Address(null, "Calle 9", "99999", "City 9", "Country 9", null, null);
         Address address10 = new Address(null, "Calle 10", "101010", "City 10", "Country 10", null, null);
         Address address11 = new Address(null, "Calle 11", "111111", "City 11", "Country 11", null, null);
 
-        Company company1 = new Company(null, "Company1", "Slogan1", "url1", "linkedIn1", "Twitter1", "11111111A", address1, null, null);
-        Company company2 = new Company(null, "Company2", "Slogan2", "url2", "linkedIn2", "Twitter2", "22222222B", address2, null, null);
-        Company company3 = new Company(null, "Company3", "Slogan3", "url3", "linkedIn3", "Twitter3", "33333333C", address3, null, null);
-        Company company4 = new Company(null, "Company4", "Slogan4", "url4", "linkedIn4", "Twitter4", "44444444D", address4, null, null);
+        Company company1 = new Company(null, "Accentur S.L.", "El valor se demuestra trabajando", "accentur@accentur.com", "linkedIn1", "Twitter1", "G6974740", address1, null, null);
+        Company company2 = new Company(null, "Marcanast LTD", "Soluciones sin problemas", "marcanast@marcaset.com", "linkedIn2", "Twitter2", "B9487364", address2, null, null);
+        Company company3 = new Company(null, "Biotech plus", "La vida por venir y vivir", "biotech@biostats.com", "linkedIn3", "Twitter3", "A8762078", address3, null, null);
+        Company company4 = new Company(null, "Allion", "Contigo y para ti", "aillon@aillon.es", "linkedIn4", "Twitter4", "P9878786", address4, null, null);
         companyRepo.saveAll(List.of(company1, company2, company3, company4));
 
-        Employee employee1 = new Employee(null, "Employee1", "65563A", "1111", "aa@aa.com", "123123123", address5, "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2020, 2, 2), company1, null);
-        Employee employee2 = new Employee(null, "Employee2", "5425A", "2222", "bb@bb.com", "456456456", address6,  "CTO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 9), LocalDate.of(2021, 2, 2), company2, null);
-        Employee employee3 = new Employee(null, "Employee3", "15245A", "3333", "cc@cc.com", "789789789", address7, "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), company1, null);
+        Employee employee1 = new Employee(null, "Francisco Arribas", "07675437B", "admin", "fran@gmail.com", "678765432", address5, "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2020, 1, 1), LocalDate.of(2020, 2, 2), company1, null);
+        Employee employee2 = new Employee(null, "Marcos Beltrán", "89123845W", "admin", "beltran454@gmail.com", "656456456", address6,  "CTO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 9), LocalDate.of(2021, 2, 2), company2, null);
+        Employee employee3 = new Employee(null, "Sofía Álvarez", "43564321M", "admin", "sofia1978@@gmail.com", "789789789", address7, "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), company1, null);
         employeeRepo.saveAll(List.of(employee1, employee2, employee3));
 
         Project project1 = new Project(null, "Project1", "webapp1", LocalDate.of(2021, 1, 1), LocalDate.of(2023, 12, 2), 2000.0, company1);
