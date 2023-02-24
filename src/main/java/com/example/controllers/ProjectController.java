@@ -34,5 +34,21 @@ public class ProjectController {
         return "project/project-detail";
     }
 
+//    @GetMapping("projects/create")  Not sure about this
+//    public String createForm(Model model) {
+//        Project project = new Project();
+//        project.setCompany(new Company);
+//    }
+
+//    @GetMapping("projects/{id}/edit")
+//    public String editForm(Model model, @PathVariable Long id) {
+//        Optional<Project> projectOpt = projectService.findById(id);
+//        if (projectOpt.isPresent())
+//            model.addAttribute("project", projectOpt.get());
+//        else
+//            model.addAttribute("error", "Project not found");
+//        return "project/project-form";
+//    }
+
 
 }
