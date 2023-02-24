@@ -36,7 +36,7 @@ public class Company {
     @Column(unique = true)
     private String cif;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     @ToString.Exclude
     private Address address;
@@ -45,7 +45,7 @@ public class Company {
     @ToString.Exclude
     private Set<Employee> employees = new HashSet<>();
 
-    @OneToMany(mappedBy = "company") //Cuando se cree la asociación en la otra parte, aquí se debe añadir (mappedBy = "company")
+    @OneToMany(mappedBy = "company")
     @ToString.Exclude
     private Set<Project> projects = new HashSet<>();
 }

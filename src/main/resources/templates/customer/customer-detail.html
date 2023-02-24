@@ -42,7 +42,8 @@
                     <li class="list-group-item" th:text="|Email: ${customer.email}|"></li>
 
                     <!--
-                    TODO: <li class="list-group-item" th:text="|Registration date: ${#temporals.format(customer.registrationDate, 'dd/MM/yy')}|"></li>-->
+                    TODO:
+                    <li class="list-group-item" th:text="|Registration date: ${#temporals.format(customer.registrationDate, 'dd/MM/yy')}|"></li>-->
 
                     <!--TODO: Ver proyectos del cliente
                         <li class="list-group-item">
@@ -53,11 +54,14 @@
 
                 </ul>
 
+                <!--TODO Bucle for para mostrar los proyectos del cliente con un enlace hacia el detalle de cada project-->
+
                 <div class="card-body">
                     <a class="btn btn-primary" th:href="@{/customers}">Return</a>
                     <a class="btn btn-success" th:href="@{/customers/{id}/edit(id=${customer.id})}">Edit</a>
                     <a class="btn btn-danger" th:href="@{/customers/{id}/delete(id=${customer.id})}">Delete</a>
                 </div>
+
             </div>
         </div>
 

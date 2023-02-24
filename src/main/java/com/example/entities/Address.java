@@ -20,4 +20,6 @@ public class Address {
     private String postalCode;
     private String city;
     private String country;
+    @OneToOne
+    private Company company;
 }

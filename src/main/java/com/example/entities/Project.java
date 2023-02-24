@@ -19,6 +19,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column (unique = true)
     private String name;
     private String description;
     private LocalDate dateStart;
@@ -26,4 +27,14 @@ public class Project {
     private Double totalCost;
     @ManyToOne
     private Company company;
+
+//    @ManyToOne
+//    private Customer customer;
+//
+//    @OneToMany
+//    private Employee employee;
+//
+//    @OneToMany
+//    private Task task;
+
 }

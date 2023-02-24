@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Company Form</title>
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<!--<div th:replace="~{navbar :: nav1}"></div>-->
+
+<div class="container text-center">
+  <div class="row">
+
+    <h1 th:if="${company.id}">Modify company <span th:text="${company.id}"></span></h1>
+    <h1 th:if="${company.id} == null">Create a new company</h1>
+
+    <div class="col"></div>
+
+    <div class="col">
+
+      <div th:if="${error}">
+        <div class="alert alert-danger" role="alert" >
+          <p th:text="${error}"></p>
+        </div>
+        <a type="button" class="btn btn-primary" th:href="@{/companies}">Return</a>
+      </div>
+
+      <form th:if="${error} == null" th:action="@{/companies}" method="POST" th:object="${company}">
+
+        <input type="hidden" id="id" name="id" th:field="*{id}" />
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" th:field="*{name}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="slogan" class="form-label">Slogan</label>
+          <input type="text" class="form-control" id="slogan" th:field="*{slogan}">
+        </div>
+
+        <div class="mb-3">
+          <label for="url" class="form-label">Web</label>
+          <input type="text" class="form-control" id="url" th:field="*{url}">
+        </div>
+
+        <div class="mb-3">
+          <label for="linkedIn" class="form-label">LinkedIn</label>
+          <input type="text" class="form-control" id="linkedIn" th:field="*{linkedIn}">
+        </div>
+
+        <div class="mb-3">
+          <label for="twitter" class="form-label">Twitter</label>
+          <input type="text" class="form-control" id="twitter" th:field="*{twitter}">
+        </div>
+
+        <div class="mb-3">
+          <label for="cif" class="form-label">CIF</label>
+          <input type="text" class="form-control" id="cif" th:field="*{cif}">
+        </div>
+
+        <p class="mt-5">Address</p>
+        <div class="mb-3">
+          <label for="street" class="form-label">Street</label>
+          <input type="text" class="form-control" id="street" th:field="*{address.street}">
+        </div>
+        <div class="mb-3">
+          <label for="postalCode" class="form-label">Postal Code</label>
+          <input type="text" class="form-control" id="postalCode" th:field="*{address.postalCode}">
+        </div>
+        <div class="mb-3">
+          <label for="city" class="form-label">City</label>
+          <input type="text" class="form-control" id="city" th:field="*{address.city}">
+        </div>
+        <div class="mb-5">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" class="form-control" id="country" th:field="*{address.country}">
+        </div>
+
+<!--        <div class="mb-3">-->
+<!--          <select aria-label="Category" class="form-select" th:field="*{category}">-->
+<!--            <option th:each="category: ${T(com.example.entities.enums.SupermarketCategory).values()}" th:value="${category}" th:text="${category}"></option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+<!--        <div class="mb-3">-->
+<!--          <select aria-label="Addresses" class="form-select" th:field="*{addresses}" multiple>-->
+<!--            <option th:each="address : ${addresses}" th:value="${address.id}" th:text="|${address.street} ${address.city}|"></option>-->
+<!--          </select>-->
+<!--        </div>-->
+        <div class="mt-5">
+          <a class="btn btn-danger" th:href="@{/companies}">Cancel</a>
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+
+    <div class="col"></div>
+  </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

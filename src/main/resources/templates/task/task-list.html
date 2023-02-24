@@ -2,33 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Companies</title>
+    <title>Tasks</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="container text-center">
     <div class="row">
-        <h1>Companies</h1>
+        <h1>Tasks</h1>
         <div class="col mt-3">
-            <a class="btn btn-info" th:href="@{/companies/create}">Create new company</a>
+            <a class="btn btn-info" th:href="@{/tasks/create}">Create new task</a>
             <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Cif</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="company : ${companies}">
-                    <td th:text="${company.id}"></td>
-                    <td th:text="${company.name}"></td>
-                    <td th:text="${company.cif}"></td>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.id}"></td>
+                    <td th:text="${task.name}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{/companies/{id}(id=${company.id})}">Watch</a>
-                        <a class="btn btn-success" th:href="@{/companies/{id}/edit(id=${company.id})}">Edit</a>
-                        <a class="btn btn-danger" th:href="@{/companies/{id}/delete(id=${company.id})}">Delete</a>
+                        <a class="btn btn-primary" th:href="@{/tasks/{id}(id=${task.id})}">Watch</a>
+                        <a class="btn btn-success" th:href="@{/tasks/{id}/edit(id=${task.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/tasks/{id}/delete(id=${task.id})}">Delete</a>
                     </td>
                 </tr>
                 </tbody>

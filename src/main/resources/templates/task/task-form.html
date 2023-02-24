@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Form</title>
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<!--<div th:replace="~{navbar :: nav1}"></div>-->
+
+<div class="container text-center">
+  <div class="row">
+
+    <h1 th:if="${task.id}">Modify task <span th:text="${task.id}"></span></h1>
+    <h1 th:if="${task.id} == null">Create new task</h1>
+
+    <div class="col"></div>
+
+    <div class="col">
+
+      <div th:if="${error}">
+        <div class="alert alert-danger" role="alert" >
+          <p th:text="${error}"></p>
+        </div>
+        <a type="button" class="btn btn-primary" th:href="@{/tasks}">Return</a>
+      </div>
+
+      <form th:if="${error} == null" th:action="@{/tasks}" method="POST" th:object="${task}">
+
+        <input type="hidden" id="id" name="id" th:field="*{id}" />
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" th:field="*{name}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" id="description" th:field="*{description}">
+        </div>
+
+        <div class="mb-3">
+          <label for="dueDate" class="form-label">Due date</label>
+          <input type="date" class="form-control" id="dueDate" th:field="*{dueDate}">
+        </div>
+
+        <a class="btn btn-danger" th:href="@{/companies}">Cancel</a>
+        <button type="submit" class="btn btn-success">Save</button>
+
+      </form>
+
+
+    </div>
+
+    <div class="col"></div>
+  </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

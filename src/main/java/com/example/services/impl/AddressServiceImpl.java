@@ -24,4 +24,25 @@ public class AddressServiceImpl implements AddressService {
     public Optional<Address> findById(Long id) {
         return addressRepository.findById(id);
     }
+
+    @Override
+    public List<Address> findAllByCompanyId(Long id) {
+        return addressRepository.findAllByCompanyId(id);
+    }
+
+    @Override
+    public Address save(Address address) {
+        return addressRepository.save(address);
+    }
+
+    @Override
+    public void saveAll(List<Address> addresses) {
+        addressRepository.saveAll(addresses);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        addressRepository.deleteById(id);
+    }
+
 }
