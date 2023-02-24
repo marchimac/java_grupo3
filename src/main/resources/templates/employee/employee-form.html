@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<!--<div th:replace="~{navbar :: nav1}"></div>-->
+
+<div class="container text-center">
+    <div class="row">
+
+        <h1 th:if="${employee.id}">Edit employee<span th:text="${employee.id}"></span></h1>
+        <h1 th:if="${employee.id} == null">Add new employee</h1>
+
+        <div class="col"></div>
+
+        <div class="col">
+
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
+                </div>
+                <a type="button" class="btn btn-primary" th:href="@{/employees}">Return</a>
+            </div>
+
+            <form th:if="${error} == null" th:action="@{/employees}" method="POST" th:object="${employee}">
+
+                <input type="hidden" id="id" th:field="*{id}"/>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" th:field="*{name}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" class="form-control" id="dni" th:field="*{dni}">
+                </div>
+
+                <p>Address</p>
+                <div class="mb-3">
+                    <label for="street" class="form-label">Street</label>
+                    <input type="text" class="form-control" id="street" th:field="*{address.street}">
+                </div>
+                <div class="mb-3">
+                    <label for="postalCode" class="form-label">Postal Code</label>
+                    <input type="text" class="form-control" id="postalCode" th:field="*{address.postalCode}">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" th:field="*{address.city}">
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country" th:field="*{address.country}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phone" th:field="*{phone}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" th:field="*{email}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="position" class="form-label">Position</label>
+                    <input type="text" class="form-control" id="position" th:field="*{position}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="birth" class="form-label">Birthday</label>
+                    <input type="date" class="form-control" id="birth" th:field="*{birth}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="contracting" class="form-label">Date of contracting</label>
+                    <input type="date" class="form-control" id="contracting" th:field="*{contracting}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="dismissal" class="form-label">Date of dismissal</label>
+                    <input type="date" class="form-control" id="dismissal" th:field="*{dismissal}">
+                </div>
+
+                <a class="btn btn-danger" th:href="@{/employees}">Cancel</a>
+                <button type="submit" class="btn btn-success">Save</button>
+
+            </form>
+
+        </div>
+
+        <div class="col"></div>
+    </div>
+</div>
+
+<!--<div th:replace="~{footer :: footer1}"></div>-->
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

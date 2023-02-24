@@ -11,4 +11,6 @@ public interface TaskService {
     List<Task> findByName(String name);
     Task save(Task task);
     void deleteById(Long id);
+    List<Task> findAllByEmployeeId(Long id);
+    void saveAll(List<Task> tasks);
 }

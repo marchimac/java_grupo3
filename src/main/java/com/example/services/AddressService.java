@@ -12,6 +12,5 @@ public interface AddressService {
     Address save(Address address);
     void saveAll(List<Address> addresses);
     void deleteById(Long id);
-
-
+    List<Address> findAllByEmployeeId(Long id);
 }

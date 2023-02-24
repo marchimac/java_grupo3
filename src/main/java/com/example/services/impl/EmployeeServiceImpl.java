@@ -1,9 +1,10 @@
 package com.example.services.impl;
 
-import com.example.entities.Customer;
 import com.example.entities.Employee;
+import com.example.entities.Task;
 import com.example.repositories.EmployeeRepository;
 import com.example.services.EmployeeService;
+import com.example.services.TaskService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Optional;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final TaskService taskService;
 
     @Override
     public List<Employee> findAll() {
@@ -79,6 +81,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteById(Long id) {
 
         log.info("deleteById {}", id);
+
+        List<Task> tasks = taskService.findAllByEmployeeId(id);
+        for (Task task : tasks) {
+            task.setEmployee(null);
+        }
+        taskService.saveAll(tasks);
+
         try {
             this.employeeRepository.deleteById(id);
         } catch (Exception e) {
