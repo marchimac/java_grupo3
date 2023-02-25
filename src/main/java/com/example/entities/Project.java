@@ -4,12 +4,10 @@ package com.example.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
 @Getter
 @Setter
@@ -36,13 +34,20 @@ public class Project {
     @ManyToOne
     private Customer customer;
 
-    @ManyToMany(mappedBy = "projects")
-    private List<Employee> employees = new ArrayList<>();
-
     @OneToMany(mappedBy = "project")
+    @ToString.Exclude
     private Set<Task> tasks = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this==o) return true;
+        if (o==null || Hibernate.getClass(this)!=Hibernate.getClass(o)) return false;
+        Project project = (Project) o;
+        return id!=null && Objects.equals(id, project.id);
+    }
 
-    public Project(Object o, String project1, String webapp1, LocalDate of, LocalDate of1, double v, Company company1) {
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

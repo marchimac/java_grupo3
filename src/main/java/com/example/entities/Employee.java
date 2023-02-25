@@ -40,15 +40,12 @@ public class Employee {
     private Company company;
 
     @ManyToMany
+    @ToString.Exclude
     private Set<Project> projects = new HashSet<>();
 
     @OneToMany(mappedBy = "employee")
     @ToString.Exclude
     private Set<Task> tasks = new HashSet<>();
-
-    public Employee(Object o, String francisco_arribas, String s, String admin, String s1, String s2, String ceo, LocalDate of, LocalDate of1, LocalDate of2, Address address5, Company company1, Object o1) {
-    }
-
 
     @Override
     public boolean equals(Object o) {

@@ -47,10 +47,10 @@ public class App {
         Employee employee3 = new Employee(null, "Sofía Álvarez", "43564321M", "admin", "sofia1978@@gmail.com", "789789789", "SEO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address7, company1, null, null);
         employeeRepo.saveAll(List.of(employee1, employee2, employee3));
 
-        Project project1 = new Project(null, "Project1", "webapp1", LocalDate.of(2021, 1, 1), LocalDate.of(2023, 12, 2), 2000.0, company1);
-        Project project2 = new Project(null, "Project2", "webapp2", LocalDate.of(2022, 2, 2), LocalDate.of(2022, 12, 2), 4000.0, company3);
-        Project project3 = new Project(null, "Project3", "webapp3", LocalDate.of(2023, 3, 3), LocalDate.of(2021, 12, 2), 4000.0, company2);
-        Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2020, 12, 2), 4000.0, company2);
+        Project project1 = new Project(null, "Project1", "webapp1", LocalDate.of(2021, 1, 1), LocalDate.of(2023, 12, 2), 2000.0, company1, null, null);
+        Project project2 = new Project(null, "Project2", "webapp2", LocalDate.of(2022, 2, 2), LocalDate.of(2022, 12, 2), 4000.0, company3, null, null);
+        Project project3 = new Project(null, "Project3", "webapp3", LocalDate.of(2023, 3, 3), LocalDate.of(2021, 12, 2), 4000.0, company2, null, null);
+        Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2020, 12, 2), 4000.0, company2, null, null);
         projectRepo.saveAll(List.of(project1, project2, project3, project4));
 
         Customer customer1 = new Customer(null, "Customer1", "123A", address8, "123456789", "customer1@email.com");
