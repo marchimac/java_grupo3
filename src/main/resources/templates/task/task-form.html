@@ -62,6 +62,20 @@
           </select>
         </div>
 
+        <div class="mb-3">
+          <select aria-label="Status" class="form-select" th:field="*{status}">
+            <option th:if="${task.id} == null" selected value="0">Select status</option>
+            <option th:each="status: ${T(com.example.entities.enums.Status).values()}" th:value="${status}" th:text="${status}"></option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <select aria-label="Priority" class="form-select" th:field="*{priority}">
+            <option th:if="${task.id} == null" selected value="0">Select priority</option>
+            <option th:each="priority: ${T(com.example.entities.enums.Priority).values()}" th:value="${priority}" th:text="${priority}"></option>
+          </select>
+        </div>
+
         <a class="btn btn-danger" th:href="@{/tasks}">Cancel</a>
         <button type="submit" class="btn btn-success">Save</button>
 
