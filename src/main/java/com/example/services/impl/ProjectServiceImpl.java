@@ -1,12 +1,15 @@
 package com.example.services.impl;
 
+import com.example.entities.Company;
 import com.example.entities.Project;
+import com.example.entities.Task;
 import com.example.repositories.CompanyRepository;
 import com.example.repositories.ProjectRepository;
 import com.example.repositories.TaskRepository;
 import com.example.services.EmployeeService;
 import com.example.services.ProjectService;
 import lombok.AllArgsConstructor;
+import org.hibernate.mapping.Set;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,7 +48,13 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public Project save(Project project) {
+        return projectRepository.save(project);
+    }
+
+    @Override
     public void deleteById(Long id) {
+//        Set<Task> tasks = taskService.findAllByC
 
     }
 }
