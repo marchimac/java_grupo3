@@ -21,7 +21,7 @@ public class ProjectController {
     public String findAll(Model model) {
         List<Project> projects = projectService.findAll();
         model.addAttribute("projects", projects);
-        return "project-list";
+        return "project/project-list";
     }
 
     @GetMapping("projects/{id}")
