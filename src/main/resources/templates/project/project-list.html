@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
-<div th:replace=“~{layout/navbar :: navbar}”></div>
+<div th:replace="~{layout/navbar :: navbar}"></div>
 
 <div class="container text-center">
     <div class="row">
@@ -26,11 +26,9 @@
 
                 <tbody>
                 <tr th:each="project : ${projects}">
-                    <td th:text="${project.id}"></td>
                     <td th:text="${project.name}"></td>
                     <td th:text="${project.dateStart}"></td>
                     <td th:text="${project.dateEnd}"></td>
-                    <td th:text="${project.totalCost}"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{/projects/{id}(id=${project.id})}">Watch</a>
                         <a class="btn btn-success" th:href="@{/projects/{id}/edit(id=${project.id})}">Edit</a>
@@ -39,6 +37,14 @@
                 </tr>
                 </tbody>
             </table>
+
+            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(projects)}">
+                There are not elements to show.
+            </div>
+            <div class="text-center" th:if="${#lists.size(projects) > 0}">
+                There are <span th:text="${#lists.size(projects)}"></span> results.
+            </div>
+
         </div>
     </div>
 </div>
