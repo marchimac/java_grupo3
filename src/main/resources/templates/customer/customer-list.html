@@ -32,7 +32,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">CIF</th>
                     <th scope="col">Address</th>
@@ -43,7 +42,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="customer : ${customers}">
-                    <td th:text="${customer.id}"></td>
                     <td th:text="${customer.name}"></td>
                     <td th:text="${customer.cif}"></td>
                     <td th:text="${customer.address.street} + ', ' + ${customer.address.postalCode} + ', ' + ${customer.address.city} + ', ' + ${customer.address.country}"></td>

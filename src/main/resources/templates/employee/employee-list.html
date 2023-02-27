@@ -31,7 +31,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">DNI</th>
                     <th scope="col">Address</th>
@@ -46,7 +45,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="employee : ${employees}">
-                    <td th:text="${employee.id}"></td>
                     <td th:text="${employee.name}"></td>
                     <td th:text="${employee.dni}"></td>
                     <td th:text="${employee.address.street} + ', ' + ${employee.address.postalCode} + ', ' + ${employee.address.city} + ', ' + ${employee.address.country}"></td>
