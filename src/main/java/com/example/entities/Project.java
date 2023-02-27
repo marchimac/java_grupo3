@@ -28,10 +28,13 @@ public class Project {
     private LocalDate dateStart;
     private LocalDate dateEnd;
     private Double totalCost;
+
     @ManyToOne
+    @ToString.Exclude
     private Company company;
 
     @ManyToOne
+    @ToString.Exclude
     private Customer customer;
 
     @OneToMany(mappedBy = "project")
