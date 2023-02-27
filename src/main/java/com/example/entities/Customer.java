@@ -3,7 +3,9 @@ package com.example.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @ToString
 @Getter
@@ -16,6 +18,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String name;
     @Column(unique = true)
     private String cif;
@@ -27,6 +30,10 @@ public class Customer {
     private String phone;
     @Column(unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "customer")
+    @ToString.Exclude
+    private Set<Project> projects = new HashSet<>();
 
     /*@OneToMany(mappedBy = "customer")
       @ToString.Exclude

@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class App {
@@ -53,10 +54,10 @@ public class App {
         Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2020, 12, 2), 4000.0, company2, null, null);
         projectRepo.saveAll(List.of(project1, project2, project3, project4));
 
-        Customer customer1 = new Customer(null, "Customer1", "123A", address8, "123456789", "customer1@email.com");
-        Customer customer2 = new Customer(null, "Customer2", "456B", address9, "987654321", "customer2@email.com");
-        Customer customer3 = new Customer(null, "Customer3", "789C", address10, "468526445", "customer3@email.com");
-        Customer customer4 = new Customer(null, "Customer4", "111C", address11, "666666666", "customer4@email.com");
+        Customer customer1 = new Customer(null, "Customer1", "123A", address8, "123456789", "customer1@email.com", Set.of(project1));
+        Customer customer2 = new Customer(null, "Customer2", "456B", address9, "987654321", "customer2@email.com", Set.of(project2));
+        Customer customer3 = new Customer(null, "Customer3", "789C", address10, "468526445", "customer3@email.com", Set.of(project3));
+        Customer customer4 = new Customer(null, "Customer4", "111C", address11, "666666666", "customer4@email.com", Set.of(project4));
         customerRepo.saveAll(List.of(customer1, customer2, customer3, customer4));
 
         Task task1 = new Task(null, "Task1", "Description1", LocalDate.of(2019, 1, 1), project1, employee1, Status.WAITING, Priority.MEDIUM);
