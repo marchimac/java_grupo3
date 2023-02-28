@@ -31,31 +31,21 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Name</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Address</th>
+                    <th scope="col">Position</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Birthday</th>
-                    <th scope="col">Date of contracting</th>
-                    <th scope="col">Date of dismissal</th>
+                    <th scope="col">Address</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="employee : ${employees}">
-                    <td th:text="${employee.id}"></td>
                     <td th:text="${employee.name}"></td>
-                    <td th:text="${employee.dni}"></td>
-                    <td th:text="${employee.address.street} + ', ' + ${employee.address.postalCode} + ', ' + ${employee.address.city} + ', ' + ${employee.address.country}"></td>
+                    <td th:text="${employee.position}"></td>
                     <td th:text="${employee.phone}"></td>
                     <td th:text="${employee.email}"></td>
-                    <td th:text="${employee.position}"></td>
-                    <td th:text="${employee.birth}"></td>
-                    <td th:text="${employee.contracting}"></td>
-                    <td th:text="${employee.dismissal}"></td>
+                    <td th:text="${employee.address.city}"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{/employees/{id}(id=${employee.id})}">Watch</a>
                         <a class="btn btn-success" th:href="@{/employees/{id}/edit(id=${employee.id})}">Edit</a>
