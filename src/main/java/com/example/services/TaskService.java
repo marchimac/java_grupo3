@@ -13,4 +13,6 @@ public interface TaskService {
     void deleteById(Long id);
     List<Task> findAllByEmployeeId(Long id);
     void saveAll(List<Task> tasks);
+
+    List<Task> findAllByProjectId(Long id);
 }

@@ -1,7 +1,8 @@
 package com.example.controllers;
 
-
 import com.example.entities.Project;
+import com.example.services.CompanyService;
+import com.example.services.CustomerService;
 import com.example.services.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import java.util.Optional;
 @Controller
 public class ProjectController {
     private final ProjectService projectService;
+    private final CompanyService companyService;
+    private final CustomerService customerService;
 
     @GetMapping("projects")
     public String findAll(Model model) {
@@ -29,17 +32,20 @@ public class ProjectController {
     @GetMapping("projects/{id}")
     public String findById(Model model, @PathVariable Long id) {
         Optional<Project> projectOpt = projectService.findById(id);
-        if (projectOpt.isPresent())
+        if (projectOpt.isPresent()) {
             model.addAttribute("project", projectOpt.get());
-        else
+        } else {
             model.addAttribute("error", "Project not found");
+        }
+
         return "project/project-detail";
     }
 
     @GetMapping("projects/create")
     public String createForm(Model model) {
         model.addAttribute("project", new Project());
-        model.addAttribute("projects", projectService.findAll());
+        model.addAttribute("companies", companyService.findAll());
+        model.addAttribute("customers", customerService.findAll());
         return "project/project-form";
     }
 
@@ -48,7 +54,8 @@ public class ProjectController {
         Optional<Project> projectOpt = projectService.findById(id);
         if (projectOpt.isPresent()) {
             model.addAttribute("project", projectOpt.get());
-            model.addAttribute("projects", projectService.findAll());
+            model.addAttribute("companies", companyService.findAll());
+            model.addAttribute("customers", customerService.findAll());
         } else {
             model.addAttribute("error", "Project not found");
         }
@@ -67,5 +74,4 @@ public class ProjectController {
         projectService.deleteById(id);
         return "redirect:/projects";
     }
-
 }

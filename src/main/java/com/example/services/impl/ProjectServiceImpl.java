@@ -8,6 +8,7 @@ import com.example.repositories.ProjectRepository;
 import com.example.repositories.TaskRepository;
 import com.example.services.EmployeeService;
 import com.example.services.ProjectService;
+import com.example.services.TaskService;
 import lombok.AllArgsConstructor;
 import org.hibernate.mapping.Set;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
     private final EmployeeService employeeService;
     private final CompanyRepository companyRepo;
-    private final TaskRepository taskRepository;
+    private final TaskService taskService;
     @Override
     public List<Project> findAll() {
         return projectRepository.findAll();
@@ -54,7 +55,14 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void deleteById(Long id) {
-//        Set<Task> tasks = taskService.findAllByC
 
+        List<Task> tasks = taskService.findAllByProjectId(id);
+        for (Task task : tasks) {
+            task.setProject(null);
+        }
+        taskService.saveAll(tasks);
+
+
+        projectRepository.deleteById(id);
     }
 }

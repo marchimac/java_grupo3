@@ -49,4 +49,9 @@ public class TaskServiceImpl implements TaskService {
     public void saveAll(List<Task> tasks) {
         taskRepository.saveAll(tasks);
     }
+
+    @Override
+    public List<Task> findAllByProjectId(Long id) {
+        return taskRepository.findAllByEmployeeId(id);
+    }
 }

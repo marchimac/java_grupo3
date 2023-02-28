@@ -2,6 +2,7 @@ package com.example.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -26,8 +27,11 @@ public class Employee {
     @Column(unique = true)
     private String phone;
     private String position;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birth;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate contracting;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dismissal;
 
     @OneToOne(cascade = CascadeType.ALL)

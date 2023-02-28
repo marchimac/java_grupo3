@@ -2,8 +2,11 @@ package com.example.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.Hibernate;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @ToString
 @Getter
@@ -16,6 +19,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String name;
     @Column(unique = true)
     private String cif;
@@ -28,21 +32,20 @@ public class Customer {
     @Column(unique = true)
     private String email;
 
-    /*@OneToMany(mappedBy = "customer")
-      @ToString.Exclude
-      //@JoinTable(name = "customer_projects")
-      private Set<Project> projects = new HashSet<>(); //columna customer_id en project
-    */
+    @OneToMany(mappedBy = "customer")
+    @ToString.Exclude
+    private Set<Project> projects = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
-        if (this==o) return true;
-        if (!(o instanceof Customer customer)) return false;
-        return getId().equals(customer.getId()) && getCif().equals(customer.getCif());
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Customer customer = (Customer) o;
+        return id != null && Objects.equals(id, customer.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCif());
+        return getClass().hashCode();
     }
 }

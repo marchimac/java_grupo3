@@ -8,6 +8,7 @@ import java.util.*;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
@@ -25,12 +26,14 @@ public class Project {
     @Column (unique = true)
     private String name;
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateStart;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateEnd;
     private Double totalCost;
+
     @ManyToOne
     private Company company;
-
     @ManyToOne
     private Customer customer;
 

@@ -17,15 +17,15 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="task : ${tasks}">
-                    <td th:text="${task.id}"></td>
                     <td th:text="${task.name}"></td>
+                    <td th:text="${task.status}"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{/tasks/{id}(id=${task.id})}">Watch</a>
                         <a class="btn btn-success" th:href="@{/tasks/{id}/edit(id=${task.id})}">Edit</a>

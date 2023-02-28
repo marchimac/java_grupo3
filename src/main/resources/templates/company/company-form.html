@@ -80,17 +80,6 @@
           <input type="text" class="form-control" id="country" th:field="*{address.country}">
         </div>
 
-<!--        <div class="mb-3">-->
-<!--          <select aria-label="Category" class="form-select" th:field="*{category}">-->
-<!--            <option th:each="category: ${T(com.example.entities.enums.SupermarketCategory).values()}" th:value="${category}" th:text="${category}"></option>-->
-<!--          </select>-->
-<!--        </div>-->
-
-<!--        <div class="mb-3">-->
-<!--          <select aria-label="Addresses" class="form-select" th:field="*{addresses}" multiple>-->
-<!--            <option th:each="address : ${addresses}" th:value="${address.id}" th:text="|${address.street} ${address.city}|"></option>-->
-<!--          </select>-->
-<!--        </div>-->
         <div class="mt-5">
           <a class="btn btn-danger" th:href="@{/companies}">Cancel</a>
           <button type="submit" class="btn btn-success">Save</button>
