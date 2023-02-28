@@ -23,10 +23,12 @@ public class Task {
     private String name;
     private String description;
     private LocalDate dueDate;
+
     @ManyToOne
     private Project project;
     @ManyToOne
     private Employee employee;
+
     @Enumerated(EnumType.STRING)
     private Status status;
     @Enumerated(EnumType.STRING)

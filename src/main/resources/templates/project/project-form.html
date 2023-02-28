@@ -14,7 +14,7 @@
 <div class="container text-center">
   <div class="row">
 
-    <h1 th:if="${project.id}">Modify project <span th:text="${project.id}"></span>></h1>
+    <h1 th:if="${project.id}">Modify project <span th:text="${project.id}"></span></h1>
     <h1 th:if="${project.id} == null">Create new project</h1>
 
     <div class="col"></div>
@@ -55,6 +55,22 @@
         <div class="mb-3">
           <label for="totalCost" class="form-label">Total Cost</label>
           <input type="text" class="form-control" id="totalCost" th:field="*{totalCost}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="company" class="form-label">Company</label>
+          <select id="company" aria-label="Companies" class="form-select" th:field="*{company}">
+            <option th:if="${project.id} == null" selected value="0">Select company</option>
+            <option th:each="company : ${companies}" th:value="${company.id}" th:text="${company.name}"></option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="customer" class="form-label">Customer</label>
+          <select id="customer" aria-label="Customers" class="form-select" th:field="*{customer}">
+            <option th:if="${project.id} == null" selected value="0">Select customer</option>
+            <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+          </select>
         </div>
 
         <div class="mt-5">

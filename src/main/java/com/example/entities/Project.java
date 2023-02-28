@@ -30,11 +30,8 @@ public class Project {
     private Double totalCost;
 
     @ManyToOne
-    @ToString.Exclude
     private Company company;
-
     @ManyToOne
-    @ToString.Exclude
     private Customer customer;
 
     @OneToMany(mappedBy = "project")
