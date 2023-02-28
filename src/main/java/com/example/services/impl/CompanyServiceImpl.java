@@ -61,14 +61,6 @@ public class CompanyServiceImpl implements CompanyService {
         addressService.saveAll(addresses);
 
 
-//        Optional<Company> companyOpt = companyRepo.findById(id);
-//        if (companyOpt.isPresent()) {
-//            Company company = companyOpt.get();
-//            if (company.getAddress() != null)
-//                addressService.deleteById(company.getAddress().getId());
-//        }
-
-
         List<Project> projects = projectService.findAllByCompanyId(id);
         for (Project project : projects) {
             project.setCompany(null);

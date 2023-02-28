@@ -54,7 +54,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void deleteById(Long id) {
-//        Set<Task> tasks = taskService.findAllByC
+        taskRepository.deleteById(id);
 
     }
 }
