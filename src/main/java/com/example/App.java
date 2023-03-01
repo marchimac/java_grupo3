@@ -80,28 +80,41 @@ public class App {
         Employee employee10 = new Employee(null, "Nataline Ellen", "55332123V", "admin", "nata_line@gmail.com", "571-579-4759", "CMO", LocalDate.of(1997, 5, 13), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address20, company10, null, null);
         employeeRepo.saveAll(List.of(employee1, employee2, employee3, employee4, employee5, employee6, employee7, employee8, employee9, employee10));
 
-        Customer customer1 = new Customer(null, "Nealy Reasce", "78245362G", address21, "344-107-9293", "customer1@email.com", null);
-        Customer customer2 = new Customer(null, "Camel Romain", "87623456B", address22, "958-858-4610", "customer2@email.com", null);
-        Customer customer3 = new Customer(null, "Kermy Arnet", "90908789C", address23, "784-637-7443", "customer3@email.com", null);
-        Customer customer4 = new Customer(null, "Duffie Etoile", "65453111C", address24, "968-984-3521", "customer4@email.com", null);
-        Customer customer5 = new Customer(null, "Kipp Claris", "23123499H", address25, "988-239-9104", "customer4@email.com", null);
-        Customer customer6 = new Customer(null, "Eben Schirok", "87653456T", address26, "391-306-9934", "customer4@email.com", null);
-        Customer customer7 = new Customer(null, "Bartie Bolletti", "87112210J", address27, "685-105-4008", "customer4@email.com", null);
-        Customer customer8 = new Customer(null, "Libbie Buche'", "65676468U", address28, "602-117-8073", "customer4@email.com", null);
-        Customer customer9 = new Customer(null, "Hasty Quirk", "24108876N", address29, "615-546-8170", "customer4@email.com", null);
-        Customer customer10 = new Customer(null, "Cybil Loddon", "87612312C", address30, "724-690-4673", "customer4@email.com", null);
-        customerRepo.saveAll(List.of(customer1, customer2, customer3, customer4));
+        Customer customer1 = new Customer(null, "Nealy Reasce", "78245362G", address21, "344-107-9293", "nealyasce@gmail.com", null);
+        Customer customer2 = new Customer(null, "Camel Romain", "87623456B", address22, "958-858-4610", "romaincamel@hotmail.com", null);
+        Customer customer3 = new Customer(null, "Kermy Arnet", "90908789C", address23, "784-637-7443", "kerny-arnet@yahoo.com", null);
+        Customer customer4 = new Customer(null, "Duffie Etoile", "65453111C", address24, "968-984-3521", "duffie@hotmail.com", null);
+        Customer customer5 = new Customer(null, "Kipp Claris", "23123499H", address25, "988-239-9104", "kippclaris26@gmail.com", null);
+        Customer customer6 = new Customer(null, "Eben Schirok", "87653456T", address26, "391-306-9934", "ebeneben@hotmail.com", null);
+        Customer customer7 = new Customer(null, "Bartie Bolletti", "87112210J", address27, "685-105-4008", "bartielletti@yahoo.com", null);
+        Customer customer8 = new Customer(null, "Libbie Buche'", "65676468U", address28, "602-117-8073", "buche524@gmail.com", null);
+        Customer customer9 = new Customer(null, "Hasty Quirk", "24108876N", address29, "615-546-8170", "hasty-quirk@hotmail.com", null);
+        Customer customer10 = new Customer(null, "Cybil Loddon", "87612312C", address30, "724-690-4673", "cybil_loddon1978@gmail.com", null);
+        customerRepo.saveAll(List.of(customer1, customer2, customer3, customer4, customer5, customer6, customer7, customer8, customer9, customer10));
 
-        Project project1 = new Project(null, "Project1", "webapp1", LocalDate.of(2021, 1, 1), LocalDate.of(2023, 12, 2), 2000.0, company1, customer1, null);
-        Project project2 = new Project(null, "Project2", "webapp2", LocalDate.of(2022, 2, 2), LocalDate.of(2022, 12, 2), 4000.0, company3, customer2, null);
-        Project project3 = new Project(null, "Project3", "webapp3", LocalDate.of(2023, 3, 3), LocalDate.of(2021, 12, 2), 4000.0, company2, customer3, null);
-        Project project4 = new Project(null, "Project4", "webapp4", LocalDate.of(2024, 4, 4), LocalDate.of(2020, 12, 2), 4000.0, company2, customer4, null);
-        projectRepo.saveAll(List.of(project1, project2, project3, project4));
+        Project project1 = new Project(null, "CloudCore", "Cloud computing infrastructure management software", LocalDate.of(2022, 1, 1), LocalDate.of(2023, 12, 2), 200000.0, company1, customer1, null);
+        Project project2 = new Project(null, "DataVision", "Big data visualization and analysis platform", LocalDate.of(2021, 2, 2), LocalDate.of(2024, 10, 2), 450000.0, company2, customer2, null);
+        Project project3 = new Project(null, "CyberShield", "Cybersecurity threat detection and prevention software", LocalDate.of(2020, 3, 3), LocalDate.of(2025, 9, 19), 154000.0, company3, customer3, null);
+        Project project4 = new Project(null, "PowerFlow", "Renewable energy management and optimization platform", LocalDate.of(2021, 4, 4), LocalDate.of(2023, 12, 28), 2674000.0, company4, customer4, null);
+        Project project5 = new Project(null, "TechSavant", "AI-powered tech support and troubleshooting service", LocalDate.of(2018, 5, 5), LocalDate.of(2026, 12, 31), 875000.0, company5, customer5, null);
+        Project project6 = new Project(null, "MindMeld", "Brain-computer interface technology for communication and control", LocalDate.of(2019, 6, 7), LocalDate.of(2023, 12, 31), 4000000.0, company6, customer6, null);
+        Project project7 = new Project(null, "SynapseAI", "Machine learning platform for predictive analytics and automation", LocalDate.of(2023, 9, 24), LocalDate.of(2024, 12, 21), 775000.0, company7, customer7, null);
+        Project project8 = new Project(null, "QuantumLink", "Quantum computing communication and networking solutions", LocalDate.of(2015, 12, 29), LocalDate.of(2023, 8, 2), 18000.0, company8, customer8, null);
+        Project project9 = new Project(null, "NanoTech", "Nanotechnology development and application platform", LocalDate.of(2000, 10, 24), LocalDate.of(2024, 11, 22), 95000.0, company9, customer9, null);
+        Project project10 = new Project(null, "SmartSight", "Computer vision technology for autonomous systems and robotics", LocalDate.of(2022, 1, 31), LocalDate.of(2020, 5, 3), 123000.0, company10, customer10, null);
+        projectRepo.saveAll(List.of(project1, project2, project3, project4, project5, project6, project7, project8, project9, project10));
 
-        Task task1 = new Task(null, "Task1", "Description1", LocalDate.of(2019, 1, 1), project1, employee1, Status.WAITING, Priority.MEDIUM);
-        Task task2 = new Task(null, "Task2", "Description2", LocalDate.of(2020, 2, 2), project2, employee2, Status.PENDING, Priority.LOW);
-        Task task3 = new Task(null, "Task3", "Description3", LocalDate.of(2021, 3, 3), project3, employee3, Status.IN_PROGRESS, Priority.HIGH);
-        taskRepo.saveAll(List.of(task1, task2, task3));
+        Task task1 = new Task(null, "CodeCrush", "Debugging and troubleshooting software development issues", LocalDate.of(2019, 1, 1), project1, employee1, Status.COMPLETED, Priority.MEDIUM);
+        Task task2 = new Task(null, "PixelPerfect", "User interface design and optimization", LocalDate.of(2024, 2, 2), project2, employee2, Status.PENDING, Priority.LOW);
+        Task task3 = new Task(null, "DataMaven", "Data cleaning, analysis, and modeling", LocalDate.of(2025, 3, 3), project3, employee3, Status.IN_PROGRESS, Priority.HIGH);
+        Task task4 = new Task(null, "CloudMaster", "Cloud infrastructure design and management", LocalDate.of(2023, 5, 3), project4, employee4, Status.IN_PROGRESS, Priority.VERY_HIGH);
+        Task task5 = new Task(null, "TechScout", "Research and development of emerging technologies", LocalDate.of(2023, 3, 1), project5, employee5, Status.COMPLETED, Priority.URGENT);
+        Task task6 = new Task(null, "CyberDefend", "Cybersecurity threat analysis and response", LocalDate.of(2023, 7, 31), project6, employee6, Status.IN_PROGRESS, Priority.HIGH);
+        Task task7 = new Task(null, "DevOpsPro", "DevOps process optimization and automation", LocalDate.of(2024, 10, 12), project7, employee7, Status.CANCELED, Priority.LOW);
+        Task task8 = new Task(null, "TestGenius", "Software testing and quality assurance", LocalDate.of(2023, 9, 21), project8, employee8, Status.IN_PROGRESS, Priority.MEDIUM);
+        Task task9 = new Task(null, "AIWizard", "Artificial intelligence development and integration", LocalDate.of(2022, 12, 31), project9, employee9, Status.COMPLETED, Priority.HIGH);
+        Task task10 = new Task(null, "TechRevamp", "Legacy system modernization and transformation", LocalDate.of(2026, 3, 3), project10, employee10, Status.CANCELED, Priority.VERY_HIGH);
+        taskRepo.saveAll(List.of(task1, task2, task3, task4, task5, task6, task7, task8, task9, task10));
     }
 
 }
