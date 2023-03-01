@@ -6,13 +6,16 @@
 </head>
 <body>
 
-<footer class="footer fixed-bottom bg-light text-center text-lg-start">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2023 Copyright:
-        <a class="text-dark" href="https://google.com/">Grath</a>
-    </div>
-    <!-- Copyright -->
+<footer class="py-3 my-4 bg-info">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" th:href="@{/main}">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" th:href="@{/companies}">Companies</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" th:href="@{/employees}">Employees</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" th:href="@{/tasks}">Tasks</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" th:href="@{/customers}">Customers</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" th:href="@{/projects}">Projects</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2023 Grath, Inc</p>
 </footer>
 
 
