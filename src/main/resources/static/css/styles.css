@@ -1,0 +1,55 @@
+.test {
+    color: #ff8000;
+}
+
+.green {
+    color: #800080;
+}
+
+:root {
+  --watch: #1A4A98;
+  --edit: #8326FF;
+  --delete: #E60E00;
+  --white: #F4F4F4;
+  --black: #000000;
+  --blue: #1A4A98 ;
+}
+
+ /* navbar */
+.bg-info {
+    background-color: var(--blue) !important;
+}
+
+.nav-link {
+    color: var(--white) !important;
+    padding-bottom: 0.2rem !important;
+    padding-top: 0.2rem !important;
+    border-bottom: solid var(--blue);
+}
+
+.nav-link:focus {
+    color: rgba(255, 255, 255, 0.7) !important;
+    border-bottom: solid;
+    padding-bottom: 0.2rem !important;
+    padding-top: 0.2rem !important;
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.7) !important;
+    border-bottom: solid;
+    padding-bottom: 0.2rem !important;
+    padding-top: 0.2rem !important;
+}
+
+.nav-link:active {
+    color: rgba(255, 255, 255, 0.7) !important;
+    border-bottom: solid;
+    padding-bottom: 0.2rem !important;
+    padding-top: 0.2rem !important;
+}
+
+.btn-primary {
+    background-color: #F0E343 !important;
+    color: #F4F4F4 !important;
+}
+
