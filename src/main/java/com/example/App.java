@@ -68,16 +68,16 @@ public class App {
         Company company10 = new Company(null, "Snaptags", "Maximize leading-edge action-items", "snap@tags.com", "https://www.lindedin.com/in/snaptags", "http://twitter.com/snaptags", "U7600790", address10, null, null);
         companyRepo.saveAll(List.of(company1, company2, company3, company4, company5, company6, company7, company8, company9, company10));
 
-        Employee employee1 = new Employee(null, "Francisco Arribas", "07675437B", "admin", "fran@gmail.com", "180-536-1122", "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2015, 3, 6), LocalDate.of(2020, 2, 2), address11, company1, null, null);
-        Employee employee2 = new Employee(null, "Marcos Beltrán", "89123845W", "admin", "beltran454@hotmail.com", "685-900-4475", "COO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 7), LocalDate.of(2021, 2, 2), address12, company2, null, null);
-        Employee employee3 = new Employee(null, "Sofía Álvarez", "43564321M", "admin", "sofia1978@hotmail.com", "970-260-4202", "CSO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address13, company3, null, null);
-        Employee employee4 = new Employee(null, "Stanislaus Siege", "42576541Y", "admin", "stanissie_io@gmail.com", "825-102-7091", "CMO", LocalDate.of(1978, 10, 4), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address14, company4, null, null);
-        Employee employee5 = new Employee(null, "Mariam Brearton", "76765439I", "admin", "brear-ton@yahoo.com", "383-504-7184", "CHRO", LocalDate.of(1999, 9, 22), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address15, company5, null, null);
-        Employee employee6 = new Employee(null, "Erich Heffer", "13246400D", "admin", "heffererich@gmail.com", "910-852-5784", "CS", LocalDate.of(2001, 6, 2), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address16, company6, null, null);
-        Employee employee7 = new Employee(null, "Alidia Muat", "87642341R", "admin", "aldiamuat@hotmail.com", "731-519-6884", "CFO", LocalDate.of(2001, 12, 21), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address17, company7, null, null);
-        Employee employee8 = new Employee(null, "Vere Cable", "98985112F", "admin", "vere-verecable@gmail.com", "429-745-5060", "CSO", LocalDate.of(1980, 4, 19), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address18, company8, null, null);
-        Employee employee9 = new Employee(null, "Fabio Branney", "90412314D", "admin", "branneyfabio@yahoo.com", "404-532-3192", "SEO", LocalDate.of(1967, 1, 25), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address19, company9, null, null);
-        Employee employee10 = new Employee(null, "Nataline Ellen", "55332123V", "admin", "nata_line@gmail.com", "571-579-4759", "CMO", LocalDate.of(1997, 5, 13), LocalDate.of(2020, 8, 10), LocalDate.of(2022, 2, 2), address20, company10, null, null);
+        Employee employee1 = new Employee(null, "Francisco Arribas", "07675437B", "fran@gmail.com", "180-536-1122", "CEO", LocalDate.of(1990, 1, 2), LocalDate.of(2015, 3, 6), address11, company1, null, null);
+        Employee employee2 = new Employee(null, "Marcos Beltrán", "89123845W", "beltran454@hotmail.com", "685-900-4475", "COO", LocalDate.of(1995, 5, 9), LocalDate.of(2020, 2, 7), address12, company2, null, null);
+        Employee employee3 = new Employee(null, "Sofía Álvarez", "43564321M", "sofia1978@hotmail.com", "970-260-4202", "CSO", LocalDate.of(1998, 7, 12), LocalDate.of(2020, 8, 10), address13, company3, null, null);
+        Employee employee4 = new Employee(null, "Stanislaus Siege", "42576541Y", "stanissie_io@gmail.com", "825-102-7091", "CMO", LocalDate.of(1978, 10, 4), LocalDate.of(2020, 8, 10), address14, company4, null, null);
+        Employee employee5 = new Employee(null, "Mariam Brearton", "76765439I", "brear-ton@yahoo.com", "383-504-7184", "CHRO", LocalDate.of(1999, 9, 22), LocalDate.of(2020, 8, 10), address15, company5, null, null);
+        Employee employee6 = new Employee(null, "Erich Heffer", "13246400D", "heffererich@gmail.com", "910-852-5784", "CS", LocalDate.of(2001, 6, 2), LocalDate.of(2020, 8, 10), address16, company6, null, null);
+        Employee employee7 = new Employee(null, "Alidia Muat", "87642341R", "aldiamuat@hotmail.com", "731-519-6884", "CFO", LocalDate.of(2001, 12, 21), LocalDate.of(2020, 8, 10), address17, company7, null, null);
+        Employee employee8 = new Employee(null, "Vere Cable", "98985112F", "vere-verecable@gmail.com", "429-745-5060", "CSO", LocalDate.of(1980, 4, 19), LocalDate.of(2020, 8, 10), address18, company8, null, null);
+        Employee employee9 = new Employee(null, "Fabio Branney", "90412314D", "branneyfabio@yahoo.com", "404-532-3192", "SEO", LocalDate.of(1967, 1, 25), LocalDate.of(2020, 8, 10), address19, company9, null, null);
+        Employee employee10 = new Employee(null, "Nataline Ellen", "55332123V", "nata_line@gmail.com", "571-579-4759", "CMO", LocalDate.of(1997, 5, 13), LocalDate.of(2020, 8, 10), address20, company10, null, null);
         employeeRepo.saveAll(List.of(employee1, employee2, employee3, employee4, employee5, employee6, employee7, employee8, employee9, employee10));
 
         Customer customer1 = new Customer(null, "Nealy Reasce", "78245362G", address21, "344-107-9293", "nealyasce@gmail.com", null);

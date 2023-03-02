@@ -21,7 +21,6 @@ public class Employee {
     private String name;
     @Column(unique = true)
     private String dni;
-    private String password;
     @Column(unique = true)
     private String email;
     @Column(unique = true)
@@ -31,8 +30,6 @@ public class Employee {
     private LocalDate birth;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate contracting;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dismissal;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)

@@ -45,7 +45,6 @@
                     <li class="list-group-item" th:text="|Company: ${employee.company.name}|"></li>
                     <li class="list-group-item" th:each="project: ${employee.projects}"  th:text="|${project.name}|"></li>
                     <li class="list-group-item" th:text="|Contracting date: ${#temporals.format(employee.contracting, 'dd/MM/yy')}|"></li>
-                    <li class="list-group-item" th:text="|Dismissal date: ${#temporals.format(employee.dismissal, 'dd/MM/yy')}|"></li>
 
                     <!--TODO: Ver proyectos del cliente
                         <li class="list-group-item">

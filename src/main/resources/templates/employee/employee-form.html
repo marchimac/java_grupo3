@@ -42,24 +42,6 @@
                     <input type="text" class="form-control" id="dni" th:field="*{dni}">
                 </div>
 
-                <p>Address</p>
-                <div class="mb-3">
-                    <label for="street" class="form-label">Street</label>
-                    <input type="text" class="form-control" id="street" th:field="*{address.street}">
-                </div>
-                <div class="mb-3">
-                    <label for="postalCode" class="form-label">Postal Code</label>
-                    <input type="text" class="form-control" id="postalCode" th:field="*{address.postalCode}">
-                </div>
-                <div class="mb-3">
-                    <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" id="city" th:field="*{address.city}">
-                </div>
-                <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" th:field="*{address.country}">
-                </div>
-
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone</label>
                     <input type="text" class="form-control" id="phone" th:field="*{phone}">
@@ -81,6 +63,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="contracting" class="form-label">Date of contracting</label>
+                    <input type="date" class="form-control" id="contracting" th:field="*{contracting}">
+                </div>
+
+                <div class="mb-3">
                     <label for="company" class="form-label">Company</label>
                     <select id="company" aria-label="Companies" class="form-select" th:field="*{company}" required>
                         <option th:if="${employee.id} == null" selected value=""></option>
@@ -95,14 +82,22 @@
                     </select>
                 </div>
 
+                <p>Address</p>
                 <div class="mb-3">
-                    <label for="contracting" class="form-label">Date of contracting</label>
-                    <input type="date" class="form-control" id="contracting" th:field="*{contracting}">
+                    <label for="street" class="form-label">Street</label>
+                    <input type="text" class="form-control" id="street" th:field="*{address.street}">
                 </div>
-
                 <div class="mb-3">
-                    <label for="dismissal" class="form-label">Date of dismissal</label>
-                    <input type="date" class="form-control" id="dismissal" th:field="*{dismissal}">
+                    <label for="postalCode" class="form-label">Postal Code</label>
+                    <input type="text" class="form-control" id="postalCode" th:field="*{address.postalCode}">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" th:field="*{address.city}">
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country" th:field="*{address.country}">
                 </div>
 
                 <a class="btn btn-danger" th:href="@{/employees}">Cancel</a>
