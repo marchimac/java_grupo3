@@ -5,7 +5,7 @@
     <title>Companies</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
-    <link rel="stylesheet" href="https://kit.fontawesome.com/3e9946618d.css" crossorigin="anonymous"/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/6.2.0/css/all.css} "/>
 </head>
 <body>
 
@@ -29,11 +29,22 @@
                     <td th:text="${company.name}"></td>
                     <td th:text="${company.cif}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{/companies/{id}(id=${company.id})}">Watch</a>
-                        <a class="btn btn-success" th:href="@{/companies/{id}/edit(id=${company.id})}">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                        <a th:href="@{/companies/{id}(id=${company.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                            </div>
                         </a>
-                        <a class="btn btn-danger" th:href="@{/companies/{id}/delete(id=${company.id})}">Delete</a>
+
+                        <a th:href="@{/companies/{id}/edit(id=${company.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                            </div>
+                        </a>
+                        <a th:href="@{/companies/{id}/delete(id=${company.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 </tbody>

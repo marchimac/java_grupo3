@@ -18,6 +18,20 @@
   --logoblack: #171810;
 }
 
+a {
+text-decoration: none;
+}
+
+.input-group-append {
+    display: inline-block;
+}
+
+.input-group-text {
+    background-color:transparent;
+    border: none;
+    width: fit-content;
+}
+
  /* navbar */
 .bg-info {
     background-color: var(--logoblack) !important;
