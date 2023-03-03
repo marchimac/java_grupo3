@@ -7,20 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/6.2.0/css/all.css} "/>
     <title>Employees</title>
 </head>
 <body>
 
 <div th:replace="~{layout/navbar :: navbar}"></div>
 
-<div class="container text-left">
+<div class="container text-center">
     <div class="row">
 
         <h1>Employees</h1>
 
         <div class="col mt-3">
             <div>
-                <a class="btn btn-info" th:href="@{/employees/create}">Add a new employee</a>
+                <a class="btn btn-info" th:href="@{/employees/create}">Add new employee</a>
             </div>
             <!--TODO
             <div class="mt-2">
@@ -48,9 +49,21 @@
                     <td th:text="${employee.email}"></td>
                     <td th:text="${employee.address.city}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{/employees/{id}(id=${employee.id})}">Watch</a>
-                        <a class="btn btn-success" th:href="@{/employees/{id}/edit(id=${employee.id})}">Edit</a>
-                        <a class="btn btn-danger" th:href="@{/employees/{id}/delete(id=${employee.id})}">Delete</a>
+                        <a th:href="@{/employees/{id}(id=${employee.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                            </div>
+                        </a>
+                        <a th:href="@{/employees/{id}/edit(id=${employee.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                            </div>
+                        </a>
+                        <a th:href="@{/employees/{id}/delete(id=${employee.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 </tbody>
