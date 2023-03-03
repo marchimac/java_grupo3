@@ -6,11 +6,11 @@
     color: #800080;
 }
 
-.html {
+html {
    margin:0px !important;
    height:100% !important;
 }
-.body {
+body {
    margin:0px !important;
    height:100% !important;
 }
