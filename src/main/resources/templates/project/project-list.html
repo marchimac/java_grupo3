@@ -5,6 +5,7 @@
     <title>Projects</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/6.2.0/css/all.css} "/>
 </head>
 <body>
 <div th:replace="~{layout/navbar :: navbar}"></div>
@@ -13,14 +14,15 @@
     <div class="row">
         <h1>Projects</h1>
         <div class="col mt-3">
-            <a class="btn btn-info" th:href="@{/projects/create}">Create new project</a>
+            <a class="btn btn-info" th:href="@{/projects/create}">Add new project</a>
             <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
-                    <th scope="col">Total Cost</th>
+<!--                    <th scope="col">Total Cost</th>-->
+                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
 
@@ -29,10 +31,23 @@
                     <td th:text="${project.name}"></td>
                     <td th:text="${project.dateStart}"></td>
                     <td th:text="${project.dateEnd}"></td>
+<!--                    <td th:text="${project.totalCost"></td>-->
                     <td>
-                        <a class="btn btn-primary" th:href="@{/projects/{id}(id=${project.id})}">Watch</a>
-                        <a class="btn btn-success" th:href="@{/projects/{id}/edit(id=${project.id})}">Edit</a>
-                        <a class="btn btn-danger" th:href="@{/projects/{id}/delete(id=${project.id})}">Delete</a>
+                        <a th:href="@{/projects/{id}(id=${project.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                            </div>
+                        </a>
+                        <a th:href="@{/projects/{id}/edit(id=${project.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                            </div>
+                        </a>
+                        <a th:href="@{/projects/{id}/delete(id=${project.id})}">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 </tbody>
