@@ -35,9 +35,8 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Position</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Address</th>
+                    <th scope="col">Hire date</th>
+                    <th scope="col">Location</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -45,9 +44,8 @@
                 <tr th:each="employee : ${employees}">
                     <td th:text="${employee.name}"></td>
                     <td th:text="${employee.position}"></td>
-                    <td th:text="${employee.phone}"></td>
-                    <td th:text="${employee.email}"></td>
-                    <td th:text="${employee.address.city}"></td>
+                    <td th:text="${employee.contracting}"></td>
+                    <td th:text="${employee.address.city} + ', ' + ${employee.address.country}"></td>
                     <td>
                         <a th:href="@{/employees/{id}(id=${employee.id})}">
                             <div class="input-group-append">
