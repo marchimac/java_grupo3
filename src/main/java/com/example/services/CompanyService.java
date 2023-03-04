@@ -11,4 +11,6 @@ public interface CompanyService {
     List<Company> findByName(String name);
     Company save(Company company);
     void deleteById(Long id);
+
+    List<Company> findByAddress_Country(String country);
 }

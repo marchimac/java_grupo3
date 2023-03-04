@@ -69,4 +69,11 @@ public class CompanyController {
         return "redirect:/companies";
     }
 
+
+    @GetMapping("companies/country/{country}")
+    public String findByCountry(Model model, @PathVariable String country) {
+        model.addAttribute("companies", companyService.findByAddress_Country(country));
+        return "company/company-list";
+    }
+
 }
