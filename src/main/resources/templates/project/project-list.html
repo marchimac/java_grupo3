@@ -21,7 +21,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
-<!--                    <th scope="col">Total Cost</th>-->
+                    <th scope="col">Total Cost</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -31,7 +31,7 @@
                     <td th:text="${project.name}"></td>
                     <td th:text="${project.dateStart}"></td>
                     <td th:text="${project.dateEnd}"></td>
-<!--                    <td th:text="${project.totalCost"></td>-->
+                    <td th:text="|${#numbers.formatDecimal(project.totalCost, 2,2)}&euro;|"></td>
                     <td>
                         <a th:href="@{/projects/{id}(id=${project.id})}">
                             <div class="input-group-append">
