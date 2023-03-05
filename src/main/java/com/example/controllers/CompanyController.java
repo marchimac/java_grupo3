@@ -52,7 +52,7 @@ public class CompanyController {
 //        return "employee/employee-list";
 //    }
 
-    @GetMapping("company/{id}")
+    @GetMapping("company/{id}/employees")
     public String showEmployeesByCompany(Model model, @PathVariable("id") Long id) {
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company", company);

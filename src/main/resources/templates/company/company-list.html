@@ -32,7 +32,7 @@
                     <td th:text="${company.name}"></td>
                     <td th:text="${company.cif}"></td>
                     <td th:text="${company.address.country}"></td>
-                    <td><a class="btn btn-info" th:href="@{/company/{id}(id=${company.id})}">Show employees</a></td>
+                    <td><a class="btn btn-info" th:href="@{/company/{id}/employees(id=${company.id})}">Show employees</a></td>
                     <td>
                         <a th:href="@{/companies/{id}(id=${company.id})}">
                             <div class="input-group-append">
