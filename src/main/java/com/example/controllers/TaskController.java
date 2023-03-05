@@ -21,11 +21,23 @@ public class TaskController {
     private final TaskService taskService;
     private final ProjectService projectService;
     private final EmployeeService employeeService;
+    @Autowired
+    private MessageSource messageSource;
 
     @GetMapping("tasks")
     public String findAll(Model model) {
         List<Task> tasks = taskService.findAll();
+        List<String> statusMessages = new ArrayList<>();
+        List<String> priorityMessages = new ArrayList<>();
+        for (Task task : tasks) {
+            String statusMessage = messageSource.getMessage("status." + task.getStatus().name(), null, Locale.ENGLISH);
+            String priorityMessage = messageSource.getMessage("priority." + task.getPriority().name(), null, Locale.ENGLISH);
+            statusMessages.add(statusMessage);
+            priorityMessages.add(priorityMessage);
+        }
         model.addAttribute("tasks", tasks);
+        model.addAttribute("statusMessages", statusMessages);
+        model.addAttribute("priorityMessages", priorityMessages);
         return "task/task-list";
     }
 
@@ -33,11 +45,12 @@ public class TaskController {
     public String findById(Model model, @PathVariable Long id) {
         Optional<Task> taskOpt = taskService.findById(id);
         if (taskOpt.isPresent()) {
+            String statusMessage = messageSource.getMessage("status." + taskOpt.get().getStatus().name(), null, Locale.ENGLISH);
             model.addAttribute("task", taskOpt.get());
+            model.addAttribute("statusMessage", statusMessage);
         } else {
             model.addAttribute("error", "Not found");
         }
-
         return "task/task-detail";
     }
 
