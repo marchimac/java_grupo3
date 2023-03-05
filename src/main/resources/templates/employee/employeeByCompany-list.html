@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nombre del empleado</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="employee : ${employees}">
+    <td th:text="${employee.name}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(employees)}">
+  There are not elements to show.
+</div>
+<div class="text-center" th:if="${#lists.size(employees) > 0}">
+  There are <span th:text="${#lists.size(employees)}"></span> results.
+</div>
+
+</body>
+</html>

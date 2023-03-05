@@ -10,4 +10,5 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
 
     List<Company> findByAddress_Country(String country);
 
+    Company getCompanyById(Long id);
 }

@@ -22,6 +22,8 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Cif</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Employees</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -29,6 +31,8 @@
                 <tr th:each="company : ${companies}">
                     <td th:text="${company.name}"></td>
                     <td th:text="${company.cif}"></td>
+                    <td th:text="${company.address.country}"></td>
+                    <td><a class="btn btn-info" th:href="@{/company/{id}(id=${company.id})}">Show employees</a></td>
                     <td>
                         <a th:href="@{/companies/{id}(id=${company.id})}">
                             <div class="input-group-append">
@@ -70,10 +74,11 @@
 <script>
     $(document).ready(function() {
         $("#company-table").DataTable({
-            'aoColumnDefs': [{
-                'bSortable': false,
-                'aTargets': [-1]
-            }]
+            'aoColumnDefs': [
+            {'bSortable': false, 'aTargets': [-1]},
+            {'bSortable': false, 'aTargets': [-2]}
+            ]
+
         });
     })
 </script>

@@ -75,4 +75,9 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> findByAddress_Country(String country) {
         return companyRepo.findByAddress_Country(country);
     }
+
+    @Override
+    public Company getCompanyById(Long id) {
+        return companyRepo.getCompanyById(id);
+    }
 }

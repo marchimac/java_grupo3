@@ -13,4 +13,6 @@ public interface CompanyService {
     void deleteById(Long id);
 
     List<Company> findByAddress_Country(String country);
+
+    Company getCompanyById(Long id);
 }

@@ -1,7 +1,9 @@
 package com.example.controllers;
 
 import com.example.entities.Company;
+import com.example.repositories.EmployeeRepository;
 import com.example.services.CompanyService;
+import com.example.services.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import java.util.Optional;
 @Controller
 public class CompanyController {
     private final CompanyService companyService;
+    private final EmployeeRepository employeeRepository;
 
     @GetMapping("companies")
     public String findAll(Model model) {
@@ -36,6 +39,28 @@ public class CompanyController {
 
         return "company/company-detail";
     }
+
+
+//    @GetMapping("company/{id}/employees")
+//    public String showEmployeesByCompany(Model model, @PathVariable Long id) {
+//        Optional<Company> companyOpt = companyService.findById(id);
+//        if (companyOpt.isPresent()) {
+//            model.addAttribute("employee", companyOpt.get().getEmployees());
+//        } else {
+//            model.addAttribute("error", "Not found");
+//        }
+//        return "employee/employee-list";
+//    }
+
+    @GetMapping("company/{id}")
+    public String showEmployeesByCompany(Model model, @PathVariable("id") Long id) {
+        Company company = companyService.getCompanyById(id);
+        model.addAttribute("company", company);
+        model.addAttribute("employees", company.getEmployees());
+        return "employee/employeeByCompany-list";
+    }
+
+
 
     @GetMapping("companies/create")
     public String createForm(Model model) {
@@ -75,5 +100,8 @@ public class CompanyController {
         model.addAttribute("companies", companyService.findByAddress_Country(country));
         return "company/company-list";
     }
+
+
+
 
 }
