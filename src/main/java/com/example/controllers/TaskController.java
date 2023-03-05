@@ -7,8 +7,6 @@ import com.example.services.EmployeeService;
 import com.example.services.ProjectService;
 import com.example.services.TaskService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -28,50 +24,26 @@ public class TaskController {
     private final TaskService taskService;
     private final ProjectService projectService;
     private final EmployeeService employeeService;
-    @Autowired
-    private MessageSource messageSource;
 
     @GetMapping("tasks")
     public String findAll(Model model) {
         List<Task> tasks = taskService.findAll();
-        List<String> statusMessages = new ArrayList<>();
-        List<String> priorityMessages = new ArrayList<>();
-        for (Task task : tasks) {
-            String statusMessage = messageSource.getMessage("status." + task.getStatus().name(), null, Locale.ENGLISH);
-            String priorityMessage = messageSource.getMessage("priority." + task.getPriority().name(), null, Locale.ENGLISH);
-            statusMessages.add(statusMessage);
-            priorityMessages.add(priorityMessage);
-        }
         model.addAttribute("tasks", tasks);
-        model.addAttribute("statusMessages", statusMessages);
-        model.addAttribute("priorityMessages", priorityMessages);
         return "task/task-list";
     }
 
-
     @GetMapping("tasks/status/{status}")
-    public String findAllByStatus(@PathVariable String status, Model model) {
+    public String findAllByStatus(Model model, @PathVariable String status){
         List<Task> tasks = taskService.findAllByStatus(Status.valueOf(status.toUpperCase()));
-        List<String> statusMessages = new ArrayList<>();
-        for (Task task : tasks) {
-            String statusMessage = messageSource.getMessage("status." + task.getStatus().name(), null, Locale.ENGLISH);
-            statusMessages.add(statusMessage);
-        }
+
         model.addAttribute("tasks", tasks);
-        model.addAttribute("statusMessages", statusMessages);
         return "task/task-list";
     }
 
     @GetMapping("tasks/priority/{priority}")
-    public String findAllByPriority(@PathVariable String priority, Model model) {
+    public String findAllByPriority(Model model, @PathVariable String priority) {
         List<Task> tasks = taskService.findAllByPriority(Priority.valueOf(priority.toUpperCase()));
-        List<String> priorityMessages = new ArrayList<>();
-        for (Task task : tasks) {
-            String priorityMessage = messageSource.getMessage("priority." + task.getPriority().name(), null, Locale.ENGLISH);
-            priorityMessages.add(priorityMessage);
-        }
         model.addAttribute("tasks", tasks);
-        model.addAttribute("priorityMessages", priorityMessages);
         return "task/task-list";
     }
 
@@ -79,9 +51,9 @@ public class TaskController {
     public String findById(Model model, @PathVariable Long id) {
         Optional<Task> taskOpt = taskService.findById(id);
         if (taskOpt.isPresent()) {
-            String statusMessage = messageSource.getMessage("status." + taskOpt.get().getStatus().name(), null, Locale.ENGLISH);
             model.addAttribute("task", taskOpt.get());
-            model.addAttribute("statusMessage", statusMessage);
+            model.addAttribute("status", Status.values());
+            model.addAttribute("priority", Priority.values());
         } else {
             model.addAttribute("error", "Not found");
         }

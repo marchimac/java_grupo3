@@ -39,8 +39,8 @@
           <li class="list-group-item" th:text="|Description: ${task.description}|"></li>
           <li class="list-group-item" th:text="|Due Date: ${task.dueDate}|"></li>
           <li class="list-group-item" th:text="|Employee: ${task.employee.name}|"></li>
-          <li class="list-group-item" th:text="|Status: ${statusMessage}|"></li>
-          <li class="list-group-item" th:text="|Priority: ${task.priority}|"></li>
+          <li class="list-group-item" th:text="|Status: ${task.status.displayValue}|"></li>
+          <li class="list-group-item" th:text="|Priority: ${task.priority.displayValue}|"></li>
 
         </ul>
 

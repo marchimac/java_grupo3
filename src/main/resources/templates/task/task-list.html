@@ -11,9 +11,9 @@
 
 <div th:replace="~{layout/navbar :: navbar}"></div>
 
-<div class="container">
+<div class="container text-center">
     <div class="row">
-        <h1 class="text-center">Tasks</h1>
+        <h1>Tasks</h1>
         <div class="col mt-3">
             <a class="btn btn-info" th:href="@{/tasks/create}">Add new task</a>
 
@@ -40,15 +40,20 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Status</th>
-                    <!--<th scope="col">Priority</th>-->
+                    <th scope="col">Priority</th>
+                    <th scope="col">Due date</th>
+                    <th scope="col">Employee</th>
+
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="task, status : ${tasks}">
+                <tr th:each="task : ${tasks}">
                     <td th:text="${task.name}"></td>
-                    <td th:text="${statusMessages[__${status.index}__]}"></td>
-                    <!--<td th:text="${priorityMessages[__${priority.index}__]}"></td>-->
+                    <td th:text="${task.status.displayValue}"></td>
+                    <td th:text="${task.priority.displayValue}"></td>
+                    <td th:text="${task.dueDate}"></td>
+                    <td th:text="${task.employee.name}"></td>
                     <td>
                         <a th:href="@{/tasks/{id}(id=${task.id})}">
                             <div class="input-group-append">
