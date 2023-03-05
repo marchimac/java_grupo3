@@ -60,6 +60,14 @@ public class CompanyController {
         return "employee/employeeByCompany-list";
     }
 
+    @GetMapping("company/{id}/projects")
+    public String showProjectsByCompany(Model model, @PathVariable("id") Long id) {
+        Company company = companyService.getCompanyById(id);
+        model.addAttribute("company", company);
+        model.addAttribute("projects", company.getProjects());
+        return "project/projectByCompany-list";
+    }
+
 
 
     @GetMapping("companies/create")
