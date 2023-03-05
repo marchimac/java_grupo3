@@ -1,6 +1,8 @@
 package com.example.controllers;
 
 import com.example.entities.Task;
+import com.example.entities.enums.Priority;
+import com.example.entities.enums.Status;
 import com.example.services.EmployeeService;
 import com.example.services.ProjectService;
 import com.example.services.TaskService;
@@ -18,6 +20,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Controller
 public class TaskController {
+
     private final TaskService taskService;
     private final ProjectService projectService;
     private final EmployeeService employeeService;
@@ -29,15 +32,31 @@ public class TaskController {
         return "task/task-list";
     }
 
+    @GetMapping("tasks/status/{status}")
+    public String findAllByStatus(Model model, @PathVariable String status){
+        List<Task> tasks = taskService.findAllByStatus(Status.valueOf(status.toUpperCase()));
+
+        model.addAttribute("tasks", tasks);
+        return "task/task-list";
+    }
+
+    @GetMapping("tasks/priority/{priority}")
+    public String findAllByPriority(Model model, @PathVariable String priority) {
+        List<Task> tasks = taskService.findAllByPriority(Priority.valueOf(priority.toUpperCase()));
+        model.addAttribute("tasks", tasks);
+        return "task/task-list";
+    }
+
     @GetMapping("tasks/{id}")
     public String findById(Model model, @PathVariable Long id) {
         Optional<Task> taskOpt = taskService.findById(id);
         if (taskOpt.isPresent()) {
             model.addAttribute("task", taskOpt.get());
+            model.addAttribute("status", Status.values());
+            model.addAttribute("priority", Priority.values());
         } else {
             model.addAttribute("error", "Not found");
         }
-
         return "task/task-detail";
     }
 
@@ -59,7 +78,6 @@ public class TaskController {
         } else {
             model.addAttribute("error", "Not found");
         }
-
         return "task/task-form";
     }
 

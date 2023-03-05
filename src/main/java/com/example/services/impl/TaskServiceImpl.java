@@ -1,6 +1,8 @@
 package com.example.services.impl;
 
 import com.example.entities.Task;
+import com.example.entities.enums.Priority;
+import com.example.entities.enums.Status;
 import com.example.repositories.TaskRepository;
 import com.example.services.TaskService;
 import lombok.AllArgsConstructor;
@@ -28,6 +30,16 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> findByName(String name) {
         return taskRepository.findByName(name);
+    }
+
+    @Override
+    public List<Task> findAllByStatus(Status status) {
+        return taskRepository.findAllByStatus(status);
+    }
+
+    @Override
+    public List<Task> findAllByPriority(Priority priority) {
+        return taskRepository.findAllByPriority(priority);
     }
 
     @Override

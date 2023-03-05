@@ -107,13 +107,13 @@ public class App {
         Task task1 = new Task(null, "CodeCrush", "Debugging and troubleshooting software development issues", LocalDate.of(2019, 1, 1), project1, employee1, Status.COMPLETED, Priority.MEDIUM);
         Task task2 = new Task(null, "PixelPerfect", "User interface design and optimization", LocalDate.of(2024, 2, 2), project2, employee2, Status.PENDING, Priority.LOW);
         Task task3 = new Task(null, "DataMaven", "Data cleaning, analysis, and modeling", LocalDate.of(2025, 3, 3), project3, employee3, Status.IN_PROGRESS, Priority.HIGH);
-        Task task4 = new Task(null, "CloudMaster", "Cloud infrastructure design and management", LocalDate.of(2023, 5, 3), project4, employee4, Status.IN_PROGRESS, Priority.VERY_HIGH);
-        Task task5 = new Task(null, "TechScout", "Research and development of emerging technologies", LocalDate.of(2023, 3, 1), project5, employee5, Status.COMPLETED, Priority.URGENT);
+        Task task4 = new Task(null, "CloudMaster", "Cloud infrastructure design and management", LocalDate.of(2023, 5, 3), project4, employee4, Status.IN_PROGRESS, Priority.CRITICAL);
+        Task task5 = new Task(null, "TechScout", "Research and development of emerging technologies", LocalDate.of(2023, 3, 1), project5, employee5, Status.COMPLETED, Priority.CRITICAL);
         Task task6 = new Task(null, "CyberDefend", "Cybersecurity threat analysis and response", LocalDate.of(2023, 7, 31), project6, employee6, Status.IN_PROGRESS, Priority.HIGH);
         Task task7 = new Task(null, "DevOpsPro", "DevOps process optimization and automation", LocalDate.of(2024, 10, 12), project7, employee7, Status.CANCELED, Priority.LOW);
         Task task8 = new Task(null, "TestGenius", "Software testing and quality assurance", LocalDate.of(2023, 9, 21), project8, employee8, Status.IN_PROGRESS, Priority.MEDIUM);
         Task task9 = new Task(null, "AIWizard", "Artificial intelligence development and integration", LocalDate.of(2022, 12, 31), project9, employee9, Status.COMPLETED, Priority.HIGH);
-        Task task10 = new Task(null, "TechRevamp", "Legacy system modernization and transformation", LocalDate.of(2026, 3, 3), project10, employee10, Status.CANCELED, Priority.VERY_HIGH);
+        Task task10 = new Task(null, "TechRevamp", "Legacy system modernization and transformation", LocalDate.of(2026, 3, 3), project10, employee10, Status.CANCELED, Priority.CRITICAL);
         taskRepo.saveAll(List.of(task1, task2, task3, task4, task5, task6, task7, task8, task9, task10));
     }
 
