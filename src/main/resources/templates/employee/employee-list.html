@@ -2,13 +2,11 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employees</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     <link th:rel="stylesheet" th:href="@{webjars/font-awesome/6.2.0/css/all.css} "/>
-    <title>Employees</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.css"/>
 </head>
 <body>
 
@@ -16,13 +14,9 @@
 
 <div class="container text-center">
     <div class="row">
-
         <h1>Employees</h1>
-
         <div class="col mt-3">
-            <div>
-                <a class="btn btn-info" th:href="@{/employees/create}">Add new employee</a>
-            </div>
+            <a class="btn btn-info" th:href="@{/employees/create}">Add new employee</a>
             <!--TODO
             <div class="mt-2">
                 <span>Filter by task: </span>
@@ -30,7 +24,7 @@
                 <a class="btn btn-primary" th:href="@{/employees/task/task2}">Task22</a>
             </div>-->
 
-            <table class="table">
+            <table class="table table-bordered table-striped" id="employee-table">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -75,7 +69,21 @@
         </div>
     </div>
 </div>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
 <div th:replace="~{layout/footer :: footer}"></div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#employee-table").DataTable({
+            'aoColumnDefs': [
+            {'bSortable': false, 'aTargets': [-1]}
+            ]
+
+        });
+    })
+</script>
 </body>
 </html>

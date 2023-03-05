@@ -22,7 +22,7 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Cif</th>
-                    <th scope="col">Country</th>
+                    <th scope="col">Location</th>
                     <th scope="col">Employees</th>
                     <th scope="col">Projects</th>
                     <th scope="col">Actions</th>
@@ -32,7 +32,7 @@
                 <tr th:each="company : ${companies}">
                     <td th:text="${company.name}"></td>
                     <td th:text="${company.cif}"></td>
-                    <td th:text="${company.address.country}"></td>
+                    <td th:text="${company.address.city} + ', ' + ${company.address.country}"></td>
                     <td><a class="btn btn-info" th:href="@{/company/{id}/employees(id=${company.id})}">Employees</a></td>
                     <td><a class="btn btn-info" th:href="@{/company/{id}/projects(id=${company.id})}">Projects</a></td>
                     <td>
@@ -68,9 +68,9 @@
     </div>
 </div>
 
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
 <div th:replace="~{layout/footer :: footer}"></div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.js"></script>
 <script>

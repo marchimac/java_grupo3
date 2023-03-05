@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     <link th:rel="stylesheet" th:href="@{webjars/font-awesome/6.2.0/css/all.css} "/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.css"/>
 </head>
 <body>
 
@@ -35,14 +36,14 @@
                 <a th:href="@{/tasks}">Show all</a>
             </div>
 
-            <table class="table">
+            <table class="table table-bordered table-striped" id="task-table">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Status</th>
                     <th scope="col">Priority</th>
                     <th scope="col">Due date</th>
-                    <th scope="col">Employee</th>
+                    <th scope="col">Employees</th>
 
                     <th scope="col">Actions</th>
                 </tr>
@@ -98,7 +99,21 @@
     </div>
 </div>
 
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <div th:replace="~{layout/footer :: footer}"></div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#task-table").DataTable({
+            'aoColumnDefs': [
+            {'bSortable': false, 'aTargets': [-1]},
+            {'bSortable': false, 'aTargets': [-2]}
+            ]
+
+        });
+    })
+</script>
 </body>
 </html>
