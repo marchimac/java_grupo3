@@ -57,7 +57,7 @@ public class CompanyController {
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company", company);
         model.addAttribute("employees", company.getEmployees());
-        return "employee/employeeByCompany-list";
+        return "employee/employee-list";
     }
 
     @GetMapping("company/{id}/projects")
@@ -65,7 +65,7 @@ public class CompanyController {
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company", company);
         model.addAttribute("projects", company.getProjects());
-        return "project/projectByCompany-list";
+        return "project/project-list";
     }
 
 
