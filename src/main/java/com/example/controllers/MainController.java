@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping("/")
-    public String index() {
-        return "redirect:/main";
-    }
+//    @GetMapping("/")
+//    public String index() {
+//        return "company/company-list";
+//    }
 
-    @GetMapping("/main")
-    public String main() {
-        return "main-page/main";
-    }
+//    @GetMapping("/main")
+//    public String main() {
+//        return "main-page/main";
+//    }
 }

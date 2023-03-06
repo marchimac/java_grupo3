@@ -21,6 +21,11 @@ public class CompanyController {
     private final CompanyService companyService;
     private final EmployeeRepository employeeRepository;
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/companies";
+    }
+
     @GetMapping("companies")
     public String findAll(Model model) {
         List<Company> companies = companyService.findAll();
