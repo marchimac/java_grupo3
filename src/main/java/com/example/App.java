@@ -55,6 +55,27 @@ public class App {
         Address address28 = new Address(null, "Sutteridge Road 45", "22787", "Sundbyberg", "Sweden", null, null);
         Address address29 = new Address(null, "Utah Parkway 639", "20981", "Kokkinóchoma", "Greece", null, null);
         Address address30 = new Address(null, "Londonderry Way 504", "89730", "El Retorno", "Colombia", null, null);
+        Address address31 = new Address(null, "Broadway 123", "10001", "New York", "United States", null, null);
+        Address address32 = new Address(null, "Main Street 456", "90210", "Los Angeles", "United States", null, null);
+        Address address33 = new Address(null, "Champs-Élysées 789", "75008", "Paris", "France", null, null);
+        Address address34 = new Address(null, "Savignyplatz 1", "10623", "Berlin", "Germany", null, null);
+        Address address35 = new Address(null, "Via Montenapoleone 8", "20121", "Milan", "Italy", null, null);
+        Address address36 = new Address(null, "Gran Vía 1", "28013", "Madrid", "Spain", null, null);
+        Address address37 = new Address(null, "Ginza 4-1", "104-0061", "Tokyo", "Japan", null, null);
+        Address address38 = new Address(null, "Paseo de la Reforma 222", "06600", "Mexico City", "Mexico", null, null);
+        Address address39 = new Address(null, "Avenida Paulista 1234", "01310-100", "São Paulo", "Brazil", null, null);
+        Address address40 = new Address(null, "Oxford Street 123", "W1D 1BS", "London", "United Kingdom", null, null);
+        Address address41 = new Address(null, "Nieuwendijk 196", "1012 MJ", "Amsterdam", "Netherlands", null, null);
+        Address address42 = new Address(null, "Kärntner Straße 1", "1010", "Vienna", "Austria", null, null);
+        Address address43 = new Address(null, "Calle Florida 343", "C1005AAH", "Buenos Aires", "Argentina", null, null);
+        Address address44 = new Address(null, "Rue du Faubourg Saint-Honoré 101", "75008", "Paris", "France", null, null);
+        Address address45 = new Address(null, "Tverskaya ulitsa 9", "125009", "Moscow", "Russia", null, null);
+        Address address46 = new Address(null, "Kingsway 123", "WC2B 6PP", "London", "United Kingdom", null, null);
+        Address address47 = new Address(null, "Paseo de Gracia 92", "08008", "Barcelona", "Spain", null, null);
+        Address address48 = new Address(null, "Chuo-dori 1", "260-8555", "Chiba", "Japan", null, null);
+        Address address49 = new Address(null, "Avenida Presidente Masaryk 111", "11560", "Mexico City", "Mexico", null, null);
+        Address address50 = new Address(null, "Schildergasse 45-47", "50667", "Cologne", "Germany", null, null);
+        Address address51 = new Address(null, "Rue de la Paix 12", "75002", "Paris", "France", null, null);
 
         Company company1 = new Company(null, "Accenture S.L.", "El valor se demuestra trabajando", "accenture@accenture.com", "https://www.lindedin.com/in/accenture", "http://twitter.com/accenture", "G6974740", address1, null, null);
         Company company2 = new Company(null, "Marcanast LTD", "Soluciones sin problemas", "marcanast@marcaset.com", "https://www.lindedin.com/in/marcanst", "http://twitter.com/marcanst", "B9487364", address2, null, null);
