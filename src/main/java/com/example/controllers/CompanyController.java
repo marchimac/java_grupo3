@@ -45,18 +45,6 @@ public class CompanyController {
         return "company/company-detail";
     }
 
-
-//    @GetMapping("company/{id}/employees")
-//    public String showEmployeesByCompany(Model model, @PathVariable Long id) {
-//        Optional<Company> companyOpt = companyService.findById(id);
-//        if (companyOpt.isPresent()) {
-//            model.addAttribute("employee", companyOpt.get().getEmployees());
-//        } else {
-//            model.addAttribute("error", "Not found");
-//        }
-//        return "employee/employee-list";
-//    }
-
     @GetMapping("company/{id}/employees")
     public String showEmployeesByCompany(Model model, @PathVariable("id") Long id) {
         Company company = companyService.getCompanyById(id);
