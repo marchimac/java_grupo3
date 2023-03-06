@@ -81,6 +81,14 @@ public class TaskController {
         return "task/task-form";
     }
 
+    @GetMapping("task/{id}/employees")
+    public String showEmployeesByTask(Model model, @PathVariable("id") Long id) {
+        Task task = taskService.getTaskById(id);
+        model.addAttribute("task", task);
+        model.addAttribute("employees", task.getEmployee());
+        return "task/task-list";
+    }
+
     @PostMapping("tasks")
     public String saveForm(@ModelAttribute Task task) {
         taskService.save(task);
@@ -92,4 +100,6 @@ public class TaskController {
         taskService.deleteById(id);
         return "redirect:/tasks";
     }
+
+
 }

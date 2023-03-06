@@ -18,5 +18,6 @@ public interface TaskService {
     List<Task> findAllByEmployeeId(Long id);
     void saveAll(List<Task> tasks);
     List<Task> findAllByProjectId(Long id);
+    Task getTaskById(Long id);
 
 }

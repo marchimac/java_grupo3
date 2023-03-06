@@ -44,7 +44,6 @@
                     <th scope="col">Priority</th>
                     <th scope="col">Due date</th>
                     <th scope="col">Employees</th>
-
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -54,7 +53,7 @@
                     <td th:text="${task.status.displayValue}"></td>
                     <td th:text="${task.priority.displayValue}"></td>
                     <td th:text="${task.dueDate}"></td>
-                    <td th:text="${task.employee.name}"></td>
+                    <td><a class="btn btn-info" th:href="@{/task/{id}/employees(id=${task.id})}">Employees</a></td>
                     <td>
                         <a th:href="@{/tasks/{id}(id=${task.id})}">
                             <div class="input-group-append">
@@ -81,8 +80,10 @@
                 There are not elements to show.
             </div>
             <div class="text-center" th:if="${#lists.size(tasks) > 0}">
+                <!-- TODO Error al mostrar employees desde task-->
                 There are <span th:text="${#lists.size(tasks)}"></span> results.
             </div>
+
         </div>
     </div>
 </div>

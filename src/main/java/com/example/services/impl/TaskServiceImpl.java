@@ -66,4 +66,9 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findAllByProjectId(Long id) {
         return taskRepository.findAllByEmployeeId(id);
     }
+
+    @Override
+    public Task getTaskById(Long id) {
+        return taskRepository.getTaskById(id);
+    }
 }
