@@ -23,7 +23,7 @@ public class CompanyController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:/companies";
+        return "layout/main";
     }
 
     @GetMapping("companies")
