@@ -1,19 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400&family=Quicksand:wght@400;500;600&display=swap');
 
-.test {
-    color: #ff8000;
-}
-
-.green {
-    color: #800080;
-}
-
-html, body {
-  /*margin:0 auto !important;*/
-  /*height: 100vh !important;*/
-  font-family: 'Quicksand', sans-serif;
-}
-
 :root {
   --watch: #1A4A98;
   --edit: #8326FF;
@@ -27,19 +13,23 @@ html, body {
   --grey: #e2e2e2;
 }
 
+.test {
+    color: #ff8000;
+}
+
+.green {
+    color: #800080;
+}
+
+body {
+    height: 100vh !important;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
 a {
-text-decoration: none;
-}
-
-.the-container {
-  height: 100vh !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.content {
-    height: -webkit-fill-available;
+    text-decoration: none;
 }
 
 .input-group-append {
@@ -90,6 +80,17 @@ text-decoration: none;
     border-bottom: solid;
     padding-bottom: 0.2rem !important;
     padding-top: 0.2rem !important;
+}
+
+.the-container {
+    height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    height: -webkit-fill-available;
+    flex-grow: 1;
 }
 
 .form-control:focus {

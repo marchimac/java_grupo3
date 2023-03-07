@@ -8,67 +8,71 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
+<div class="the-container">
+    <div th:replace="~{layout/navbar :: navbar}"></div>
 
-<div th:replace="~{layout/navbar :: navbar}"></div>
+    <div class="container content text-center">
+        <div class="row">
 
-<div class="container text-center">
-    <div class="row">
+            <h1 class="h1-title">Employee detail</h1>
+            <div class="col"></div>
 
-        <h1 class="h1-title">Employee detail</h1>
-        <div class="col"></div>
+            <div class="col">
 
-        <div class="col">
-
-            <div th:if="${error}">
-                <div class="alert alert-danger" role="alert">
-                    <p th:text="${error}"></p>
-                </div>
-                <a class="btn btn-primary" th:href="@{/employees}">Return</a>
-            </div>
-
-
-            <div class="card" th:if="${error} == null">
-                <img src="https://dummyimage.com/300" class="card-img-top" alt="Employee Image">
-
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${employee.name}"></h5>
-                </div>
-
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" th:text="|ID: ${employee.id}|"></li>
-                    <li class="list-group-item" th:text="|DNI: ${employee.dni}|"></li>
-                    <li class="list-group-item" th:text="|Address: ${employee.address.street}, ${employee.address.postalCode}, ${employee.address.city}, ${employee.address.country}|"></li>
-                    <li class="list-group-item" th:text="|Phone: ${employee.phone}|"></li>
-                    <li class="list-group-item" th:text="|Email: ${employee.email}|"></li>
-                    <li class="list-group-item" th:text="|Position: ${employee.position}|"></li>
-                    <li class="list-group-item" th:text="|Birthday: ${#temporals.format(employee.birth, 'dd/MM/yy')}|"></li>
-                    <li class="list-group-item" th:text="|Company: ${employee.company.name}|"></li>
-                    <li class="list-group-item" th:each="project: ${employee.projects}"  th:text="|${project.name}|"></li>
-                    <li class="list-group-item" th:text="|Hire date: ${#temporals.format(employee.contracting, 'dd/MM/yy')}|"></li>
-
-                    <!--TODO: Ver proyectos del cliente
-                        <li class="list-group-item">
-                              <a class="btn btn-link btn-sm"
-                                 th:text="${employee.project.name}"
-                                 th:href="@{/supermarkets/{id}(id=${employee.project.id})}"></a>
-                          </li>-->
-
-                </ul>
-
-                <div class="card-body">
+                <div th:if="${error}">
+                    <div class="alert alert-danger" role="alert">
+                        <p th:text="${error}"></p>
+                    </div>
                     <a class="btn btn-primary" th:href="@{/employees}">Return</a>
-                    <a class="btn btn-success" th:href="@{/employees/{id}/edit(id=${employee.id})}">Edit</a>
-                    <a class="btn btn-danger" th:href="@{/employees/{id}/delete(id=${employee.id})}">Delete</a>
+                </div>
+
+
+                <div class="card" th:if="${error} == null">
+                    <img src="https://dummyimage.com/300" class="card-img-top" alt="Employee Image">
+
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${employee.name}"></h5>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:text="|ID: ${employee.id}|"></li>
+                        <li class="list-group-item" th:text="|DNI: ${employee.dni}|"></li>
+                        <li class="list-group-item"
+                            th:text="|Address: ${employee.address.street}, ${employee.address.postalCode}, ${employee.address.city}, ${employee.address.country}|"></li>
+                        <li class="list-group-item" th:text="|Phone: ${employee.phone}|"></li>
+                        <li class="list-group-item" th:text="|Email: ${employee.email}|"></li>
+                        <li class="list-group-item" th:text="|Position: ${employee.position}|"></li>
+                        <li class="list-group-item"
+                            th:text="|Birthday: ${#temporals.format(employee.birth, 'dd/MM/yy')}|"></li>
+                        <li class="list-group-item" th:text="|Company: ${employee.company.name}|"></li>
+                        <li class="list-group-item" th:each="project: ${employee.projects}"
+                            th:text="|${project.name}|"></li>
+                        <li class="list-group-item"
+                            th:text="|Hire date: ${#temporals.format(employee.contracting, 'dd/MM/yy')}|"></li>
+
+                        <!--TODO: Ver proyectos del cliente
+                            <li class="list-group-item">
+                                  <a class="btn btn-link btn-sm"
+                                     th:text="${employee.project.name}"
+                                     th:href="@{/supermarkets/{id}(id=${employee.project.id})}"></a>
+                              </li>-->
+
+                    </ul>
+
+                    <div class="card-body">
+                        <a class="btn btn-primary" th:href="@{/employees}">Return</a>
+                        <a class="btn btn-success" th:href="@{/employees/{id}/edit(id=${employee.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/employees/{id}/delete(id=${employee.id})}">Delete</a>
+                    </div>
                 </div>
             </div>
+
+            <div class="col"></div>
         </div>
-
-        <div class="col"></div>
     </div>
+    <div th:replace="~{layout/footer :: footer}"></div>
 </div>
-
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/main.js}"></script>
-<div th:replace="~{layout/footer :: footer}"></div>
 </body>
 </html>
