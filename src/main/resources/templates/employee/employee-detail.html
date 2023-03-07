@@ -28,7 +28,8 @@
 
 
                 <div class="card" th:if="${error} == null">
-                    <img src="https://dummyimage.com/300" class="card-img-top" alt="Employee Image">
+                    <img th:src="${#strings.isEmpty(employee.imageUrl)} ? '/img/image-load-failed.png' : |/img/uploads/${employee.imageUrl}}|" class="card-img-top" alt="Employee Image">
+<!--                    <img th:src="${#strings.isEmpty(employee.imageUrl)} ? 'https://dummyimage.com/300' : |/img/uploads/${employee.imageUrl}|" class="card-img-top" alt="Employee Image">-->
 
                     <div class="card-body">
                         <h5 class="card-title" th:text="${employee.name}"></h5>

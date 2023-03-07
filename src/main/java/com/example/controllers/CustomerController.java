@@ -3,13 +3,12 @@ package com.example.controllers;
 import com.example.entities.Address;
 import com.example.entities.Customer;
 import com.example.services.CustomerService;
+import com.example.services.FileStorageService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +18,7 @@ import java.util.Optional;
 public class CustomerController {
 
     private final CustomerService customerService;
+    private final FileStorageService fileStorageService;
 
     @GetMapping("customers")
     public String findAll(Model model) {
@@ -58,9 +58,22 @@ public class CustomerController {
     }
 
     @PostMapping("customers")
-    public String saveForm(@ModelAttribute Customer customer) {
-        customerService.save(customer);
-        return "redirect:/customers";
+    public String saveForm(Model model, @ModelAttribute Customer customer, @RequestParam("file") MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            customerService.save(customer);
+            return "redirect:/customers";
+        }
+
+        try {
+            String fileName = fileStorageService.storeInFileSystem(file);
+            customer.setImageUrl(fileName); // string
+            customerService.save(customer);
+            return "redirect:/customers"; // redirección a controlador findAll
+        } catch (Exception e) {
+            model.addAttribute("error", "Failed to save image");
+            model.addAttribute("customers", customerService.findAll());
+            return "customer/customer-list";
+        }
     }
 
     @GetMapping("customers/{id}/delete")
