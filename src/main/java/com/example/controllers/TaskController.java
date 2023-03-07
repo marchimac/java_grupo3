@@ -86,7 +86,7 @@ public class TaskController {
         Task task = taskService.getTaskById(id);
         model.addAttribute("task", task);
         model.addAttribute("employees", task.getEmployee());
-        return "task/task-list";
+        return "employee/employee-list";
     }
 
     @PostMapping("tasks")
