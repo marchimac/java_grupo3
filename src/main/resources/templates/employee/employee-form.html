@@ -28,7 +28,7 @@
                     <a type="button" class="btn btn-primary" th:href="@{/employees}">Return</a>
                 </div>
 
-                <form th:if="${error} == null" th:action="@{/employees}" method="POST" th:object="${employee}">
+                <form th:if="${error} == null" th:action="@{/employees}" method="POST" th:object="${employee}" enctype="multipart/form-data">
 
                     <input type="hidden" id="id" th:field="*{id}"/>
 
@@ -101,6 +101,17 @@
                     <div class="mb-3">
                         <label for="country" class="form-label">Country</label>
                         <input type="text" class="form-control" id="country" th:field="*{address.country}">
+                    </div>
+
+                    <img th:if="${employee.imageUrl}" th:src="|/img/${employee.imageUrl}|" class="card-img-top" alt="Employee Image">
+                    <div class="mb-3" th:if="${employee.imageUrl}">
+                        <label for="imageUrl" class="form-label">Imagen Url</label>
+                        <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Imagen</label>
+                        <input class="form-control" type="file" id="file" name="file">
                     </div>
 
                     <a class="btn btn-danger" th:href="@{/employees}">Cancel</a>

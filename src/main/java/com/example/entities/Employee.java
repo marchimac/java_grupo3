@@ -30,6 +30,7 @@ public class Employee {
     private LocalDate birth;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate contracting;
+    private String imageUrl;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)

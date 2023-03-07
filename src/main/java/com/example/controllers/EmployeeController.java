@@ -4,14 +4,13 @@ import com.example.entities.Address;
 import com.example.entities.Employee;
 import com.example.services.CompanyService;
 import com.example.services.EmployeeService;
+import com.example.services.FileStorageService;
 import com.example.services.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +22,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
     private final CompanyService companyService;
     private final ProjectService projectService;
+    private final FileStorageService fileStorageService;
 
     @GetMapping("employees")
     public String findAll(Model model) {
@@ -67,9 +67,23 @@ public class EmployeeController {
     }
 
     @PostMapping("employees")
-    public String saveForm(@ModelAttribute Employee employee) {
-        employeeService.save(employee);
-        return "redirect:/employees";
+    public String saveForm(Model model, @ModelAttribute Employee employee, @RequestParam("file")MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            employeeService.save(employee);
+            return "redirect:/employees";
+        }
+
+        try {
+            String fileName = fileStorageService.storeInFileSystem(file);
+            employee.setImageUrl(fileName); // string
+            employeeService.save(employee);
+            return "redirect:/employees"; // redirección a controlador findAll
+        } catch (Exception e) {
+            model.addAttribute("error", "Failed to save image");
+            model.addAttribute("employees", employeeService.findAll());
+            return "employee/employee-list";
+        }
+
     }
 
     @GetMapping("employees/{id}/delete")
