@@ -9,82 +9,89 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.css"/>
 </head>
 <body>
+<div class="the-container">
+    <div th:replace="~{layout/navbar :: navbar}"></div>
 
-<div th:replace="~{layout/navbar :: navbar}"></div>
+    <div class="container content text-center">
+        <div class="row">
+            <h1>Companies</h1>
+            <div class="col mt-3">
+                <a class="btn btn-info" th:href="@{/companies/create}">Add new company</a>
+                <table class="table table-bordered table-striped" id="company-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Cif</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Employees</th>
+                        <th scope="col">Projects</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="company : ${companies}">
+                        <td th:text="${company.name}"></td>
+                        <td th:text="${company.cif}"></td>
+                        <td th:text="${company.address.city} + ', ' + ${company.address.country}"></td>
+                        <td><a class="btn btn-info" th:href="@{/company/{id}/employees(id=${company.id})}">Employees</a>
+                        </td>
+                        <td><a class="btn btn-info" th:href="@{/company/{id}/projects(id=${company.id})}">Projects</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/companies/{id}(id=${company.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                                </div>
+                            </a>
 
-<div class="container text-center">
-    <div class="row">
-        <h1>Companies</h1>
-        <div class="col mt-3">
-            <a class="btn btn-info" th:href="@{/companies/create}">Add new company</a>
-            <table class="table table-bordered table-striped" id="company-table">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Cif</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Employees</th>
-                    <th scope="col">Projects</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="company : ${companies}">
-                    <td th:text="${company.name}"></td>
-                    <td th:text="${company.cif}"></td>
-                    <td th:text="${company.address.city} + ', ' + ${company.address.country}"></td>
-                    <td><a class="btn btn-info" th:href="@{/company/{id}/employees(id=${company.id})}">Employees</a></td>
-                    <td><a class="btn btn-info" th:href="@{/company/{id}/projects(id=${company.id})}">Projects</a></td>
-                    <td>
-                        <a th:href="@{/companies/{id}(id=${company.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-eye"></i></span>
-                            </div>
-                        </a>
+                            <a th:href="@{/companies/{id}/edit(id=${company.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                                </div>
+                            </a>
+                            <a th:href="@{/companies/{id}/delete(id=${company.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
 
-                        <a th:href="@{/companies/{id}/edit(id=${company.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
-                            </div>
-                        </a>
-                        <a th:href="@{/companies/{id}/delete(id=${company.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(companies)}">
+                    There are not elements to show.
+                </div>
+                <div class="text-center" th:if="${#lists.size(companies) > 0}">
+                    There are <span th:text="${#lists.size(companies)}"></span> results.
+                </div>
 
-            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(companies)}">
-                There are not elements to show.
             </div>
-            <div class="text-center" th:if="${#lists.size(companies) > 0}">
-                There are <span th:text="${#lists.size(companies)}"></span> results.
-            </div>
-
         </div>
     </div>
+
+    <div th:replace="~{layout/footer :: footer}"></div>
 </div>
-
-<div th:replace="~{layout/footer :: footer}"></div>
-
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.js"></script>
-
-<!-- TODO Centrar texto en thead -->
 <script>
     $(document).ready(function() {
         $("#company-table").DataTable({
             'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': [-1, -2, -3]},
-            { 'className': 'text-center', 'aTargets': [-1, -2, -3, -4, -5, -6] }
-        ]
+            {'bSortable': false, 'aTargets': [-1]},
+            {'bSortable': false, 'aTargets': [-2]},
+            {'bSortable': false, 'aTargets': [-3]}
+        ],
+        'createdRow': function(row, data, dataIndex) {
+            if (dataIndex === 0) {
+                $('td', row).css('text-align', 'center');
+            }
+        }
 
         });
-    })
+    });
+
 </script>
 </body>
 </html>

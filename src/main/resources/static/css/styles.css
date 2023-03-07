@@ -8,15 +8,10 @@
     color: #800080;
 }
 
-html {
-   margin:0px !important;
-   height:100% !important;
-}
-body {
-   margin:0px !important;
-   height:100% !important;
-   font-family: 'Quicksand', sans-serif;
-
+html, body {
+  /*margin:0 auto !important;*/
+  /*height: 100vh !important;*/
+  font-family: 'Quicksand', sans-serif;
 }
 
 :root {
@@ -34,6 +29,17 @@ body {
 
 a {
 text-decoration: none;
+}
+
+.the-container {
+  height: 100vh !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
+    height: -webkit-fill-available;
 }
 
 .input-group-append {

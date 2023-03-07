@@ -9,65 +9,65 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.css"/>
 </head>
 <body>
+<div class="the-container">
+    <div th:replace="~{layout/navbar :: navbar}"></div>
 
-<div th:replace="~{layout/navbar :: navbar}"></div>
+    <div class="container content text-center">
+        <div class="row">
+            <h1>Projects</h1>
+            <div class="col mt-3">
+                <a class="btn btn-info" th:href="@{/projects/create}">Add new project</a>
+                <table class="table table-bordered table-striped" id="project-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Total Cost</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
 
-<div class="container text-center">
-    <div class="row">
-        <h1>Projects</h1>
-        <div class="col mt-3">
-            <a class="btn btn-info" th:href="@{/projects/create}">Add new project</a>
-            <table class="table table-bordered table-striped" id="project-table">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">End Date</th>
-                    <th scope="col">Total Cost</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
+                    <tbody>
+                    <tr th:each="project : ${projects}">
+                        <td th:text="${project.name}"></td>
+                        <td th:text="${project.dateStart}"></td>
+                        <td th:text="${project.dateEnd}"></td>
+                        <td th:text="|${#numbers.formatDecimal(project.totalCost, 2,2)}&euro;|"></td>
+                        <td>
+                            <a th:href="@{/projects/{id}(id=${project.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                                </div>
+                            </a>
+                            <a th:href="@{/projects/{id}/edit(id=${project.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                                </div>
+                            </a>
+                            <a th:href="@{/projects/{id}/delete(id=${project.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
 
-                <tbody>
-                <tr th:each="project : ${projects}">
-                    <td th:text="${project.name}"></td>
-                    <td th:text="${project.dateStart}"></td>
-                    <td th:text="${project.dateEnd}"></td>
-                    <td th:text="|${#numbers.formatDecimal(project.totalCost, 2,2)}&euro;|"></td>
-                    <td>
-                        <a th:href="@{/projects/{id}(id=${project.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-eye"></i></span>
-                            </div>
-                        </a>
-                        <a th:href="@{/projects/{id}/edit(id=${project.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
-                            </div>
-                        </a>
-                        <a th:href="@{/projects/{id}/delete(id=${project.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(projects)}">
+                    There are not elements to show.
+                </div>
+                <div class="text-center" th:if="${#lists.size(projects) > 0}">
+                    There are <span th:text="${#lists.size(projects)}"></span> results.
+                </div>
 
-            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(projects)}">
-                There are not elements to show.
             </div>
-            <div class="text-center" th:if="${#lists.size(projects) > 0}">
-                There are <span th:text="${#lists.size(projects)}"></span> results.
-            </div>
-
         </div>
     </div>
+
+    <div th:replace="~{layout/footer :: footer}"></div>
 </div>
-
-<div th:replace="~{layout/footer :: footer}"></div>
-
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.js"></script>
@@ -75,8 +75,7 @@
     $(document).ready(function() {
         $("#project-table").DataTable({
             'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': [-1]},
-            { 'className': 'text-center', 'aTargets': [-1, -2, -3, -4, -5] }
+            {'bSortable': false, 'aTargets': [-1]}
             ]
 
         });

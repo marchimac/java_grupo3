@@ -9,69 +9,69 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.css"/>
 </head>
 <body>
+<div class="the-container">
+    <div th:replace="~{layout/navbar :: navbar}"></div>
 
-<div th:replace="~{layout/navbar :: navbar}"></div>
+    <div class="container content text-center">
+        <div class="row">
+            <h1>Employees</h1>
+            <div class="col mt-3">
+                <a class="btn btn-info" th:href="@{/employees/create}">Add new employee</a>
+                <!--TODO
+                <div class="mt-2">
+                    <span>Filter by task: </span>
+                    <a class="btn btn-primary" th:href="@{/employees/task/task1}">Task1</a>
+                    <a class="btn btn-primary" th:href="@{/employees/task/task2}">Task22</a>
+                </div>-->
 
-<div class="container text-center">
-    <div class="row">
-        <h1>Employees</h1>
-        <div class="col mt-3">
-            <a class="btn btn-info" th:href="@{/employees/create}">Add new employee</a>
-            <!--TODO
-            <div class="mt-2">
-                <span>Filter by task: </span>
-                <a class="btn btn-primary" th:href="@{/employees/task/task1}">Task1</a>
-                <a class="btn btn-primary" th:href="@{/employees/task/task2}">Task22</a>
-            </div>-->
-
-            <table class="table table-bordered table-striped" id="employee-table">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Hire date</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="employee : ${employees}">
-                    <td th:text="${employee.name}"></td>
-                    <td th:text="${employee.position}"></td>
-                    <td th:text="${employee.contracting}"></td>
-                    <td th:text="${employee.address.city} + ', ' + ${employee.address.country}"></td>
-                    <td>
-                        <a th:href="@{/employees/{id}(id=${employee.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-eye"></i></span>
-                            </div>
-                        </a>
-                        <a th:href="@{/employees/{id}/edit(id=${employee.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
-                            </div>
-                        </a>
-                        <a th:href="@{/employees/{id}/delete(id=${employee.id})}">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(employees)}">
-                There are not elements to show.
-            </div>
-            <div class="text-center" th:if="${#lists.size(employees) > 0}">
-                There are <span th:text="${#lists.size(employees)}"></span> results.
+                <table class="table table-bordered table-striped" id="employee-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Hire date</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="employee : ${employees}">
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.position}"></td>
+                        <td th:text="${employee.contracting}"></td>
+                        <td th:text="${employee.address.city} + ', ' + ${employee.address.country}"></td>
+                        <td>
+                            <a th:href="@{/employees/{id}(id=${employee.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                                </div>
+                            </a>
+                            <a th:href="@{/employees/{id}/edit(id=${employee.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                                </div>
+                            </a>
+                            <a th:href="@{/employees/{id}/delete(id=${employee.id})}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(employees)}">
+                    There are not elements to show.
+                </div>
+                <div class="text-center" th:if="${#lists.size(employees) > 0}">
+                    There are <span th:text="${#lists.size(employees)}"></span> results.
+                </div>
             </div>
         </div>
     </div>
+
+    <div th:replace="~{layout/footer :: footer}"></div>
 </div>
-
-<div th:replace="~{layout/footer :: footer}"></div>
-
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.js"></script>
@@ -79,12 +79,12 @@
     $(document).ready(function() {
         $("#employee-table").DataTable({
             'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': [-1]},
-            { 'className': 'text-center', 'aTargets': [-1, -2, -3, -4, -5] }
+            {'bSortable': false, 'aTargets': [-1]}
             ]
 
         });
     })
+
 </script>
 </body>
 </html>
