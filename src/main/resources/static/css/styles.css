@@ -115,6 +115,16 @@ a {
     --bs-gradient: none;
 }
 
+.signout {
+    display: flex;
+    align-items: center;
+}
+
+.email {
+    margin-right: 30px;
+    font-size: 16px;
+}
+
 /* footer */
 .text-muted {
     margin-bottom: 0px;
