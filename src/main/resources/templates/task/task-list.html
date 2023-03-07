@@ -98,8 +98,8 @@
     $(document).ready(function() {
         $("#task-table").DataTable({
             'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': [-1]},
-            {'bSortable': false, 'aTargets': [-2]}
+            {'bSortable': false, 'aTargets': [-1, -2]},
+            { 'className': 'text-center', 'aTargets': [-1, -2, -3, -4, -5, -6] }
             ]
 
         });

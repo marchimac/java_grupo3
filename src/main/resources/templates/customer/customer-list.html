@@ -81,7 +81,8 @@
     $(document).ready(function() {
         $("#customer-table").DataTable({
             'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': [-1]}
+            {'bSortable': false, 'aTargets': [-1]},
+            { 'className': 'text-center', 'aTargets': [-1, -2, -3, -4] }
             ]
 
         });
