@@ -79,15 +79,9 @@
     $(document).ready(function() {
         $("#company-table").DataTable({
             'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': [-1]},
-            {'bSortable': false, 'aTargets': [-2]},
-            {'bSortable': false, 'aTargets': [-3]}
-        ],
-        'createdRow': function(row, data, dataIndex) {
-            if (dataIndex === 0) {
-                $('td', row).css('text-align', 'center');
-            }
-        }
+            {'bSortable': false, 'aTargets': [-1, -2, -3]},
+            { 'className': 'text-center', 'aTargets': [-1, -2, -3, -4, -5, -6] }
+        ]
 
         });
     })

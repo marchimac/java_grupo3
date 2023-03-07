@@ -79,8 +79,8 @@
             <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(tasks)}">
                 There are not elements to show.
             </div>
-            <div class="text-center" th:if="${#lists.size(tasks) > 0}">
                 <!-- TODO Error al mostrar employees desde task-->
+            <div class="text-center" th:if="${#lists.size(tasks) > 0}">
                 There are <span th:text="${#lists.size(tasks)}"></span> results.
             </div>
 
@@ -97,8 +97,8 @@
     $(document).ready(function() {
         $("#task-table").DataTable({
             'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': [-1]},
-            {'bSortable': false, 'aTargets': [-2]}
+            { 'bSortable': false, 'aTargets': [-1, -2]},
+            { 'className': 'text-center', 'aTargets': [-1, -2, -3, -4, -5, -6] }
             ]
 
         });
