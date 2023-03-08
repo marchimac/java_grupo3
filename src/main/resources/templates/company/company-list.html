@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.css} "/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.css"/>
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.3/datatables.min.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="the-container">
@@ -16,8 +16,8 @@
         <div class="row">
             <h1>Companies</h1>
             <div class="col mt-3">
-                <a class="btn btn-info" th:href="@{/companies/create}">Add new company</a>
-                <table class="table table-bordered table-striped" id="company-table">
+                <a class="btn btn-info mb-3" th:href="@{/companies/create}">Add new company</a>
+                <table class="table table-bordered table-striped mt-3" id="company-table">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -72,9 +72,9 @@
 
     <div th:replace="~{layout/footer :: footer}"></div>
 </div>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.js"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>-->
+<script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.3/datatables.min.js"></script>
 <script>
     $(document).ready(function() {
         $("#company-table").DataTable({

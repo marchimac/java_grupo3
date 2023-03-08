@@ -41,10 +41,13 @@
                 <a class="btn btn-primary" th:href="@{/companies}">Return</a>
             </div>
 
-            <div class="card card-detail" th:if="${error} == null">
-                <div class="card-body">
-                    <h5 class="card-title mb-0" th:text="${company.name}"></h5>
-                </div>
+
+                <div class="card card-detail" th:if="${error} == null">
+                    <img th:src="${#strings.isEmpty(company.imageUrl)} ? '/img/image-load-failed.png' : |/files/${company.imageUrl}|" class="card-img-top" alt="Company Image">
+
+                    <div class="card-body">
+                        <h5 class="card-title mb-0" th:text="${company.name}"></h5>
+                    </div>
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
