@@ -3,7 +3,7 @@ package com.example.controllers;
 import com.example.entities.Address;
 import com.example.entities.Customer;
 import com.example.services.CustomerService;
-import com.example.services.FileStorageService;
+import com.example.services.FileService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ import java.util.Optional;
 public class CustomerController {
 
     private final CustomerService customerService;
-    private final FileStorageService fileStorageService;
+    private final FileService fileService;
 
     @GetMapping("customers")
     public String findAll(Model model) {
@@ -65,7 +65,7 @@ public class CustomerController {
         }
 
         try {
-            String fileName = fileStorageService.storeInFileSystem(file);
+            String fileName = fileService.storeInFileSystem(file);
             customer.setImageUrl(fileName); // string
             customerService.save(customer);
             return "redirect:/customers"; // redirección a controlador findAll

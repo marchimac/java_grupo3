@@ -3,8 +3,7 @@ package com.example.controllers;
 import com.example.entities.Company;
 import com.example.repositories.EmployeeRepository;
 import com.example.services.CompanyService;
-import com.example.services.EmployeeService;
-import com.example.services.FileStorageService;
+import com.example.services.FileService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ import java.util.Optional;
 public class CompanyController {
     private final CompanyService companyService;
     private final EmployeeRepository employeeRepository;
-    private final FileStorageService fileStorageService;
+    private final FileService fileService;
 
     @GetMapping("/")
     public String index() {
@@ -91,7 +90,7 @@ public class CompanyController {
         }
 
         try {
-            String fileName = fileStorageService.storeInFileSystem(file);
+            String fileName = fileService.storeInFileSystem(file);
             company.setImageUrl(fileName); // string
             companyService.save(company);
             return "redirect:/companies"; // redirección a controlador findAll
