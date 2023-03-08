@@ -30,6 +30,7 @@ body {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 .input-group-append {
@@ -82,17 +83,6 @@ a {
     padding-top: 0.2rem !important;
 }
 
-.the-container {
-    height: 100vh !important;
-    display: flex;
-    flex-direction: column;
-}
-
-.content {
-    height: -webkit-fill-available;
-    flex-grow: 1;
-}
-
 .form-control:focus {
     box-shadow: var(--logoblue) !important;
 }
@@ -122,5 +112,91 @@ a {
 /* footer */
 .text-muted {
     margin-bottom: 0px;
+}
+
+/* =========== COMPANY DETAIL =========== */
+.return{
+    margin: 1rem 0 1rem 2rem;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1.2rem;
+}
+
+.arrow {
+    padding: 0px 5px 0 0;
+}
+
+.the-container {
+    height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    max-width: 90%;
+    flex-grow: 1;
+    border: 2px solid #c2dddf;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 46px;
+}
+
+.image {
+    width: auto;
+    margin: 20px
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+}
+
+.image img {
+    width: 200px;
+}
+
+.edit-del {
+    width: 125px;
+    gap: 10px;
+}
+.edit-del a {
+    color: #fff;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 4px;
+}
+.edit {
+    background: #07767DCF;
+    height: 35px;
+}
+
+.delete {
+    background: #CB1414;
+    height: 35px;
+}
+
+.detail-table{
+    width: fit-content;
+    margin: 20px;
+}
+
+.card-detail {
+    border: 0.5px solid #07767D;
+    border-radius: 15px;
+}
+
+.detail-table > div > div {
+    padding-left: 30px;
+}
+
+.detail-table > div > ul {
+    border-radius: 0 0 30px 30px !important;
+}
+
+.detail-table > div > ul > li {
+    height: 50px;
+    padding-left: 30px;
 }
 

@@ -5,59 +5,66 @@
     <title>Company Detail</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
-    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/6.2.0/css/all.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.css} "/>
 </head>
 <body>
 <div class="the-container">
     <div th:replace="~{layout/navbar :: navbar}"></div>
 
-    <div class="container content text-center">
-        <div class="row">
-            <h1 class="h1-title">Company detail</h1>
+    <div class="return">
+        <a th:href="@{/companies}">
+            <div class="input-group-append">
+                <span class="input-group-text arrow"><i class="fa fa-arrow-left"></i></span>
+            </div>
+            Return
+        </a>
+    </div>
 
-            <div class="col"></div>
+    <div class="container content">
 
-            <div class="col">
+        <div class="col-md-4 image">
+            <img src="https://dummyimage.com/300" class="card-img-top" alt="Company Image">
+            <div class="row edit-del">
+                <a class="btn edit" th:href="@{/companies/{id}/edit(id=${company.id})}">Edit</a>
+                <a class="btn delete" th:href="@{/companies/{id}/delete(id=${company.id})}">Delete</a>
+            </div>
+        </div>
 
-                <div th:if="${error}">
-                    <div class="alert alert-danger" role="alert">
-                        <p th:text="${error}"></p>
-                    </div>
-                    <a class="btn btn-primary" th:href="@{/companies}">Return</a>
+
+        <div class="col-md-8 detail-table">
+
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
                 </div>
-
-
-                <div class="card" th:if="${error} == null">
-                    <img src="https://dummyimage.com/300" class="card-img-top" alt="Company Image">
-
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${company.name}"></h5>
-                    </div>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:text="|Id: ${company.id}|"></li>
-                        <li class="list-group-item" th:text="|Slogan: ${company.slogan}|"></li>
-                        <li class="list-group-item" th:text="|url: ${company.url}|"></li>
-                        <li class="list-group-item" th:text="|LinkedIn: ${company.linkedIn}|"></li>
-                        <li class="list-group-item" th:text="|Twitter: ${company.twitter}|"></li>
-                        <li class="list-group-item" th:text="|CIF: ${company.cif}|"></li>
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"
-                            th:text="|ADDRESS: ${company.address.street}, ${company.address.postalCode}, ${company.address.city}, ${company.address.country}|"></li>
-
-                    </ul>
-
-                    <div class="card-body">
-                        <a class="btn btn-primary" th:href="@{/companies}">Return</a>
-                        <a class="btn btn-success" th:href="@{/companies/{id}/edit(id=${company.id})}">Edit</a>
-                        <a class="btn btn-danger" th:href="@{/companies/{id}/delete(id=${company.id})}">Delete</a>
-                    </div>
-                </div>
+                <a class="btn btn-primary" th:href="@{/companies}">Return</a>
             </div>
 
-            <div class="col"></div>
+            <div class="card card-detail" th:if="${error} == null">
+                <div class="card-body">
+                    <h5 class="card-title mb-0" th:text="${company.name}"></h5>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
+                        th:text="|Id: ${company.id}|"></li>
+                    <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
+                        th:text="|Slogan: ${company.slogan}|"></li>
+                    <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
+                        th:text="|url: ${company.url}|"></li>
+                    <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
+                        th:text="|LinkedIn: ${company.linkedIn}|"></li>
+                    <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
+                        th:text="|Twitter: ${company.twitter}|"></li>
+                    <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
+                        th:text="|CIF: ${company.cif}|"></li>
+                    <li class="list-group-item"
+                        th:text="|ADDRESS: ${company.address.street}, ${company.address.postalCode}, ${company.address.city}, ${company.address.country}|"></li>
+                </ul>
+            </div>
         </div>
     </div>
+
     <div th:replace="~{layout/footer :: footer}"></div>
 </div>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
