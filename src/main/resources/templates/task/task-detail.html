@@ -5,54 +5,46 @@
     <title>Task Detail</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.css} "/>
 </head>
 <body>
 <div class="the-container">
     <div th:replace="~{layout/navbar :: navbar}"></div>
+    <div class="return">
+        <a th:href="@{/tasks}">
+            <div class="input-group-append">
+                <span class="input-group-text arrow"><i class="fa fa-arrow-left"></i></span>
+            </div>
+            Return
+        </a>
+    </div>
 
-    <div class="container content text-center">
-        <div class="row">
-            <h1 class="h1-title">Task detail</h1>
-
-            <div class="col"></div>
-
-            <div class="col">
-
-                <div th:if="${error}">
-                    <div class="alert alert-danger" role="alert">
-                        <p th:text="${error}"></p>
-                    </div>
-                    <a class="btn btn-primary" th:href="@{/tasks}">Return</a>
+    <div class="container content">
+        <div class="col-md-8 detail-table task">
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
                 </div>
-
-
-                <div class="card" th:if="${error} == null">
-<!--                    <img src="/img/image-load-failed.png" class="card-img-top" alt="Task Image">-->
-
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${task.name}"></h5>
-                    </div>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:text="|Id: ${task.id}|"></li>
-                        <li class="list-group-item" th:text="|Name: ${task.name}|"></li>
-                        <li class="list-group-item" th:text="|Description: ${task.description}|"></li>
-                        <li class="list-group-item" th:text="|Due Date: ${task.dueDate}|"></li>
-                        <li class="list-group-item" th:text="|Employee: ${task.employee.name}|"></li>
-                        <li class="list-group-item" th:text="|Status: ${task.status.displayValue}|"></li>
-                        <li class="list-group-item" th:text="|Priority: ${task.priority.displayValue}|"></li>
-
-                    </ul>
-
-                    <div class="card-body">
-                        <a class="btn btn-primary" th:href="@{/tasks}">Return</a>
-                        <a class="btn btn-success" th:href="@{/tasks/{id}/edit(id=${task.id})}">Edit</a>
-                        <a class="btn btn-danger" th:href="@{/tasks/{id}/delete(id=${task.id})}">Delete</a>
-                    </div>
-                </div>
+                <a class="btn btn-primary" th:href="@{/tasks}">Return</a>
             </div>
 
-            <div class="col"></div>
+            <div class="card card-detail" th:if="${error} == null">
+                <div class="card-body">
+                    <h5 class="card-title text-center" th:text="${task.name}"></h5>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:text="|Description: ${task.description}|"></li>
+                    <li class="list-group-item" th:text="|Due Date: ${task.dueDate}|"></li>
+                    <li class="list-group-item" th:text="|Employee: ${task.employee.name}|"></li>
+                    <li class="list-group-item" th:text="|Status: ${task.status.displayValue}|"></li>
+                    <li class="list-group-item" th:text="|Priority: ${task.priority.displayValue}|"></li>
+                </ul>
+            </div>
+            <div class="row edit-del task">
+                <a class="btn edit" th:href="@{/tasks/{id}/edit(id=${task.id})}">Edit</a>
+                <a class="btn delete" th:href="@{/tasks/{id}/delete(id=${task.id})}">Delete</a>
+            </div>
         </div>
     </div>
     <div th:replace="~{layout/footer :: footer}"></div>

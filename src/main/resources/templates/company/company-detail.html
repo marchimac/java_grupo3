@@ -21,9 +21,8 @@
     </div>
 
     <div class="container content">
-
         <div class="col-md-4 image">
-            <img th:src="${#strings.isEmpty(company.imageUrl)} ? '/img/image-load-failed.png' : |/img/uploads/${company.imageUrl}|" class="card-img-top" alt="Company Image">
+            <img th:src="${#strings.isEmpty(company.imageUrl)} ? '/img/image-load-failed.png' : |/files/${company.imageUrl}|" class="card-img-top" alt="Company Image">
 
             <div class="row edit-del">
                 <a class="btn edit" th:href="@{/companies/{id}/edit(id=${company.id})}">Edit</a>
@@ -31,27 +30,19 @@
             </div>
         </div>
 
-
         <div class="col-md-8 detail-table">
-
             <div th:if="${error}">
                 <div class="alert alert-danger" role="alert">
                     <p th:text="${error}"></p>
                 </div>
                 <a class="btn btn-primary" th:href="@{/companies}">Return</a>
             </div>
-
-
-                <div class="card card-detail" th:if="${error} == null">
-                    <img th:src="${#strings.isEmpty(company.imageUrl)} ? '/img/image-load-failed.png' : |/files/${company.imageUrl}|" class="card-img-top" alt="Company Image">
-
-                    <div class="card-body">
-                        <h5 class="card-title mb-0" th:text="${company.name}"></h5>
-                    </div>
+            <div class="card card-detail" th:if="${error} == null">
+                <div class="card-body">
+                    <h5 class="card-title mb-0" th:text="${company.name}"></h5>
+                </div>
 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
-                        th:text="|Id: ${company.id}|"></li>
                     <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
                         th:text="|Slogan: ${company.slogan}|"></li>
                     <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
@@ -63,7 +54,7 @@
                     <li class="list-group-item" style="border-bottom: 0.5px solid #07767d4d"
                         th:text="|CIF: ${company.cif}|"></li>
                     <li class="list-group-item"
-                        th:text="|ADDRESS: ${company.address.street}, ${company.address.postalCode}, ${company.address.city}, ${company.address.country}|"></li>
+                        th:text="|Address: ${company.address.street}, ${company.address.postalCode}, ${company.address.city}, ${company.address.country}|"></li>
                 </ul>
             </div>
         </div>

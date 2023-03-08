@@ -13,30 +13,12 @@
 
     <div th:replace="~{layout/navbar :: navbar}"></div>
 
-    <div class="container content text-center">
+    <div class="container content text-center content-list">
         <div class="row">
             <h1>Tasks</h1>
             <div class="col mt-3">
-                <a class="btn btn-info mb-3" th:href="@{/tasks/create}">Add new task</a>
-
-<!--                <div class="mt-2">-->
-<!--                    <span>Filter by status: </span>-->
-<!--                    <a th:href="@{/tasks/status/in_progress}">In progress</a>-->
-<!--                    <a th:href="@{/tasks/status/pending}">Pending</a>-->
-<!--                    <a th:href="@{/tasks/status/completed}">Completed</a>-->
-<!--                    <a th:href="@{/tasks/status/canceled}">Canceled</a>-->
-<!--                    <a th:href="@{/tasks}">Show all</a>-->
-<!--                </div>-->
-<!--                <div class="mt-2">-->
-<!--                    <span>Filter by status: </span>-->
-<!--                    <a th:href="@{/tasks/status/in_progress}">In progress</a>-->
-<!--                    <a th:href="@{/tasks/status/pending}">Pending</a>-->
-<!--                    <a th:href="@{/tasks/status/completed}">Completed</a>-->
-<!--                   <a th:href="@{/tasks/status/canceled}">Canceled</a>-->
-<!--                   <a th:href="@{/tasks}">Show all</a>-->
-<!--                </div>-->
-
-                <table class="table table-bordered table-striped mt-3" id="task-table">
+                <a class="btn btn-info" th:href="@{/tasks/create}">Add new task</a>
+                <table class="table table-bordered table-striped" id="task-table">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -53,22 +35,22 @@
                         <td th:text="${task.status.displayValue}"></td>
                         <td th:text="${task.priority.displayValue}"></td>
                         <td th:text="${task.dueDate}"></td>
-                        <td><a class="btn btn-info" th:href="@{/task/{id}/employees(id=${task.id})}">Employees</a></td>
+                        <td><a class="cell-links" th:href="@{/task/{id}/employees(id=${task.id})}">Employees</a></td>
                         <td>
                             <a th:href="@{/tasks/{id}(id=${task.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                                    <span class="input-group-text eye"><i class="fa fa-eye"></i></span>
                                 </div>
                             </a>
 
                             <a th:href="@{/tasks/{id}/edit(id=${task.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                                    <span class="input-group-text pencil"><i class="fa fa-pencil-alt"></i></span>
                                 </div>
                             </a>
                             <a th:href="@{/tasks/{id}/delete(id=${task.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                                    <span class="input-group-text trash"><i class="fa fa-trash-can"></i></span>
                                 </div>
                             </a>
                         </td>
