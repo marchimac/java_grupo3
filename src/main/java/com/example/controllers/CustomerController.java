@@ -30,10 +30,11 @@ public class CustomerController {
     @GetMapping("customers/{id}")
     public String findById(Model model, @PathVariable Long id) {
         Optional<Customer> customerOpt = customerService.findById(id);
-        if (customerOpt.isPresent())
+        if (customerOpt.isPresent()) {
             model.addAttribute("customer", customerOpt.get());
-        else
+        } else {
             model.addAttribute("error", "Customer not found");
+        }
 
         return "customer/customer-detail";
     }
