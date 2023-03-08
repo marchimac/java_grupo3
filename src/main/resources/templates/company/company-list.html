@@ -12,7 +12,7 @@
 <div class="the-container">
     <div th:replace="~{layout/navbar :: navbar}"></div>
 
-    <div class="container content text-center">
+    <div class="container content text-center content-list">
         <div class="row">
             <h1>Companies</h1>
             <div class="col mt-3">
@@ -33,9 +33,9 @@
                         <td th:text="${company.name}"></td>
                         <td th:text="${company.cif}"></td>
                         <td th:text="${company.address.city} + ', ' + ${company.address.country}"></td>
-                        <td><a class="btn btn-info" th:href="@{/company/{id}/employees(id=${company.id})}">Employees</a>
+                        <td><a class="cell-links" th:href="@{/company/{id}/employees(id=${company.id})}">Employees</a>
                         </td>
-                        <td><a class="btn btn-info" th:href="@{/company/{id}/projects(id=${company.id})}">Projects</a>
+                        <td><a class="cell-links" th:href="@{/company/{id}/projects(id=${company.id})}">Projects</a>
                         </td>
                         <td>
                             <a th:href="@{/companies/{id}(id=${company.id})}">

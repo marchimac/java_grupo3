@@ -11,6 +11,8 @@
   --logoblue: #076f76;
   --logoblack: #171810;
   --grey: #e2e2e2;
+  --darkgrey: #bfbfbf;
+  --bluishgrey: #d1d4e199;
 }
 
 .green {
@@ -41,7 +43,7 @@ a {
 
  /* navbar */
 .bg-info {
-    background-color: var(--grey) !important;
+    background-color: var(--bluishgrey) !important;
 }
 
 .navbar-brand {
@@ -55,7 +57,7 @@ a {
     color: var(--logoblue) !important;
     padding-bottom: 0.2rem !important;
     padding-top: 0.2rem !important;
-    border-bottom: solid var(--grey);
+    border-bottom: #e3e5ed;
 }
 
 .nav-link:focus {
@@ -86,6 +88,11 @@ a {
 .btn-primary {
     background-color: #F0E343 !important;
     color: #F4F4F4 !important;
+}
+
+.btn-info {
+    background-color: #abd0d0;
+    border: none;
 }
 
 .btn-outline-primary {
@@ -220,9 +227,9 @@ a {
     border-radius: 4px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 }
+
 span {
-    display: block;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 28px;
     color: #1a1f36;
 }
@@ -387,6 +394,10 @@ a.ssolink {
     column-gap: 46px;
 }
 
+.content-list {
+    border: none;
+}
+
 .image {
     width: auto;
     margin: 20px
@@ -445,3 +456,34 @@ a.ssolink {
     padding-left: 30px;
 }
 
+#company-table_wrapper > div:nth-child(1), #company-table_wrapper > div:nth-child(3) {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+#company-table_wrapper > div:nth-child(1) > div:nth-child(1), #company-table_wrapper > div:nth-child(3) > div.col-sm-12.col-md-5 {
+    width: auto;
+}
+
+#company-table_filter > label {
+    text-align: end;
+
+}
+
+.cell-links {
+    color: #058b8b;
+    text-decoration: underline;
+}
+
+.active>.page-link {
+    background-color: var(--bluishgrey);
+}
+.paginate_button.page-item.active > a {
+    color: #058b8b;
+    border-color: #058b8b;
+}
+
+#company-table_paginate > ul > li > a {
+    font-size: 14px;
+}
