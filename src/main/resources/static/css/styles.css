@@ -13,6 +13,9 @@
   --grey: #e2e2e2;
   --darkgrey: #bfbfbf;
   --bluishgrey: #d1d4e199;
+  --bluelake: #abd0d0;
+  --lightsteelblue: #c2dddf;
+  --aquamarine: #058b8b;
 }
 
 .green {
@@ -31,15 +34,6 @@ a {
     color: inherit;
 }
 
-.input-group-append {
-    display: inline-block;
-}
-
-.input-group-text {
-    background-color:transparent;
-    border: none;
-    width: fit-content;
-}
 
  /* navbar */
 .bg-info {
@@ -91,7 +85,7 @@ a {
 }
 
 .btn-info {
-    background-color: #abd0d0;
+    background-color: var(--bluelake);
     border: none;
 }
 
@@ -366,7 +360,18 @@ a.ssolink {
     transform: translateX(0px);
   }
 }
-/* =========== COMPANY DETAIL =========== */
+
+
+.input-group-append {
+    display: inline-block;
+}
+
+.input-group-text {
+    background-color:transparent;
+    border: none;
+    width: fit-content;
+}
+
 .return{
     margin: 1rem 0 1rem 2rem;
     font-family: 'League Spartan', sans-serif;
@@ -386,7 +391,7 @@ a.ssolink {
 .content {
     max-width: 90%;
     flex-grow: 1;
-    border: 2px solid #c2dddf;
+    border: 2px solid var(--lightsteelblue);
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
@@ -405,7 +410,7 @@ a.ssolink {
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 15px;
+    row-gap: 43px;
 }
 
 .image img {
@@ -416,7 +421,20 @@ a.ssolink {
     width: 125px;
     gap: 10px;
 }
-.edit-del a {
+
+.edit-del.proj,
+.edit-del.task,
+..edit-del.proj-form  {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+
+.edit-del a,
+.edit-del.proj-form a,
+.edit-del.task.my-4 > button,
+.edit-del.proj-form.my-4 > button {
     color: #fff;
     font-family: 'League Spartan', sans-serif;
     font-weight: 500;
@@ -426,6 +444,7 @@ a.ssolink {
 .edit {
     background: #07767DCF;
     height: 35px;
+
 }
 
 .delete {
@@ -436,6 +455,19 @@ a.ssolink {
 .detail-table{
     width: fit-content;
     margin: 20px;
+}
+
+.detail-table.proj,
+.detail-table.task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 43px;
+}
+
+.detail-table.task {
+    width: fit-content;
+    margin-top: 20px;
 }
 
 .card-detail {
@@ -456,23 +488,55 @@ a.ssolink {
     padding-left: 30px;
 }
 
-#company-table_wrapper > div:nth-child(1), #company-table_wrapper > div:nth-child(3) {
+#company-table_wrapper > div:nth-child(1),
+#company-table_wrapper > div:nth-child(3),
+#project-table_wrapper > div:nth-child(1),
+#project-table_wrapper > div:nth-child(3),
+#employee-table_wrapper > div:nth-child(1),
+#employee-table_wrapper > div:nth-child(3),
+#customer-table_wrapper > div:nth-child(1),
+#customer-table_wrapper > div:nth-child(3),
+#task-table_wrapper > div:nth-child(1),
+#task-table_wrapper > div:nth-child(3) {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
 }
 
-#company-table_wrapper > div:nth-child(1) > div:nth-child(1), #company-table_wrapper > div:nth-child(3) > div.col-sm-12.col-md-5 {
+#company-table_wrapper > div:nth-child(1) > div:nth-child(1),
+#company-table_wrapper > div:nth-child(3) > div.col-sm-12.col-md-5,
+#project-table_wrapper > div:nth-child(1) > div:nth-child(1),
+#project-table_wrapper > div:nth-child(3) > div.col-sm-12.col-md-5,
+#employee-table_wrapper > div:nth-child(1) > div:nth-child(1),
+#employee-table_wrapper > div:nth-child(3) > div.col-sm-12.col-md-5,
+#customer-table_wrapper > div:nth-child(1) > div:nth-child(1),
+#customer-table_wrapper > div:nth-child(3) > div.col-sm-12.col-md-5,
+#task-table_wrapper > div:nth-child(1) > div:nth-child(1),
+#task-table_wrapper > div:nth-child(3) > div.col-sm-12.col-md-5 {
     width: auto;
 }
 
-#company-table_filter > label {
+#company-table_filter > label,
+#project-table_filter > label,
+#employee-table_filter > label,
+#customer-table_filter > label,
+#task-table_filter > label {
     text-align: end;
 
 }
 
+tbody > tr > td> a:nth-child(1) > div > span > i {
+    color: #436faf;
+}
+tbody > tr > td > a:nth-child(2) > div > span > i {
+    color: #9c7c1c;
+}
+tbody > tr > td > a:nth-child(3) > div > span > i {
+    color: #842029;
+}
+
 .cell-links {
-    color: #058b8b;
+    color: var(--aquamarine);
     text-decoration: underline;
 }
 
@@ -480,10 +544,42 @@ a.ssolink {
     background-color: var(--bluishgrey);
 }
 .paginate_button.page-item.active > a {
-    color: #058b8b;
-    border-color: #058b8b;
+    color: var(--aquamarine);
+    border-color: var(--aquamarine);
 }
 
-#company-table_paginate > ul > li > a {
+#company-table_paginate > ul > li > a,
+#project-table_paginate > ul > li > a,
+#employee-table_paginate > ul > li > a,
+#customer-table_paginate > ul > li > a,
+#task-table_paginate > ul > li > a  {
     font-size: 14px;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container.content > div > form > div.row.edit-del.task.my-4 {
+    justify-content: unset;
+    margin-left: 62px;
+}
+
+body > div > div.container.content > div > form > div.card.card-detail > ul {
+    border-radius: 0 0 30px 30px;
+}
+
+.container.content > div > form > div.row.edit-del.proj-form.my-4 {
+    justify-content: unset;
+    margin-left: 120px;
+    flex-wrap: nowrap;
+}
+
+body > div > div.container.content.proj-form > div {
+    width: 500px;
+}
+body > div > div.container.content.proj-form > div > form {
+    width: inherit;
 }

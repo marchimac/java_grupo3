@@ -3,70 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer Detail</title>
-
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.css} "/>
 </head>
 <body>
 <div class="the-container">
     <div th:replace="~{layout/navbar :: navbar}"></div>
+    <div class="return">
+        <a th:href="@{/customers}">
+            <div class="input-group-append">
+                <span class="input-group-text arrow"><i class="fa fa-arrow-left"></i></span>
+            </div>
+            Return
+        </a>
+    </div>
 
-    <div class="container content text-center">
-        <div class="row">
+    <div class="container content">
+        <div class="col-md-4 image">
+            <img th:src="${#strings.isEmpty(customer.imageUrl)} ? '/img/image-load-failed.png' : |/img/uploads/${customer.imageUrl}|" class="card-img-top" alt="Customer Image">
 
-            <h1 class="h1-title">Customer detail</h1>
-            <div class="col"></div>
+            <div class="row edit-del">
+                <a class="btn edit" th:href="@{/customers/{id}/edit(id=${customer.id})}">Edit</a>
+                <a class="btn delete" th:href="@{/customers/{id}/delete(id=${customer.id})}">Delete</a>
+            </div>
+        </div>
 
-            <div class="col">
+        <div class="col-md-8 detail-table">
 
-                <div th:if="${error}">
-                    <div class="alert alert-danger" role="alert">
-                        <p th:text="${error}"></p>
-                    </div>
-                    <a class="btn btn-primary" th:href="@{/customers}">Return</a>
+
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
                 </div>
-
-
-                <div class="card" th:if="${error} == null">
-                    <img th:src="${#strings.isEmpty(customer.imageUrl)} ? '/img/image-load-failed.png' : |/files/${customer.imageUrl}|" class="card-img-top" alt="Customer Image">
-
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${customer.name}"></h5>
-                    </div>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:text="|ID: ${customer.id}|"></li>
-                        <li class="list-group-item" th:text="|CIF: ${customer.cif}|"></li>
-                        <li class="list-group-item" th:text="|Phone: ${customer.phone}|"></li>
-                        <li class="list-group-item" th:text="|Email: ${customer.email}|"></li>
-                        <li class="list-group-item"
-                            th:text="|Address: ${customer.address.street}, ${customer.address.postalCode}, ${customer.address.city}, ${customer.address.country}|"></li>
-
-                        <!--
-                        TODO:
-                        <li class="list-group-item" th:text="|Registration date: ${#temporals.format(customer.registrationDate, 'dd/MM/yy')}|"></li>-->
-
-                        <!--TODO: Ver proyectos del cliente
-                            <li class="list-group-item">
-                                  <a class="btn btn-link btn-sm"
-                                     th:text="${customer.supermarket.name}"
-                                     th:href="@{/supermarkets/{id}(id=${customer.supermarket.id})}"></a>
-                              </li>-->
-
-                    </ul>
-
-                    <!--TODO Bucle for para mostrar los proyectos del cliente con un enlace hacia el detalle de cada project-->
-
-                    <div class="card-body">
-                        <a class="btn btn-primary" th:href="@{/customers}">Return</a>
-                        <a class="btn btn-success" th:href="@{/customers/{id}/edit(id=${customer.id})}">Edit</a>
-                        <a class="btn btn-danger" th:href="@{/customers/{id}/delete(id=${customer.id})}">Delete</a>
-                    </div>
-
-                </div>
+                <a class="btn btn-primary" th:href="@{/customers}">Return</a>
             </div>
 
-            <div class="col"></div>
+            <div class="card card-detail" th:if="${error} == null">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${customer.name}"></h5>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:text="|CIF: ${customer.cif}|"></li>
+                    <li class="list-group-item" th:text="|Phone: ${customer.phone}|"></li>
+                    <li class="list-group-item" th:text="|Email: ${customer.email}|"></li>
+                    <li class="list-group-item" th:text="|Address: ${customer.address.street}, ${customer.address.postalCode}, ${customer.address.city}, ${customer.address.country}|"></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div th:replace="~{layout/footer :: footer}"></div>
