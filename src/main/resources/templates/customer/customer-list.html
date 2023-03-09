@@ -13,19 +13,12 @@
 
     <div th:replace="~{layout/navbar :: navbar}"></div>
 
-    <div class="container content text-center">
+    <div class="container content text-center content-list">
         <div class="row">
             <div class="col-2"></div>
             <h1>Customers</h1>
             <div class="col mt-3">
                 <a class="btn btn-info" th:href="@{/customers/create}">Add new customer</a>
-                <!--TODO
-                <div class="mt-2">
-                    <span>Filter by project: </span>
-                    <a class="btn btn-primary" th:href="@{/customers/project/project1}">Project1</a>
-                    <a class="btn btn-primary" th:href="@{/customers/project/project2}">Project2</a>
-                </div>-->
-
                 <table class="table table-bordered table-striped" id="customer-table">
                     <thead>
                     <tr>
@@ -43,17 +36,17 @@
                         <td>
                             <a th:href="@{/customers/{id}(id=${customer.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                                    <span class="input-group-text eye"><i class="fa fa-eye"></i></span>
                                 </div>
                             </a>
                             <a th:href="@{/customers/{id}/edit(id=${customer.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                                    <span class="input-group-text pencil"><i class="fa fa-pencil-alt"></i></span>
                                 </div>
                             </a>
                             <a th:href="@{/customers/{id}/delete(id=${customer.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                                    <span class="input-group-text trash"><i class="fa fa-trash-can"></i></span>
                                 </div>
                             </a>
                         </td>

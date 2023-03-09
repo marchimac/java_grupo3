@@ -37,6 +37,7 @@ public class Company {
 
     @Column(unique = true)
     private String cif;
+    private String imageUrl;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)

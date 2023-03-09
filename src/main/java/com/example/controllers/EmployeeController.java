@@ -4,14 +4,13 @@ import com.example.entities.Address;
 import com.example.entities.Employee;
 import com.example.services.CompanyService;
 import com.example.services.EmployeeService;
+import com.example.services.FileService;
 import com.example.services.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +22,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
     private final CompanyService companyService;
     private final ProjectService projectService;
+    private final FileService fileService;
 
     @GetMapping("employees")
     public String findAll(Model model) {
@@ -34,10 +34,11 @@ public class EmployeeController {
     @GetMapping("employees/{id}") // http://localhost:8080/employees/1
     public String findById(Model model, @PathVariable Long id) {
         Optional<Employee> employeeOpt = employeeService.findById(id);
-        if (employeeOpt.isPresent())
+        if (employeeOpt.isPresent()) {
             model.addAttribute("employee", employeeOpt.get());
-        else
+        } else {
             model.addAttribute("error", "Employee not found");
+        }
 
         return "employee/employee-detail";
     }
@@ -67,9 +68,23 @@ public class EmployeeController {
     }
 
     @PostMapping("employees")
-    public String saveForm(@ModelAttribute Employee employee) {
-        employeeService.save(employee);
-        return "redirect:/employees";
+    public String saveForm(Model model, @ModelAttribute Employee employee, @RequestParam("file") MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            employeeService.save(employee);
+            return "redirect:/employees";
+        }
+
+        try {
+            String fileName = fileService.storeInFileSystem(file);
+            employee.setImageUrl(fileName); // string
+            employeeService.save(employee);
+            return "redirect:/employees"; // redirección a controlador findAll
+        } catch (Exception e) {
+            model.addAttribute("error", "Failed to save image");
+            model.addAttribute("employees", employeeService.findAll());
+            return "employee/employee-list";
+        }
+
     }
 
     @GetMapping("employees/{id}/delete")

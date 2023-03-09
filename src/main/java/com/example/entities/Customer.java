@@ -31,6 +31,7 @@ public class Customer {
     private String phone;
     @Column(unique = true)
     private String email;
+    private String imageUrl;
 
     @OneToMany(mappedBy = "customer")
     @ToString.Exclude

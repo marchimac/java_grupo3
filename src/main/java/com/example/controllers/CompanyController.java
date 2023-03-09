@@ -3,14 +3,12 @@ package com.example.controllers;
 import com.example.entities.Company;
 import com.example.repositories.EmployeeRepository;
 import com.example.services.CompanyService;
-import com.example.services.EmployeeService;
+import com.example.services.FileService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,10 +18,11 @@ import java.util.Optional;
 public class CompanyController {
     private final CompanyService companyService;
     private final EmployeeRepository employeeRepository;
+    private final FileService fileService;
 
     @GetMapping("/")
     public String index() {
-        return "redirect:/companies";
+        return "layout/main";
     }
 
     @GetMapping("companies")
@@ -84,9 +83,22 @@ public class CompanyController {
     }
 
     @PostMapping("companies")
-    public String saveForm(@ModelAttribute Company company) {
-        companyService.save(company);
-        return "redirect:/companies";
+    public String saveForm(Model model, @ModelAttribute Company company, @RequestParam("file") MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            companyService.save(company);
+            return "redirect:/companies";
+        }
+
+        try {
+            String fileName = fileService.storeInFileSystem(file);
+            company.setImageUrl(fileName); // string
+            companyService.save(company);
+            return "redirect:/companies"; // redirección a controlador findAll
+        } catch (Exception e) {
+            model.addAttribute("error", "Failed to save image");
+            model.addAttribute("companies", companyService.findAll());
+            return "company/company-list";
+        }
     }
 
     @GetMapping("companies/{id}/delete")

@@ -12,18 +12,11 @@
 <div class="the-container">
     <div th:replace="~{layout/navbar :: navbar}"></div>
 
-    <div class="container content text-center">
+    <div class="container content text-center content-list">
         <div class="row">
             <h1>Employees</h1>
             <div class="col mt-3">
-                <a class="btn btn-info" th:href="@{/employees/create}">Add new employee</a>
-                <!--TODO
-                <div class="mt-2">
-                    <span>Filter by task: </span>
-                    <a class="btn btn-primary" th:href="@{/employees/task/task1}">Task1</a>
-                    <a class="btn btn-primary" th:href="@{/employees/task/task2}">Task22</a>
-                </div>-->
-
+                <a class="btn btn-info " th:href="@{/employees/create}">Add new employee</a>
                 <table class="table table-bordered table-striped" id="employee-table">
                     <thead>
                     <tr>
@@ -43,17 +36,17 @@
                         <td>
                             <a th:href="@{/employees/{id}(id=${employee.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                                    <span class="input-group-text eye"><i class="fa fa-eye"></i></span>
                                 </div>
                             </a>
                             <a th:href="@{/employees/{id}/edit(id=${employee.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-pencil-alt"></i></span>
+                                    <span class="input-group-text pencil"><i class="fa fa-pencil-alt"></i></span>
                                 </div>
                             </a>
                             <a th:href="@{/employees/{id}/delete(id=${employee.id})}">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-trash-can"></i></span>
+                                    <span class="input-group-text trash"><i class="fa fa-trash-can"></i></span>
                                 </div>
                             </a>
                         </td>
