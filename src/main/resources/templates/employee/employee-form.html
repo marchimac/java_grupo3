@@ -3,125 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee Form</title>
-
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.css} "/>
 </head>
 <body>
 <div class="the-container">
     <div th:replace="~{layout/navbar :: navbar}"></div>
 
-    <div class="container content mb-5 text-center">
-        <div class="row">
+    <div class="return">
+        <a th:href="${employee.id == null ? '/employees' : '/employees/' + employee.id}">
+            <div class="input-group-append">
+                <span class="input-group-text arrow"><i class="fa fa-arrow-left"></i></span>
+            </div>
+            Return
+        </a>
+    </div>
 
-            <h1 th:if="${employee.id}">Edit employee ID: <span th:text="${employee.id}"></span></h1>
-            <h1 th:if="${employee.id} == null">Add new employee</h1>
-
-            <div class="col"></div>
-
-            <div class="col">
-
-                <div th:if="${error}">
-                    <div class="alert alert-danger" role="alert">
-                        <p th:text="${error}"></p>
-                    </div>
-                    <a type="button" class="btn btn-primary" th:href="@{/employees}">Return</a>
+    <div class="container content proj-form">
+        <div class="col-md-8 detail-table task">
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
                 </div>
-
-                <form th:if="${error} == null" th:action="@{/employees}" method="POST" th:object="${employee}" enctype="multipart/form-data">
-
-                    <input type="hidden" id="id" th:field="*{id}"/>
-
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" th:field="*{name}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="dni" class="form-label">DNI</label>
-                        <input type="text" class="form-control" id="dni" th:field="*{dni}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="phone" th:field="*{phone}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" th:field="*{email}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="position" class="form-label">Position</label>
-                        <input type="text" class="form-control" id="position" th:field="*{position}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="birth" class="form-label">Birthday</label>
-                        <input type="date" class="form-control" id="birth" th:field="*{birth}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="contracting" class="form-label">Date of contracting</label>
-                        <input type="date" class="form-control" id="contracting" th:field="*{contracting}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="company" class="form-label">Company</label>
-                        <select id="company" aria-label="Companies" class="form-select" th:field="*{company}" required>
-                            <option th:if="${employee.id} == null" selected value=""></option>
-                            <option th:each="company : ${companies}" th:value="${company.id}"
-                                    th:text="${company.name}"></option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="project" class="form-label">Projects</label>
-                        <select id="project" aria-label="Projects" class="form-select" th:field="*{projects}" multiple
-                                required>
-                            <option th:each="project : ${projects}" th:value="${project.id}"
-                                    th:text="${project.name}"></option>
-                        </select>
-                    </div>
-
-                    <p>Address</p>
-                    <div class="mb-3">
-                        <label for="street" class="form-label">Street</label>
-                        <input type="text" class="form-control" id="street" th:field="*{address.street}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="postalCode" class="form-label">Postal Code</label>
-                        <input type="text" class="form-control" id="postalCode" th:field="*{address.postalCode}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="city" class="form-label">City</label>
-                        <input type="text" class="form-control" id="city" th:field="*{address.city}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="country" class="form-label">Country</label>
-                        <input type="text" class="form-control" id="country" th:field="*{address.country}">
-                    </div>
-
-                    <img th:if="${employee.imageUrl}" th:src="|/img/${employee.imageUrl}|" class="card-img-top" alt="Employee Image">
-                    <div class="mb-3" th:if="${employee.imageUrl}">
-                        <label for="imageUrl" class="form-label">Imagen Url</label>
-                        <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}" readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="file" class="form-label">Imagen</label>
-                        <input class="form-control" type="file" id="file" name="file">
-                    </div>
-
-                    <a class="btn btn-danger" th:href="@{/employees}">Cancel</a>
-                    <button type="submit" class="btn btn-success">Save</button>
-
-                </form>
-
+                <a class="btn btn-primary" th:href="@{/employees}">Return</a>
             </div>
 
-            <div class="col"></div>
+            <form th:if="${error} == null" th:action="@{/employees}" method="POST" th:object="${employee}"
+                  enctype="multipart/form-data">
+
+                <div class="card card-detail" th:if="${error} == null">
+                    <div class="card-body">
+                        <h2 class="card-title text-center" th:if="${employee.id}"
+                            th:text="|Modify ${employee.name}"></h2>
+                        <h2 class="card-title text-center" th:if="${employee.id} == null">New employee</h2>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+
+                        <input type="hidden" id="id" th:field="*{id}"/>
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" th:field="*{name}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="dni" class="form-label">DNI</label>
+                                <input type="text" class="form-control" id="dni" th:field="*{dni}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" th:field="*{phone}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" th:field="*{email}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="position" th:field="*{position}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="birth" class="form-label">Birthday</label>
+                                <input type="date" class="form-control" id="birth" th:field="*{birth}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="contracting" class="form-label">Date of contracting</label>
+                                <input type="date" class="form-control" id="contracting" th:field="*{contracting}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="company" class="form-label">Company</label>
+                                <select id="company" aria-label="Companies" class="form-select" th:field="*{company}"
+                                        required>
+                                    <option th:if="${employee.id} == null" selected value=""></option>
+                                    <option th:each="company : ${companies}" th:value="${company.id}"
+                                            th:text="${company.name}"></option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="mb-3">
+                                <label for="project" class="form-label">Projects</label>
+                                <select id="project" aria-label="Projects" class="form-select" th:field="*{projects}"
+                                        multiple
+                                        required>
+                                    <option th:each="project : ${projects}" th:value="${project.id}"
+                                            th:text="${project.name}"></option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <p>Address</p>
+                            <div class="mb-3">
+                                <label for="street" class="form-label">Street</label>
+                                <input type="text" class="form-control" id="street" th:field="*{address.street}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="postalCode" class="form-label">Postal Code</label>
+                                <input type="text" class="form-control" id="postalCode"
+                                       th:field="*{address.postalCode}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" th:field="*{address.city}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" class="form-control" id="country" th:field="*{address.country}">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <img th:if="${employee.imageUrl}" th:src="|/img/${employee.imageUrl}|" class="card-img-top"
+                                 alt="Employee Image">
+                            <div class="mb-3" th:if="${employee.imageUrl}">
+                                <label for="imageUrl" class="form-label">Imagen Url</label>
+                                <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="file" class="form-label">Imagen</label>
+                                <input class="form-control" type="file" id="file" name="file">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row edit-del proj-form my-4">
+                    <a class="btn delete" th:href="@{/employees}">Cancel</a>
+                    <button type="submit" class="btn edit">Save</button>
+                </div>
+            </form>
         </div>
     </div>
     <div th:replace="~{layout/footer :: footer}"></div>
