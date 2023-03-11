@@ -473,10 +473,7 @@ a.ssolink {
 .card-detail {
     border: 0.5px solid #07767D;
     border-radius: 15px;
-}
-
-.detail-table > div > div {
-    padding-left: 30px;
+    max-width: 700px;
 }
 
 .detail-table > div > ul {
@@ -484,8 +481,12 @@ a.ssolink {
 }
 
 .detail-table > div > ul > li {
-    height: 50px;
-    padding-left: 30px;
+    padding: 15px 30px;
+}
+
+.card-detail > ul > .textarea {
+    height: fit-content;
+
 }
 
 #company-table_wrapper > div:nth-child(1),
