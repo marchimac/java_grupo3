@@ -20,9 +20,14 @@ public class CompanyController {
     private final EmployeeRepository employeeRepository;
     private final FileService fileService;
 
+//    @GetMapping("/")
+//    public String index() {
+//        return "layout/main";
+//    }
+
     @GetMapping("/")
     public String index() {
-        return "layout/main";
+        return "redirect:/companies";
     }
 
     @GetMapping("companies")

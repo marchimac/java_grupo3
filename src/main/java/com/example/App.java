@@ -7,6 +7,7 @@ import com.example.repositories.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +25,8 @@ public class App {
         CompanyRepository companyRepo = context.getBean(CompanyRepository.class);
         CustomerRepository customerRepo = context.getBean(CustomerRepository.class);
         TaskRepository taskRepo = context.getBean(TaskRepository.class);
+        UserEntityRepository userRepository = context.getBean(UserEntityRepository.class);
+        PasswordEncoder passwordEncoder = context.getBean(PasswordEncoder.class);
 
         Address address1 = new Address(null, "Patricio nº1", "28086", "Madrid", "Spain", null, null);
         Address address2 = new Address(null, "Stoughton Lane 98", "82304", "Brinje", "Croatia", null, null);
@@ -76,30 +79,6 @@ public class App {
         Address address49 = new Address(null, "Avenida Presidente Masaryk 111", "11560", "Mexico City", "Mexico", null, null);
         Address address50 = new Address(null, "Schildergasse 45-47", "50667", "Cologne", "Germany", null, null);
         Address address51 = new Address(null, "Rue de la Paix 12", "75002", "Paris", "France", null, null);
-
-        Address address52 = new Address(null, "Rua Augusta 123", "01305-001", "São Paulo", "Brazil", null, null);
-        Address address53 = new Address(null, "Rue de Rivoli 456", "75001", "Paris", "France", null, null);
-        Address address54 = new Address(null, "Paseo de Gracia 789", "08008", "Barcelona", "Spain", null, null);
-        Address address55 = new Address(null, "Königsallee 10", "40212", "Düsseldorf", "Germany", null, null);
-        Address address56 = new Address(null, "Oxford Street 456", "W1C 1LT", "London", "United Kingdom", null, null);
-        Address address57 = new Address(null, "Fifth Avenue 123", "10022", "New York", "United States", null, null);
-        Address address58 = new Address(null, "Praça dos Restauradores 456", "1250-188", "Lisbon", "Portugal", null, null);
-        Address address59 = new Address(null, "Nevsky Prospect 789", "191186", "St. Petersburg", "Russia", null, null);
-        Address address60 = new Address(null, "Via Montenapoleone 10", "20121", "Milan", "Italy", null, null);
-        Address address61 = new Address(null, "Chuo-dori 123", "104-0061", "Tokyo", "Japan", null, null);
-        Address address62 = new Address(null, "Las Ramblas 456", "08002", "Barcelona", "Spain", null, null);
-        Address address63 = new Address(null, "Kärntner Straße 789", "1010", "Vienna", "Austria", null, null);
-        Address address64 = new Address(null, "Gran Vía 123", "28013", "Madrid", "Spain", null, null);
-        Address address65 = new Address(null, "Strøget 456", "1050", "Copenhagen", "Denmark", null, null);
-        Address address66 = new Address(null, "Calle Florida 789", "1005", "Buenos Aires", "Argentina", null, null);
-        Address address67 = new Address(null, "Orchard Road 10", "238801", "Singapore", "Singapore", null, null);
-        Address address68 = new Address(null, "Nanjing Road 123", "200003", "Shanghai", "China", null, null);
-        Address address69 = new Address(null, "Knez Mihailova 456", "11000", "Belgrade", "Serbia", null, null);
-        Address address70 = new Address(null, "Tverskaya Street 789", "125009", "Moscow", "Russia", null, null);
-        Address address71 = new Address(null, "Av. Paulista 123", "01310-100", "São Paulo", "Brazil", null, null);
-        Address address72 = new Address(null, "Kaivokatu 456", "00100", "Helsinki", "Finland", null, null);
-        Address address73 = new Address(null, "Jalan Bukit Bintang 789", "55100", "Kuala Lumpur", "Malaysia", null, null);
-        Address address74 = new Address(null, "Via della Conciliazione 1", "00193", "Rome", "Italy", null, null);
 
         Company company1 = new Company(null, "Aperture S.L.", "El valor se demuestra trabajando", "aperture@aperture.com", "https://www.lindedin.com/in/aperture", "http://twitter.com/aperture", "G6974740", "Aperture.jpg", address1, null, null);
         Company company2 = new Company(null, "Marcanast LTD", "Soluciones sin problemas", "marcanast@marcaset.com", "https://www.lindedin.com/in/marcanst", "http://twitter.com/marcanst", "B9487364", "Marcanast.png", address2, null, null);
@@ -196,11 +175,19 @@ public class App {
         Task task22 = new Task(null, "GeoTrack", "Real-time GPS tracking system\n", LocalDate.of(2021, 1, 7), project3, employee22, Status.CANCELED, Priority.CRITICAL);
         Task task23 = new Task(null, "HealthHub", "Personalized health monitoring device", LocalDate.of(2009, 9, 30), project9, employee23, Status.PENDING, Priority.LOW);
         Task task24 = new Task(null, "GreenGen", "Renewable energy grid optimization", LocalDate.of(2022, 9, 3), project5, employee24, Status.CANCELED, Priority.CRITICAL);
-//        Task task25 = new Task(null, "NeuralNet", "Artificial intelligence training system", LocalDate.of(2026, 2, 9), project3, employee18, Status.PENDING, Priority.MEDIUM);
-//        Task task26 = new Task(null, "DataForge", "Big data analytics toolset", LocalDate.of(2027, 12, 12), project10, employee19, Status.COMPLETED, Priority.MEDIUM);
-//        Task task27 = new Task(null, "AutoDrive", "Autonomous vehicle navigation system", LocalDate.of(2022, 4, 8), project7, employee20, Status.IN_PROGRESS, Priority.MEDIUM);
-//        Task task28 = new Task(null, "RoboGuard", "Automated security drone system", LocalDate.of(2020, 12, 20), project4, employee21, Status.IN_PROGRESS, Priority.LOW);
         taskRepo.saveAll(List.of(task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15, task16, task17, task18, task19, task20, task21, task22, task23, task24));
+
+        String encodedBeatriz = passwordEncoder.encode("admin");
+        String encodedItziar = passwordEncoder.encode("admin");
+        String encodedJuanjo = passwordEncoder.encode("admin");
+        String encodedJavi = passwordEncoder.encode("admin");
+        String encodedFernando = passwordEncoder.encode("admin");
+        UserEntity beatriz = new UserEntity(null, "Beatriz", "beatriz@grath.com", encodedBeatriz);
+        UserEntity itziar = new UserEntity(null, "Itziar", "itziar@grath.com", encodedItziar);
+        UserEntity juanjo = new UserEntity(null, "Juanjo", "juanjo@grath.com", encodedJuanjo);
+        UserEntity javi = new UserEntity(null, "Javi", "javi@grath.com", encodedJavi);
+        UserEntity fernando = new UserEntity(null, "Fernando", "fernando@grath.com", encodedFernando);
+        userRepository.saveAll(List.of(beatriz, itziar, juanjo, javi, fernando));
     }
 
 }
