@@ -34,11 +34,10 @@ public class EmployeeController {
     @GetMapping("employees/{id}") // http://localhost:8080/employees/1
     public String findById(Model model, @PathVariable Long id) {
         Optional<Employee> employeeOpt = employeeService.findById(id);
-        if (employeeOpt.isPresent()) {
+        if (employeeOpt.isPresent())
             model.addAttribute("employee", employeeOpt.get());
-        } else {
+        else
             model.addAttribute("error", "Employee not found");
-        }
 
         return "employee/employee-detail";
     }

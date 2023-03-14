@@ -1,56 +1,70 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 
 
 <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-info">
-  <div class="container-fluid">
-    <a class="navbar-brand" th:href="@{/}">
-      <img class="img-fluid nav-logo" src="/img/grath_logo.png" width="90px" alt="Logo Grath">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">
+            <img class="img-fluid nav-logo" src="/img/grath_logo.png" width="90px" alt="Logo Grath">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" th:href="@{/main}">Main</a>-->
-<!--        </li>-->
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/companies}">Companies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/projects}">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/tasks}">Tasks</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/employees}">Employees</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/customers}">Customers</a>
-        </li>
-      </ul>
-<!--      <form class="d-flex" role="search">-->
-<!--&lt;!&ndash;        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
-<!--        <a th:href="@{/}"><button class="btn btn-outline-primary" type="submit">Sign out</button></a>-->
-<!--      </form>-->
-        <div class="signout">
-            <span class="email">silvia@grath.com</span>
-            <!--                                    <input type="submit" name="submit" value="Continue" th:href="@{/companies}">>-->
-            <a class="btn btn-outline-primary" th:href="@{/}">Sign out</a>
+                <!--        <li class="nav-item">-->
+                <!--          <a class="nav-link" th:href="@{/main}">Main</a>-->
+                <!--        </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/companies}">Companies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/projects}">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/tasks}">Tasks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/employees}">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/customers}">Customers</a>
+                </li>
+            </ul>
+
+            <div class="d-flex" sec:authorize="isAnonymous()">
+                <a class="btn btn-link" th:href="@{/login}">Log In</a>
+            </div>
+            <div class="d-flex" sec:authorize="isAnonymous()">
+                <a class="btn btn-link" th:href="@{/user/registration}">Registro</a>
+            </div>
+            <div class="d-flex" sec:authorize="isAuthenticated()">
+                <span sec:authentication="principal.email"></span>
+            </div>
+            <div class="d-flex" sec:authorize="isAuthenticated()">
+                <a class="btn btn-link" th:href="@{/logout}">Log Out</a>
+            </div>
+            <!--      <form class="d-flex" role="search">-->
+            <!--&lt;!&ndash;        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+            <!--        <a th:href="@{/}"><button class="btn btn-outline-primary" type="submit">Sign out</button></a>-->
+            <!--      </form>-->
+<!--            <div class="signout">-->
+<!--                <span class="email">silvia@grath.com</span>-->
+<!--                &lt;!&ndash;                                    <input type="submit" name="submit" value="Continue" th:href="@{/companies}">>&ndash;&gt;-->
+<!--                <a class="btn btn-outline-primary" th:href="@{/}">Sign out</a>-->
+<!--            </div>-->
         </div>
     </div>
-  </div>
 </nav>
 
 

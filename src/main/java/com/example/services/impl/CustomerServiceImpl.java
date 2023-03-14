@@ -1,6 +1,7 @@
 package com.example.services.impl;
 
 import com.example.entities.Customer;
+import com.example.entities.Project;
 import com.example.repositories.CustomerRepository;
 import com.example.services.CustomerService;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository customerRepo;
+    private ProjectServiceImpl projectService;
 
     @Override
     public List<Customer> findAll() {
@@ -70,6 +72,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteById(Long id) {
         log.info("deleteById {}", id);
+
+        List<Project> projects = projectService.findAllByCustomerId(id);
+        for (Project project : projects) {
+            project.setCustomer(null);
+        }
+        projectService.saveAll(projects);
+
         try {
             this.customerRepo.deleteById(id);
         } catch (Exception e) {

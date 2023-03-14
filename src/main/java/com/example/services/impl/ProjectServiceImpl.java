@@ -1,16 +1,11 @@
 package com.example.services.impl;
 
-import com.example.entities.Company;
 import com.example.entities.Project;
 import com.example.entities.Task;
-import com.example.repositories.CompanyRepository;
 import com.example.repositories.ProjectRepository;
-import com.example.repositories.TaskRepository;
-import com.example.services.EmployeeService;
 import com.example.services.ProjectService;
 import com.example.services.TaskService;
 import lombok.AllArgsConstructor;
-import org.hibernate.mapping.Set;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +15,6 @@ import java.util.Optional;
 @Service
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
-    private final EmployeeService employeeService;
-    private final CompanyRepository companyRepo;
     private final TaskService taskService;
     @Override
     public List<Project> findAll() {
@@ -49,6 +42,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public List<Project> findAllByCustomerId(Long id) {
+        return projectRepository.findAllByCustomerId(id);
+    }
+
+    @Override
     public Project save(Project project) {
         return projectRepository.save(project);
     }
@@ -61,7 +59,6 @@ public class ProjectServiceImpl implements ProjectService {
             task.setProject(null);
         }
         taskService.saveAll(tasks);
-
 
         projectRepository.deleteById(id);
     }

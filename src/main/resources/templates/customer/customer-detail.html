@@ -21,7 +21,7 @@
 
     <div class="container content">
         <div class="col-md-4 image">
-            <img th:src="${#strings.isEmpty(customer.imageUrl)} ? '/img/image-load-failed.png' : |/img/uploads/${customer.imageUrl}|" class="card-img-top" alt="Customer Image">
+            <img th:src="${#strings.isEmpty(customer.imageUrl)} ? '/img/image-load-failed.png' : |/files/${customer.imageUrl}|" class="card-img-top" alt="Customer Image">
 
             <div class="row edit-del">
                 <a class="btn edit" th:href="@{/customers/{id}/edit(id=${customer.id})}">Edit</a>
