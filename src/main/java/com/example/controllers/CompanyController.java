@@ -20,11 +20,6 @@ public class CompanyController {
     private final EmployeeRepository employeeRepository;
     private final FileService fileService;
 
-//    @GetMapping("/")
-//    public String index() {
-//        return "layout/main";
-//    }
-
     @GetMapping("/")
     public String index() {
         return "redirect:/companies";
@@ -64,8 +59,6 @@ public class CompanyController {
         model.addAttribute("projects", company.getProjects());
         return "project/project-list";
     }
-
-
 
     @GetMapping("companies/create")
     public String createForm(Model model) {
@@ -111,8 +104,4 @@ public class CompanyController {
         companyService.deleteById(id);
         return "redirect:/companies";
     }
-
-
-
-
 }

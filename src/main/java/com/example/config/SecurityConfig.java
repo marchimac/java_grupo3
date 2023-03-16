@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -20,18 +20,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-//                .requestMatchers(HttpMethod.GET, "/companies").permitAll()
-//                .requestMatchers(HttpMethod.GET, "/supermarkets").permitAll()
-//                .requestMatchers("/user/**").permitAll()
-//                .requestMatchers("/css/**").permitAll()
-//                .requestMatchers("/js/**").permitAll()
-//                .requestMatchers("/img/**").permitAll()
-//                .requestMatchers("/webjars/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/companies").permitAll()
+                .requestMatchers("/user/**").permitAll()
+                .requestMatchers("/css/**").permitAll()
+                .requestMatchers("/js/**").permitAll()
+                .requestMatchers("/img/**").permitAll()
+                .requestMatchers("/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //.loginPage()
-                // .loginProcessingUrl()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/");

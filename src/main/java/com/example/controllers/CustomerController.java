@@ -41,7 +41,7 @@ public class CustomerController {
     @GetMapping("customers/create")
     public String createForm(Model model) {
         Customer customer = new Customer();
-        customer.setAddress(new Address()); // Objeto Address dentro de objeto Customer para que se guarde también en BD
+        customer.setAddress(new Address());
         model.addAttribute("customer", customer);
         return "customer/customer-form";
     }
@@ -66,9 +66,9 @@ public class CustomerController {
 
         try {
             String fileName = fileService.storeInFileSystem(file);
-            customer.setImageUrl(fileName); // string
+            customer.setImageUrl(fileName);
             customerService.save(customer);
-            return "redirect:/customers"; // redirección a controlador findAll
+            return "redirect:/customers";
         } catch (Exception e) {
             model.addAttribute("error", "Failed to save image");
             model.addAttribute("customers", customerService.findAll());
@@ -82,5 +82,3 @@ public class CustomerController {
         return "redirect:/customers";
     }
 }
-
-

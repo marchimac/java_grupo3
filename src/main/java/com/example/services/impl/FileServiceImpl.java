@@ -29,10 +29,10 @@ public class FileServiceImpl implements FileService {
                 || StringUtils.getFilenameExtension(file.getOriginalFilename()) == null)
             throw new IllegalArgumentException("Wrong image");
 
-        String fileNameWithExtension = file.getOriginalFilename(); // logo_impresionante.jpg
-        String extension = StringUtils.getFilenameExtension(fileNameWithExtension); // jpg
-        String fileName = fileNameWithExtension.replace("." + extension, ""); // logo_impresionante
-        String fileNameToSave = fileName + "_" + System.currentTimeMillis() + "." + extension; // logo_impresionante_423423873845.jpg
+        String fileNameWithExtension = file.getOriginalFilename();
+        String extension = StringUtils.getFilenameExtension(fileNameWithExtension);
+        String fileName = fileNameWithExtension.replace("." + extension, "");
+        String fileNameToSave = fileName + "_" + System.currentTimeMillis() + "." + extension;
 
         try {
             Path path = Paths.get(imagesLocation).resolve(fileNameToSave);

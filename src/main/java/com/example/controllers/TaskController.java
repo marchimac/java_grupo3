@@ -100,6 +100,4 @@ public class TaskController {
         taskService.deleteById(id);
         return "redirect:/tasks";
     }
-
-
 }

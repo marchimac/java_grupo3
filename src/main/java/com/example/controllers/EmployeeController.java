@@ -31,7 +31,7 @@ public class EmployeeController {
         return "employee/employee-list";
     }
 
-    @GetMapping("employees/{id}") // http://localhost:8080/employees/1
+    @GetMapping("employees/{id}")
     public String findById(Model model, @PathVariable Long id) {
         Optional<Employee> employeeOpt = employeeService.findById(id);
         if (employeeOpt.isPresent())
@@ -75,9 +75,9 @@ public class EmployeeController {
 
         try {
             String fileName = fileService.storeInFileSystem(file);
-            employee.setImageUrl(fileName); // string
+            employee.setImageUrl(fileName);
             employeeService.save(employee);
-            return "redirect:/employees"; // redirección a controlador findAll
+            return "redirect:/employees";
         } catch (Exception e) {
             model.addAttribute("error", "Failed to save image");
             model.addAttribute("employees", employeeService.findAll());

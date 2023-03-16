@@ -27,32 +27,27 @@ public class UserController {
     @PostMapping("user/registration")
     public String saveRegistrationForm(@ModelAttribute UserEntity user, Model model) {
 
-        // comprobar si ya existe por username
         if (userService.existsByUsername(user.getUsername())) {
             model.addAttribute("error", "username not available");
             model.addAttribute("user", new UserEntity());
             return "user/user-register";
         }
 
-        // comprobar si ya existe por email
         if (userService.existsByEmail(user.getEmail())) {
             model.addAttribute("error", "email not available");
             model.addAttribute("user", new UserEntity());
             return "user/user-register";
         }
 
-        // comprobar contraseña
         if(user.getPassword().length() < MIN_LENGTH_PASSWORD) {
             model.addAttribute("error", "password length too small");
             model.addAttribute("user", new UserEntity());
             return "user/user-register";
         }
 
-        // Codificar password
         String encodedPass = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPass);
 
-        // si está username y email libres entonces se guarda
         userService.save(user);
         return "redirect:/login";
     }
